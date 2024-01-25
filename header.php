@@ -32,7 +32,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-test
 	<div class="loader-overlay"><img src="<?php echo get_stylesheet_directory_uri() . '/dist/images/loader.gif'; ?>"></div>
 	<div class="custom-modal" style="display:none;">
 		<div class="custom-modal__inner">
