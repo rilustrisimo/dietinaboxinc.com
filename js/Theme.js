@@ -1,6 +1,7 @@
 var Theme = {
     discount: false,
     adds: 0,
+    ubpay: false,
     init: function($) {
         this.mobileChecker($);
         this.adjustScripts($);
