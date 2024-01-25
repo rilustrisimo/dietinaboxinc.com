@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "Proxima Nova Th";
+    src: url("ProximaNova-Extrabld.eot"); /* IE9 */
+    src: url("ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("ProximaNova-Extrabld.woff") format("woff"), /* chrome, firefox */
+    url("ProximaNova-Extrabld.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("ProximaNova-Extrabld.svg#Proxima Nova Th") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
