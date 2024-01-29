@@ -27,6 +27,86 @@ var Theme = {
 
     },
 
+    gcmEncrypt: async function(data) {
+        try {
+            const iv = crypto.getRandomValues(new Uint8Array(16));
+            const billerUuid = '<YOUR BILLER UUID HERE>'; // Replace with actual biller UUID
+            const secretKeyHex = '<YOUR BILLER AES KEY HERE>'; // Replace with actual secret key
+            const secretKey = Theme.hexStringToUint8Array(secretKeyHex);
+
+            const key = await window.crypto.subtle.importKey('raw', secretKey, 'AES-GCM', true, ['encrypt', 'decrypt']);
+
+            const payload = {
+                Amt: data.Amt,
+                Email: data.Email,
+                Mobile: data.Mobile,
+                Redir: 'https://yoursite.com',
+                References: [{
+                    Id: '1',
+                    Name: data.Name,
+                    Val: data.Value
+                }]
+            };
+
+            const jsonPayload = JSON.stringify(payload);
+            const cipherText = await window.crypto.subtle.encrypt({
+                name: 'AES-GCM',
+                iv: iv,
+                tagLength: 128
+            }, key, new TextEncoder('utf-8').encode(jsonPayload));
+
+            const concatenatedArray = Theme.concatBuffers(iv, cipherText);
+            const output = Theme.arrayBufferToBase64(concatenatedArray);
+            const encodedUrl = encodeURIComponent(output);
+            console.log(`https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/${billerUuid}?s=${encodedUrl}`);
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    },
+
+    hexStringToUint8Array: function(hexString) {
+        if (hexString.length % 2 !== 0)
+            throw 'Invalid hexString';
+        const arrayBuffer = new Uint8Array(hexString.length / 2);
+
+        for (let i = 0; i < hexString.length; i += 2) {
+            const byteValue = parseInt(hexString.substr(i, 2), 16);
+            if (isNaN(byteValue))
+                throw 'Invalid hexString';
+            arrayBuffer[i / 2] = byteValue;
+        }
+        return arrayBuffer;
+    },
+
+    arrayBufferToBase64: function(buffer) {
+        let binary = '';
+        const bytes = new Uint8Array(buffer);
+        const len = bytes.byteLength;
+        for (let i = 0; i < len; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    },
+
+    concatBuffers: function(buffer1, buffer2) {
+        const tmp = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
+        tmp.set(new Uint8Array(buffer1), 0);
+        tmp.set(new Uint8Array(buffer2), buffer1.byteLength);
+        return tmp.buffer;
+    },
+
+    // Function to handle button click
+    handleButtonClick: function($) {
+        const data = {
+            Amt: '100',
+            Email: 'juandelacruz@email.com',
+            Mobile: '9123456789',
+            Name: 'Name of reference 1 here',
+            Value: 'Value 1 here'
+        };
+        Theme.gcmEncrypt(data);
+    },
+
     initCheckoutScripts: function($){
         if($('.checkout-page').length > 0){
             Theme.orderSummaryCheckout($);
