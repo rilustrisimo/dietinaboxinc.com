@@ -130,6 +130,9 @@ var Theme = {
             cleanedNumber = cleanedNumber.slice(4);
         }
         
+        // Remove leading zeros
+        cleanedNumber = cleanedNumber.replace(/^0+/, '');
+
         return cleanedNumber;
     },
 
