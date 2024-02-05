@@ -30,8 +30,8 @@ var Theme = {
     gcmEncrypt: async function(data) {
         try {
             const iv = crypto.getRandomValues(new Uint8Array(16));
-            const billerUuid = '<YOUR BILLER UUID HERE>'; // Replace with actual biller UUID
-            const secretKeyHex = '<YOUR BILLER AES KEY HERE>'; // Replace with actual secret key
+            const billerUuid = '618F7DA1-5FFE-3CBC-E6AB-7E80CA77FD77'; // Replace with actual biller UUID
+            const secretKeyHex = '363444392342234237663731253364334543363437652325433f373766443737'; // Replace with actual secret key
             const secretKey = Theme.hexStringToUint8Array(secretKeyHex);
 
             const key = await window.crypto.subtle.importKey('raw', secretKey, 'AES-GCM', true, ['encrypt', 'decrypt']);
