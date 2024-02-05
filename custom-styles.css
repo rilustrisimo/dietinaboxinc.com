@@ -2134,6 +2134,10 @@ body.page-id-2 .header-banner::before {
   color: #38B3BA;
   line-height: 20px;
 }
+.review-order__content .review-order__submit .btn.submit-order {
+  padding: 0px 15px!important;
+  line-height: 50px!important;
+}
 .loader-overlay {
   position: fixed;
   top: 0;

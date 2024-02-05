@@ -32,6 +32,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php if(isset($_SESSION['testmode'])): ?>
+	<input type="hidden" id="testmode" value="1">
+	<?php endif; ?>
 	<div class="loader-overlay"><img src="<?php echo get_stylesheet_directory_uri() . '/dist/images/loader.gif'; ?>"></div>
 	<div class="custom-modal" style="display:none;">
 		<div class="custom-modal__inner">

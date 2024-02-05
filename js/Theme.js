@@ -100,7 +100,7 @@ var Theme = {
 
     // Function to handle button click
     handleButtonClick: function($) {
-        let textNumber = $('#grand-total').text();
+        let textNumber = $('.review-order__totals #grand-total').text();
         // Remove commas from the text number
         let withoutCommas = textNumber.replace(/,/g, '');
         // Parse the cleaned number as a float
