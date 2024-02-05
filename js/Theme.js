@@ -125,9 +125,9 @@ var Theme = {
         
         // If the number starts with '639' or '+639', remove the first three digits
         if (cleanedNumber.startsWith('639')) {
-            cleanedNumber = cleanedNumber.slice(3);
+            cleanedNumber = cleanedNumber.slice(2);
         } else if (cleanedNumber.startsWith('+639')) {
-            cleanedNumber = cleanedNumber.slice(4);
+            cleanedNumber = cleanedNumber.slice(3);
         }
         
         // Remove leading zeros
