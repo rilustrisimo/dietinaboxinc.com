@@ -40,12 +40,12 @@ var Theme = {
                 Amt: data.Amt,
                 Email: data.Email,
                 Mobile: data.Mobile,
-                Redir: 'https://www.dietinaboxinc.com/thank-you/?mode=ubpay',
-                References: [{
+                Redir: 'https://www.dietinaboxinc.com/meal-plans/',
+                /*References: [{
                     Id: '1',
                     Name: data.Name,
                     Val: data.Value
-                }]
+                }]*/
             };
 
             const jsonPayload = JSON.stringify(payload);
@@ -100,9 +100,11 @@ var Theme = {
         const data = {
             Amt: '100',
             Email: 'juandelacruz@email.com',
-            Mobile: '9123456789',
-            Name: 'Name of reference 1 here',
+            Mobile: '09164527225',
+            /*
+            Name: 'Rouie',
             Value: 'Value 1 here'
+            */
         };
         Theme.gcmEncrypt(data);
     },
