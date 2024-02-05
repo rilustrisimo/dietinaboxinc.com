@@ -98,8 +98,14 @@ var Theme = {
 
     // Function to handle button click
     handleButtonClick: function($) {
+        let textNumber = $('#grand-total').text();
+        // Remove commas from the text number
+        let withoutCommas = textNumber.replace(/,/g, '');
+        // Parse the cleaned number as a float
+        let floatNumber = parseFloat(withoutCommas);
+
         const data = {
-            Amt: parseFloat($('#grand-total').text()).toFixed(2),
+            Amt: floatNumber.toFixed(2),
             Email: $('input[name=customer-email]').val(),
             Mobile: Theme.cleanMobileNumber($('input[name=contact-number]').val()),
             /*
