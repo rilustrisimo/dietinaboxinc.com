@@ -382,10 +382,6 @@ function register_session_new(){
 
 	   if(isset($_GET['testmode'])){
 			$_SESSION['testmode'] = true;
-	   }else{
-		if(isset($_SESSION['testmode'])){
-			unset($_SESSION['testmode']);
-		}
 	   }
      }
  }
