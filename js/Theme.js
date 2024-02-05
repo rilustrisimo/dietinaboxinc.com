@@ -60,6 +60,8 @@ var Theme = {
             const output = Theme.arrayBufferToBase64(concatenatedArray);
             const encodedUrl = encodeURIComponent(output);
             console.log('https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl);
+
+            window.location.href = 'https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl;
         } catch (error) {
             console.error('An error occurred:', error);
         }
@@ -114,9 +116,7 @@ var Theme = {
             */
         }; 
 
-        console.log(data);
-
-        //Theme.gcmEncrypt(data); 
+        Theme.gcmEncrypt(data); 
     },
 
     cleanMobileNumber: function(number) {
