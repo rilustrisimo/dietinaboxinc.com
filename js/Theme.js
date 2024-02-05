@@ -107,6 +107,9 @@ var Theme = {
             Value: 'Value 1 here'
             */
         };
+
+        console.log(data);
+        
         //Theme.gcmEncrypt(data);
     },
 
