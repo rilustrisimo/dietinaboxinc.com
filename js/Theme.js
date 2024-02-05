@@ -112,7 +112,7 @@ var Theme = {
             Name: 'Rouie',
             Value: 'Value 1 here'
             */
-        };
+        }; 
 
         console.log(data);
 
