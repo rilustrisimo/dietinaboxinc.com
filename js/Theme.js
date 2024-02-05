@@ -109,8 +109,8 @@ var Theme = {
         };
 
         console.log(data);
-        
-        //Theme.gcmEncrypt(data);
+
+        //Theme.gcmEncrypt(data); 
     },
 
     cleanMobileNumber: function(number) {
