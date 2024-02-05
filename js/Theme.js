@@ -40,7 +40,8 @@ var Theme = {
                 Amt: data.Amt,
                 Email: data.Email,
                 Mobile: data.Mobile,
-                Redir: 'https://www.dietinaboxinc.com/meal-plans/',
+                Redir: 'https://www.dietinaboxinc.com/thank-you/?mode=ubpay',
+                BackRedir: 'https://www.dietinaboxinc.com/meal-plans/'
                 /*References: [{
                     Id: '1',
                     Name: data.Name,
@@ -98,15 +99,29 @@ var Theme = {
     // Function to handle button click
     handleButtonClick: function($) {
         const data = {
-            Amt: '100',
-            Email: 'juandelacruz@email.com',
-            Mobile: '09164527225',
+            Amt: parseFloat($('#grand-total').text()).toFixed(2),
+            Email: $('input[name=customer-email]').val(),
+            Mobile: Theme.cleanMobileNumber($('input[name=contact-number]').val()),
             /*
             Name: 'Rouie',
             Value: 'Value 1 here'
             */
         };
-        Theme.gcmEncrypt(data);
+        //Theme.gcmEncrypt(data);
+    },
+
+    cleanMobileNumber: function(number) {
+        // Remove all non-digit characters
+        let cleanedNumber = number.replace(/\D/g, '');
+        
+        // If the number starts with '639' or '+639', remove the first three digits
+        if (cleanedNumber.startsWith('639')) {
+            cleanedNumber = cleanedNumber.slice(3);
+        } else if (cleanedNumber.startsWith('+639')) {
+            cleanedNumber = cleanedNumber.slice(4);
+        }
+        
+        return cleanedNumber;
     },
 
     initCheckoutScripts: function($){
