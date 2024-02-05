@@ -380,9 +380,13 @@ function register_session_new(){
     if( ! session_id() ) {
        session_start();
 
-	   if(isset($_GET['testmode'])){
+	   if(isset($_GET['testmode']) && $_GET['testmode'] == "1"){
 			$_SESSION['testmode'] = true;
 	   }
+
+	   if(isset($_GET['testmode']) && $_GET['testmode'] == "0"){
+			unset($_SESSION['testmode']);
+   		}
      }
  }
 
