@@ -2138,6 +2138,18 @@ body.page-id-2 .header-banner::before {
   padding: 0px 15px!important;
   line-height: 50px!important;
 }
+.payment_method > div {
+  display: none;
+}
+#payments h3 {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+}
+#payments ul {
+  padding: 0;
+  margin: 0 0 15px 12px;
+}
 .loader-overlay {
   position: fixed;
   top: 0;
