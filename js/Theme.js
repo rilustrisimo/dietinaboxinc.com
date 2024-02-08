@@ -191,9 +191,26 @@ var Theme = {
                     cont += '<div class="review-order__summary"><div class="review-order__cart">'+$('.order-summary__items').html()+'</div></div>';
                     cont += '<div class="review-order__summary"><div class="review-order__totals">'+$('.order-summary__total').html()+'</div></div>';
                     cont += '<div class="review-order__terms">By submitting my order, I have read and agreed to all the <a href="#" data-toggle="modal" data-target="#termsAndConditionsModal" class="fw600">Terms & Conditions</a> of Diet in a Box</div>';
+
+
+                    if($('#testmode').val() == "1"){
+                        cont += '<div id="payments">';
+                        cont += '<div class="payment_method">';
+                        cont += '<label><input type="radio" name="payment_method" value="ubpay"> UPAY (Credit/Debit Cards, Instapay, E-Wallets, etc.)</label>';
+                        cont += '<div><p>Selecting UPAY as your payment method allows you to conveniently pay using various options such as credit/debit cards, Instapay, GCash, and other e-wallets. Please note that an additional convenience fee may be added when using this payment method.</p></div>';
+                        cont += '</div>';
+                        cont += '<div class="payment_method">';
+                        cont += '<label><input type="radio" name="payment_method" value="direct"> Direct Payment Transfer</label>';
+                        cont += "<div><p>When choosing the Direct Payment Transfer option, you'll need to transfer funds directly to the following accounts:</p><h3>GCASH</h3><ul><li>Account Number: <b>0920-905-1988</b></li><li>Account Name: <b>CHIME BELL OSABEL</b></li></ul><h3>UNION BANK</h3><ul><li>Account Number: <b>0027-6001-0692</b></li><li>Account Name: <b>OSAMOR FOOD CORPORATION</b></li></ul></div>";
+                        cont += '</div>';
+                        cont += '</div>';
+                    }
+                    
+
                     cont += '<div class="review-order__submit"><a href="#" class="btn submit-order"><i class="fas fa-paper-plane"></i> SUBMIT ORDER</a></div>';
                     cont += '</div>';
                     cont += '</div>';
+
 
                     $('.custom-modal__content').html(cont);
                     $('.custom-modal').fadeIn();
