@@ -601,7 +601,7 @@ body.woocommerce-shop .shop-custom__item .product .prod-right p {
   font-size: 16px;
   font-weight: 700;
 }
-.review-order__totals span:not(#subtotal,#delivery,#grand-total,#discount-4wks,#addtotal,#discount-price) {
+.review-order__totals span:not(#subtotal,#delivery,#grand-total,#discount-4wks,#addtotal,#discount-price,#fees-total) {
   display: block;
   font-size: 14px;
   font-weight: 400;
