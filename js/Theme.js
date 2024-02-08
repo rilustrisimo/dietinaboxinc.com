@@ -214,83 +214,87 @@ var Theme = {
                     $('.custom-modal__content').html(cont);
                     $('.custom-modal').fadeIn();
 
-                    $('.payment_method').click(function(){
-                        var pm = $('input[name="payment_method"]:checked').val();
+                    if($('#testmode').val() == "1"){
 
-                        console.log(pm);
+                        $('.payment_method').click(function(){
+                            var pm = $('input[name="payment_method"]:checked').val();
 
-                        if(pm == "ubpay"){
-                            Theme.ubpay = true;
+                            console.log(pm);
 
-                            let textNumber = $('#orig-total').val();
-                            // Remove commas from the text number
-                            let withoutCommas = textNumber.replace(/,/g, '');
-                            // Parse the cleaned number as a float
-                            let floatNumber = parseFloat(withoutCommas);
+                            if(pm == "ubpay"){
+                                Theme.ubpay = true;
 
-                            let cfee = (floatNumber * .025) + 5;
+                                let textNumber = $('#orig-total').val();
+                                // Remove commas from the text number
+                                let withoutCommas = textNumber.replace(/,/g, '');
+                                // Parse the cleaned number as a float
+                                let floatNumber = parseFloat(withoutCommas);
 
-                            let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
+                                let cfee = (floatNumber * .025) + 5;
 
-                            $('.review-order__summary #grand-total').text(ubtotal);
+                                let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
 
-                            // Create the new element
-                            var newElement = $('<div class="row ub-container">' +
-                            '<div class="col-6 col-md-6">UPAY fees</div>' +
-                            '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
-                            '</div>');
+                                $('.review-order__summary #grand-total').text(ubtotal);
 
-                            // Insert the new element before the specified element
-                            newElement.insertBefore('.review-order__totals .grand-total-container');
+                                // Create the new element
+                                var newElement = $('<div class="row ub-container">' +
+                                '<div class="col-6 col-md-6">UPAY fees</div>' +
+                                '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
+                                '</div>');
 
-
-                            $('.payment_method > div').hide();
-                            $('.payment_method.ubpay > div').fadeIn();
-                        }else{
-                            Theme.ubpay = false;
-
-                            let textNumber = $('#orig-total').val();
-                            $('.review-order__summary #grand-total').text(textNumber);
-
-                            $('.ub-container').remove();
-
-                            $('.payment_method > div').hide();
-                            $('.payment_method.direct > div').fadeIn();
-                        }
-                    });
-
-                    /**initial load*/
-
-                    Theme.ubpay = true;
-
-                    let textNumber = $('#orig-total').val();
-                    // Remove commas from the text number
-                    let withoutCommas = textNumber.replace(/,/g, '');
-                    // Parse the cleaned number as a float
-                    let floatNumber = parseFloat(withoutCommas);
-
-                    let cfee = (floatNumber * .025) + 5;
-
-                    let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
-
-                    $('.review-order__summary #grand-total').text(ubtotal);
-
-                    // Create the new element
-                    var newElement = $('<div class="row ub-container">' +
-                    '<div class="col-6 col-md-6">UPAY fees</div>' +
-                    '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
-                    '</div>');
-
-                    // Insert the new element before the specified element
-                    newElement.insertBefore('.review-order__totals .grand-total-container');
+                                // Insert the new element before the specified element
+                                newElement.insertBefore('.review-order__totals .grand-total-container');
 
 
-                    $('.payment_method > div').hide();
-                    $('.payment_method.ubpay > div').fadeIn();
+                                $('.payment_method > div').hide();
+                                $('.payment_method.ubpay > div').fadeIn();
+                            }else{
+                                Theme.ubpay = false;
 
-                    /**
-                     * 
-                     */
+                                let textNumber = $('#orig-total').val();
+                                $('.review-order__summary #grand-total').text(textNumber);
+
+                                $('.ub-container').remove();
+
+                                $('.payment_method > div').hide();
+                                $('.payment_method.direct > div').fadeIn();
+                            }
+                        });
+
+                        /**initial load*/
+
+                        Theme.ubpay = true;
+
+                        let textNumber = $('#orig-total').val();
+                        // Remove commas from the text number
+                        let withoutCommas = textNumber.replace(/,/g, '');
+                        // Parse the cleaned number as a float
+                        let floatNumber = parseFloat(withoutCommas);
+
+                        let cfee = (floatNumber * .025) + 5;
+
+                        let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
+
+                        $('.review-order__summary #grand-total').text(ubtotal);
+
+                        // Create the new element
+                        var newElement = $('<div class="row ub-container">' +
+                        '<div class="col-6 col-md-6">UPAY fees</div>' +
+                        '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
+                        '</div>');
+
+                        // Insert the new element before the specified element
+                        newElement.insertBefore('.review-order__totals .grand-total-container');
+
+
+                        $('.payment_method > div').hide();
+                        $('.payment_method.ubpay > div').fadeIn();
+
+                        /**
+                         * 
+                         */
+
+                    }
 
                     $('.review-order__submit .submit-order').click(function(e){
                         e.preventDefault();
@@ -310,7 +314,7 @@ var Theme = {
                                     if(Theme.ubpay == true){
                                         $('body').addClass('ubpay');
                                     }
-                                    
+
                                     clearInterval(po);
                                 }
                             }, 100);
