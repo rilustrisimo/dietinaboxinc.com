@@ -190,11 +190,12 @@ var Theme = {
                     cont += '<div class="review-order__item">Delivery Notes: '+ $('textarea[name="directions"]').val() +'</div>';
                     cont += '<div class="review-order__summary"><div class="review-order__cart">'+$('.order-summary__items').html()+'</div></div>';
                     cont += '<div class="review-order__summary"><div class="review-order__totals">'+$('.order-summary__total').html()+'</div></div>';
+                    cont += '<input type="hidden" id="orig-total" value="'+$('.order-summary__total #grand-total').text()+'">';
                     
                     if($('#testmode').val() == "1"){
                         cont += '<div id="payments">';
                         cont += '<div class="payment_method ubpay">';
-                        cont += '<label><input type="radio" name="payment_method" value="ubpay"> <b>UPAY (Credit/Debit Cards, Instapay, E-Wallets, etc.)</b></label>';
+                        cont += '<label><input type="radio" name="payment_method" value="ubpay" checked="checked"> <b>UPAY (Credit/Debit Cards, Instapay, E-Wallets, etc.)</b></label>';
                         cont += '<div><p>Selecting UPAY as your payment method allows you to conveniently pay using various options such as credit/debit cards, Instapay, GCash, and other e-wallets. Please note that an additional convenience fee may be added when using this payment method.</p></div>';
                         cont += '</div>';
                         cont += '<div class="payment_method direct">';
@@ -214,17 +215,33 @@ var Theme = {
                     $('.custom-modal').fadeIn();
 
                     $('.payment_method').click(function(){
-                        var pm = $('input[name="payment_method"]').val();
+                        var pm = $('input[name="payment_method"]:checked').val();
 
                         console.log(pm);
 
                         if(pm == "ubpay"){
                             Theme.ubpay = true;
 
+                            let textNumber = $('#orig-total').text();
+                            // Remove commas from the text number
+                            let withoutCommas = textNumber.replace(/,/g, '');
+                            // Parse the cleaned number as a float
+                            let floatNumber = parseFloat(withoutCommas);
+
+                            let cfee = (floatNumber * .025) + 5;
+
+                            let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
+
+                            $('.review-order__summary #grand-total').text(ubtotal);
+
+
                             $('.payment_method > div').hide();
                             $('.payment_method.ubpay > div').fadeIn();
                         }else{
                             Theme.ubpay = false;
+
+                            let textNumber = $('#orig-total').text();
+                            $('.review-order__summary #grand-total').text(textNumber);
 
                             $('.payment_method > div').hide();
                             $('.payment_method.direct > div').fadeIn();
@@ -271,6 +288,10 @@ var Theme = {
 
             $('select[name="num-of-weeks"]').hide();
         }
+    },
+
+    numberWithCommasAndDecimals: function(number) {
+        return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
 
     stickOrderForm: function($){
