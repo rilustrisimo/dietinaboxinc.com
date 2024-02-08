@@ -299,12 +299,18 @@ var Theme = {
                         $('button.js-button-submit').trigger('click');
                         $('body').addClass('processing');
 
+
                         setTimeout(function(){
                             var po = setInterval(function(){
                                 var f = $('form.wpcf7-form.submitting');
 
                                 if(f.length == 0){
                                     $('body').removeClass('processing');
+
+                                    if(Theme.ubpay == true){
+                                        $('body').addClass('ubpay');
+                                    }
+                                    
                                     clearInterval(po);
                                 }
                             }, 100);
