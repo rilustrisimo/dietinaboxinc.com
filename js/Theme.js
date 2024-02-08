@@ -237,12 +237,11 @@ var Theme = {
                             // Create the new element
                             var newElement = $('<div class="row ub-container">' +
                             '<div class="col-6 col-md-6">UPAY fees</div>' +
-                            '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimal(cfee)+'</span></div>' +
+                            '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
                             '</div>');
 
                             // Insert the new element before the specified element
                             newElement.insertBefore('.review-order__totals .grand-total-container');
-
 
 
                             $('.payment_method > div').hide();
@@ -259,6 +258,39 @@ var Theme = {
                             $('.payment_method.direct > div').fadeIn();
                         }
                     });
+
+                    /**initial load*/
+
+                    Theme.ubpay = true;
+
+                    let textNumber = $('#orig-total').val();
+                    // Remove commas from the text number
+                    let withoutCommas = textNumber.replace(/,/g, '');
+                    // Parse the cleaned number as a float
+                    let floatNumber = parseFloat(withoutCommas);
+
+                    let cfee = (floatNumber * .025) + 5;
+
+                    let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
+
+                    $('.review-order__summary #grand-total').text(ubtotal);
+
+                    // Create the new element
+                    var newElement = $('<div class="row ub-container">' +
+                    '<div class="col-6 col-md-6">UPAY fees</div>' +
+                    '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
+                    '</div>');
+
+                    // Insert the new element before the specified element
+                    newElement.insertBefore('.review-order__totals .grand-total-container');
+
+
+                    $('.payment_method > div').hide();
+                    $('.payment_method.ubpay > div').fadeIn();
+
+                    /**
+                     * 
+                     */
 
                     $('.review-order__submit .submit-order').click(function(e){
                         e.preventDefault();
