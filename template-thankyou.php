@@ -17,7 +17,7 @@ endif;
 			<div class="row">
                 <div class="col-md-12"><h1>THANK YOU FOR CHOOSING DIET IN A BOX</h1></div>
                 <div class="col-md-12"><p>Please check (3 mins max) your email to review order request. You’ll be contacted by one of our FOH’s within 24 hours upon submission of this entry. Call us at 09177020539 for immediate feedback. Thank you!</p></div>
-                <?php if(isset($_GET['mode']) && $_GET['mode'] != "ubpay"): ?>
+                <?php if((isset($_GET['mode']) && $_GET['mode'] != "ubpay") || !isset($_GET['mode']) ): ?>
                 <div class="col-md-12">
                     <div class="payment-list">
                         <h2>Payment Facilities</h2>
