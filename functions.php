@@ -180,7 +180,7 @@ function diet_scripts() {
 
 	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/dist/js/main.min.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/Theme.js', array('jquery'), '1.7', true );
+	wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/Theme.js', array('jquery'), '1.8', true );
 
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
