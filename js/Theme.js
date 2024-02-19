@@ -242,6 +242,8 @@ var Theme = {
                                 '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
                                 '</div>');
 
+                                $('.ub-container').remove();
+
                                 // Insert the new element before the specified element
                                 newElement.insertBefore('.review-order__totals .grand-total-container');
 
