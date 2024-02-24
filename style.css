@@ -11267,7 +11267,11 @@ a:active {
 
 .header-navbar .logo {
     height: 100px;
-    margin-top: -42px;
+    margin-top: -20px;
+}
+
+.in-mobile .header-navbar .logo {
+    margin-top: 0px;
 }
 
 @media screen and (max-width: 991px) {
