@@ -196,7 +196,7 @@ var Theme = {
                         cont += '<div id="payments">';
                         cont += '<div class="payment_method direct">';
                         cont += '<label><input type="radio" name="payment_method" value="direct" checked="checked"> <b>Direct Payment Transfer</b></label>';
-                        cont += "<div><p>When choosing the Direct Payment Transfer option, you'll need to transfer funds directly to the following accounts:</p><h3>GCASH</h3><ul><li>Account Number: <b>0920-905-1988</b></li><li>Account Name: <b>CHIME BELL OSABEL</b></li></ul><h3>UNION BANK</h3><ul><li>Account Number: <b>0027-6001-0692</b></li><li>Account Name: <b>OSAMOR FOOD CORPORATION</b></li></ul></div>";
+                        cont += "<div><p>When choosing the Direct Payment Transfer option, you'll need to transfer funds directly to the following accounts:</p><p>Proof of payment has to be sent at chime@dietinaboxinc.com</p><h3>GCASH</h3><ul><li>Account Number: <b>0920-905-1988</b></li><li>Account Name: <b>CHIME BELL OSABEL</b></li></ul><h3>UNION BANK</h3><ul><li>Account Number: <b>0027-6001-0692</b></li><li>Account Name: <b>OSAMOR FOOD CORPORATION</b></li></ul></div>";
                         cont += '</div>';
                         cont += '<div class="payment_method ubpay">';
                         cont += '<label><input type="radio" name="payment_method" value="ubpay"> <b>UPAY (Credit/Debit Cards, Instapay, E-Wallets, etc.)</b></label>';
@@ -265,32 +265,15 @@ var Theme = {
 
                         /**initial load*/
 
-                        Theme.ubpay = true;
+                        Theme.ubpay = false;
 
                         let textNumber = $('#orig-total').val();
-                        // Remove commas from the text number
-                        let withoutCommas = textNumber.replace(/,/g, '');
-                        // Parse the cleaned number as a float
-                        let floatNumber = parseFloat(withoutCommas);
+                        $('.review-order__summary #grand-total').text(textNumber);
 
-                        let cfee = (floatNumber * .025) + 5;
-
-                        let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
-
-                        $('.review-order__summary #grand-total').text(ubtotal);
-
-                        // Create the new element
-                        var newElement = $('<div class="row ub-container">' +
-                        '<div class="col-6 col-md-6">UPAY fees</div>' +
-                        '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
-                        '</div>');
-
-                        // Insert the new element before the specified element
-                        newElement.insertBefore('.review-order__totals .grand-total-container');
-
+                        $('.ub-container').remove();
 
                         $('.payment_method > div').hide();
-                        $('.payment_method.ubpay > div').fadeIn();
+                        $('.payment_method.direct > div').fadeIn();
 
                         /**
                          * 
