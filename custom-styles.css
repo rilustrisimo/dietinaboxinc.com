@@ -2156,6 +2156,13 @@ body.page-id-2 .header-banner::before {
 .payment_method > div {
   display: none;
 }
+#payments {
+  border-top: solid 1px #909090;
+  padding-top: 50px;
+}
+#payments:before {
+  content: 'PAYMENT OPTIONS';
+}
 #payments h3 {
   font-size: 18px;
   font-weight: 700;
