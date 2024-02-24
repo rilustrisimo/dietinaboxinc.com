@@ -49,7 +49,11 @@
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img class="logo" src="<?php echo get_template_directory_uri() ?>/dist/images/logo.png">
+					<?php if(is_home()): ?>
+						<img class="logo" src="<?php echo get_template_directory_uri() ?>/dist/images/logo-white.png">
+					<?php else: ?>
+						<img class="logo" src="<?php echo get_template_directory_uri() ?>/dist/images/logo.png">
+					<?php endif; ?>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
 					<i class="fas fa-bars"></i>
