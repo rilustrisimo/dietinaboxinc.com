@@ -1865,12 +1865,12 @@ body.page-id-50.woocommerce-order-received .woocommerce-order {
   color: #fff !important;
 }
 .in-mobile.page-template-template-thankyou #primary {
-  margin-top: 85px;
+  margin-top: 125px;
 }
 .in-mobile.woocommerce-page #primary,
 .in-mobile.page-template-template-shop #primary {
   padding: 0 15px;
-  margin-top: 75px;
+  margin-top: 125px;
 }
 .in-mobile.woocommerce-page ul.products li.product,
 .in-mobile.page-template-template-shop ul.products li.product {
@@ -2038,7 +2038,7 @@ body.page-id-50.woocommerce-order-received .woocommerce-order {
   z-index: 9;
 }
 .in-mobile.page-template-template-checkout #primary {
-  margin-top: 75px;
+  margin-top: 125px;
 }
 .in-mobile .modal-content .table-striped {
   max-width: 250px;
