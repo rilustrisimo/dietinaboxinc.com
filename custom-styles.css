@@ -387,6 +387,10 @@ body.ubpay::before {
   margin-top: 15px;
   color: #20202C;
 }
+.custom-modal__content p.highlight {
+  color: #ff4343;
+  font-weight: 700;
+}
 .custom-modal__content .btn {
   display: inline-block;
   vertical-align: top;

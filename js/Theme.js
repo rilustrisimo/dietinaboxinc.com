@@ -196,7 +196,7 @@ var Theme = {
                         cont += '<div id="payments">';
                         cont += '<div class="payment_method direct">';
                         cont += '<label><input type="radio" name="payment_method" value="direct" checked="checked"> <b>Direct Payment Transfer</b></label>';
-                        cont += "<div><p>When choosing the Direct Payment Transfer option, you'll need to transfer funds directly to the following accounts:</p><p>Proof of payment has to be sent at chime@dietinaboxinc.com</p><h3>GCASH</h3><ul><li>Account Number: <b>0920-905-1988</b></li><li>Account Name: <b>CHIME BELL OSABEL</b></li></ul><h3>UNION BANK</h3><ul><li>Account Number: <b>0027-6001-0692</b></li><li>Account Name: <b>OSAMOR FOOD CORPORATION</b></li></ul></div>";
+                        cont += "<div><p>When choosing the Direct Payment Transfer option, you'll need to transfer funds directly to the following accounts:</p><p class='highlight'>Proof of payment has to be sent at chime@dietinaboxinc.com</p><h3>GCASH</h3><ul><li>Account Number: <b>0920-905-1988</b></li><li>Account Name: <b>CHIME BELL OSABEL</b></li></ul><h3>UNION BANK</h3><ul><li>Account Number: <b>0027-6001-0692</b></li><li>Account Name: <b>OSAMOR FOOD CORPORATION</b></li></ul></div>";
                         cont += '</div>';
                         cont += '<div class="payment_method ubpay">';
                         cont += '<label><input type="radio" name="payment_method" value="ubpay"> <b>UPAY (Credit/Debit Cards, Instapay, E-Wallets, etc.)</b></label>';
