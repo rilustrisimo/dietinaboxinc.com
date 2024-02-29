@@ -27,10 +27,10 @@ endif;
                             <li>
                                 <img src="<?php echo get_template_directory_uri(); ?>/dist/images/gcash-logo.jpg"><div class="deets"><b>0922 478 1282</b><br>Chime Bell Osabel</div>
                             </li>
-                            
+                            -->
                             <li>
-                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/bdo-logo.jpg"><div class="deets"><b>0069-9024-9241</b><br>Chime Bell Osabel</div>
-                            </li>-->
+                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/bdo-logo.jpg"><div class="deets"><b>0069-9041-6555</b><br>OSAMOR FOOD CORPORATION</div>
+                            </li>
                             <li>
                                 <img src="<?php echo get_template_directory_uri(); ?>/dist/images/gcash-logo.jpg"><div class="deets"><b>0920-905-1988</b><br>CHIME BELL OSABEL</div>
                             </li>

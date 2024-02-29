@@ -180,6 +180,9 @@ get_header();
                                     <h3>(COD Option Available)</h3>
                                     <ul>
                                         <li>
+                                            <img src="<?php echo get_template_directory_uri(); ?>/dist/images/bdo-logo.jpg"><div class="deets"><b>0069-9041-6555</b><br>OSAMOR FOOD CORPORATION</div>
+                                        </li>
+                                        <li>
                                             <img src="<?php echo get_template_directory_uri(); ?>/dist/images/gcash-logo.jpg"><div class="deets"><b>0920-905-1988</b><br>CHIME BELL OSABEL</div>
                                         </li>
                                         <!--
