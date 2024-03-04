@@ -2160,6 +2160,9 @@ body.page-id-2 .header-banner::before {
 .payment_method > div {
   display: none;
 }
+.payment_method label b {
+  color: #6a3aa2;
+}
 #payments {
   border-top: solid 1px #909090;
   padding-top: 50px;
