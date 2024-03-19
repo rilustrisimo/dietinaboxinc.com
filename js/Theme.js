@@ -78,9 +78,9 @@ var Theme = {
             const concatenatedArray = Theme.concatBuffers(iv, cipherText);
             const output = Theme.arrayBufferToBase64(concatenatedArray);
             const encodedUrl = encodeURIComponent(output);
-            console.log('https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl);
+            console.log('https://sith.unionbankph.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl);
 
-            window.location.href = 'https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl;
+            window.location.href = 'https://sith.unionbankph.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl;
         } catch (error) {
             console.error('An error occurred:', error);
         }
