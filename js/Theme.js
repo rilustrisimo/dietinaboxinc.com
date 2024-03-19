@@ -30,8 +30,27 @@ var Theme = {
     gcmEncrypt: async function(data) {
         try {
             const iv = crypto.getRandomValues(new Uint8Array(16));
-            const billerUuid = '618F7DA1-5FFE-3CBC-E6AB-7E80CA77FD77'; // Replace with actual biller UUID
-            const secretKeyHex = '363444392342234237663731253364334543363437652325433f373766443737'; // Replace with actual secret key
+            /**
+             * test creds
+             */
+            //const billerUuid = '618F7DA1-5FFE-3CBC-E6AB-7E80CA77FD77'; // Replace with actual biller UUID
+            //const secretKeyHex = '363444392342234237663731253364334543363437652325433f373766443737'; // Replace with actual secret key
+
+            /**
+             * test end
+             */
+
+            /**
+             *  live creds
+             */
+            const billerUuid = 'E03F3CFD-B35C-4C69-B2AA-7E813A47134E'; // Replace with actual biller UUID
+            const secretKeyHex = '46393734373933393737652f2a6665373425374537652331333f343731333445'; // Replace with actual secret key
+
+            /**
+             * 
+             * live end
+             */
+
             const secretKey = Theme.hexStringToUint8Array(secretKeyHex);
 
             const key = await window.crypto.subtle.importKey('raw', secretKey, 'AES-GCM', true, ['encrypt', 'decrypt']);
@@ -192,7 +211,7 @@ var Theme = {
                     cont += '<div class="review-order__summary"><div class="review-order__totals">'+$('.order-summary__total').html()+'</div></div>';
                     cont += '<input type="hidden" id="orig-total" value="'+$('.order-summary__total #grand-total').text()+'">';
                     
-                    if($('#testmode').val() == "1"){
+                    //if($('#testmode').val() == "1"){ //made live
                         cont += '<div id="payments">';
                         cont += '<div class="payment_method direct">';
                         cont += '<label><input type="radio" name="payment_method" value="direct" checked="checked"> <b>Direct Payment Transfer</b></label>';
@@ -203,7 +222,7 @@ var Theme = {
                         cont += '<div><p>Selecting UPAY as your payment method allows you to conveniently pay using various options such as credit/debit cards, Instapay, GCash, and other e-wallets. Please note that an additional convenience fee may be added when using this payment method.</p></div>';
                         cont += '</div>';
                         cont += '</div>';
-                    }
+                    //} //made live
 
                     cont += '<div class="review-order__terms">By submitting my order, I have read and agreed to all the <a href="#" data-toggle="modal" data-target="#termsAndConditionsModal" class="fw600">Terms & Conditions</a> of Diet in a Box</div>';
                     cont += '<div class="review-order__submit"><a href="#" class="btn submit-order"><i class="fas fa-paper-plane"></i> SUBMIT ORDER</a></div>';
@@ -214,7 +233,7 @@ var Theme = {
                     $('.custom-modal__content').html(cont);
                     $('.custom-modal').fadeIn();
 
-                    if($('#testmode').val() == "1"){
+                    //if($('#testmode').val() == "1"){ //made live
 
                         $('.payment_method').click(function(){
                             var pm = $('input[name="payment_method"]:checked').val();
@@ -279,7 +298,7 @@ var Theme = {
                          * 
                          */
 
-                    }
+                    //} //made live
 
                     $('.review-order__submit .submit-order').click(function(e){
                         e.preventDefault();
