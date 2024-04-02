@@ -43,11 +43,9 @@ var Theme = {
             /**
              *  live creds
              */
-            //const billerUuid = 'E03F3CFD-B35C-4C69-B2AA-7E813A47134E'; // Replace with actual biller UUID
-            //const secretKeyHex = '46393734373933393737652f2a6665373425374537652331333f343731333445'; // Replace with actual secret key
+            const billerUuid = 'E03F3CFD-B35C-4C69-B2AA-7E813A47134E'; // Replace with actual biller UUID
+            const secretKeyHex = '46393734373933393737652f2a6665373425374537652331333f343731333445'; // Replace with actual secret key
 
-            const billerUuid = '5EAB1B34-883F-4455-88A0-69CF24A310FE'; // Replace with actual biller UUID
-            const secretKeyHex = '37cf6b0993c545caa6fb42469f65a0e8b53a69745f7e40359bcade274292f8d597aefda63d904b6694d120a5e05b212cbe9d3d8ad2424255a75b62acedf6dab467d44c13a1d8435f836a98d38522f20ddca4cae5e51c48fbab143722911660bad266e4978ecb481191cb885140a5bfefacb160a2f0ef48febf2b0f903944b8f7'; // Replace with actual secret key
 
             /**
              * 
