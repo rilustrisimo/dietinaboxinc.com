@@ -33,8 +33,8 @@ var Theme = {
             /**
              * test creds
              */
-            //const billerUuid = '618F7DA1-5FFE-3CBC-E6AB-7E80CA77FD77'; // Replace with actual biller UUID
-            //const secretKeyHex = '363444392342234237663731253364334543363437652325433f373766443737'; // Replace with actual secret key
+            const billerUuid = '618F7DA1-5FFE-3CBC-E6AB-7E80CA77FD77'; // Replace with actual biller UUID
+            const secretKeyHex = '363444392342234237663731253364334543363437652325433f373766443737'; // Replace with actual secret key
 
             /**
              * test end
@@ -43,8 +43,8 @@ var Theme = {
             /**
              *  live creds
              */
-            const billerUuid = 'E03F3CFD-B35C-4C69-B2AA-7E813A47134E'; // Replace with actual biller UUID
-            const secretKeyHex = '46393734373933393737652f2a6665373425374537652331333f343731333445'; // Replace with actual secret key
+            //const billerUuid = 'E03F3CFD-B35C-4C69-B2AA-7E813A47134E'; // Replace with actual biller UUID
+            //const secretKeyHex = '46393734373933393737652f2a6665373425374537652331333f343731333445'; // Replace with actual secret key
 
             /**
              * 
@@ -78,9 +78,14 @@ var Theme = {
             const concatenatedArray = Theme.concatBuffers(iv, cipherText);
             const output = Theme.arrayBufferToBase64(concatenatedArray);
             const encodedUrl = encodeURIComponent(output);
-            console.log('https://sith.unionbankph.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl);
 
-            window.location.href = 'https://sith.unionbankph.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl;
+            //console.log('https://sith.unionbankph.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl); //live
+            //window.location.href = 'https://sith.unionbankph.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl;//live
+
+            console.log('https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl); //test
+            window.location.href = 'https://ubotpsentry-tst1.outsystemsenterprise.com/UPAY/Whitelabel/'+billerUuid+'?s='+encodedUrl;//test
+
+
         } catch (error) {
             console.error('An error occurred:', error);
         }
