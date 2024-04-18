@@ -255,7 +255,8 @@ var Theme = {
                                 // Parse the cleaned number as a float
                                 let floatNumber = parseFloat(withoutCommas);
 
-                                let cfee = (floatNumber * .025) + 5;
+                                //let cfee = (floatNumber * .025) + 5;
+                                let cfee = 0; //removed convenience fee
 
                                 let ubtotal = Theme.numberWithCommasAndDecimals(floatNumber + cfee);
 
