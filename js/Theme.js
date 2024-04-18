@@ -262,16 +262,16 @@ var Theme = {
 
                                 $('.review-order__summary #grand-total').text(ubtotal);
 
-                                // Create the new element
-                                var newElement = $('<div class="row ub-container">' +
-                                '<div class="col-6 col-md-6">UPAY fees</div>' +
-                                '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
-                                '</div>');
+                                // // Create the new element
+                                // var newElement = $('<div class="row ub-container">' +
+                                // '<div class="col-6 col-md-6">UPAY fees</div>' +
+                                // '<div class="col-6 col-md-6">₱ <span id="fees-total">'+Theme.numberWithCommasAndDecimals(cfee)+'</span></div>' +
+                                // '</div>');
 
-                                $('.ub-container').remove();
+                                // $('.ub-container').remove();
 
-                                // Insert the new element before the specified element
-                                newElement.insertBefore('.review-order__totals .grand-total-container');
+                                // // Insert the new element before the specified element
+                                // newElement.insertBefore('.review-order__totals .grand-total-container');
 
 
                                 $('.payment_method > div').hide();
