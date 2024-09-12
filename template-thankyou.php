@@ -19,31 +19,7 @@ endif;
                 <div class="col-md-12"><p>Please check (3 mins max) your email to review order request. You’ll be contacted by one of our FOH’s within 24 hours upon submission of this entry. Call us at 09177020539 for immediate feedback. Thank you!</p></div>
                 <?php if((isset($_GET['mode']) && $_GET['mode'] != "ubpay") || !isset($_GET['mode']) ): ?>
                 <div class="col-md-12">
-                    <div class="payment-list">
-                        <h2>Payment Facilities</h2>
-                        <h3>(COD Option Available)</h3>
-                        <ul>
-                            <!--
-                            <li>
-                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/gcash-logo.jpg"><div class="deets"><b>0922 478 1282</b><br>Chime Bell Osabel</div>
-                            </li>
-                            -->
-                            <li>
-                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/bdo-logo.jpg"><div class="deets"><b>0069-9041-6555</b><br>OSAMOR FOOD CORPORATION</div>
-                            </li>
-                            <li>
-                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/gcash-logo.jpg"><div class="deets"><b>0920-905-1988</b><br>CHIME BELL OSABEL</div>
-                            </li>
-                            <!--
-                            <li>
-                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/gcash-logo.jpg"><div class="deets"><b>0975-590-6507</b><br>ANGELO AMADEUS MORENO</div>
-                            </li>
-                            -->
-                            <li>
-                                <img src="<?php echo get_template_directory_uri(); ?>/dist/images/ub-logo.png"><div class="deets"><b>0027-6001-0692</b><br>OSAMOR FOOD CORPORATION</div>
-                            </li>
-                        </ul>
-                    </div>
+                    <p>When choosing the Direct Online Payment Transfer option, you'll need to wire transfer payment using this QR Code below. <b>This QR code accepts payments from UnionBank, BDO, Gcash, Maya, PalawanPay, Robinsons Bank Corp., ShopeePay, BPI/BP|Family, Gpay Network, Metropolitan Bank and Trust Company, Rizal CommercialBanking Corp., Asia United Bank, Land Bank of The Philippines and Security Bank.</b></p><img src='https://www.dietinaboxinc.com/wp-content/uploads/2024/09/diab-qr.jpg'><p class='highlight'>Proof of payment has to be sent to <a href='mailto:chime@dietinaboxinc.com'>chime@dietinaboxinc.com</a></p>
                 </div>
                 <div class="col-md-12 notice">Kindly send your proof of payment to chime@dietinaboxinc.com</div>
                 <?php endif; ?>
