@@ -241,6 +241,8 @@ var Theme = {
 
                     //if($('#testmode').val() == "1"){ //made live
 
+                        $('.payment_method').off('click');
+
                         $('.payment_method').click(function(){
                             var pm = $('input[name="payment_method"]:checked').val();
 
@@ -275,7 +277,7 @@ var Theme = {
 
 
                                 $('.payment_method > div').hide();
-                                $('.payment_method.ubpay > div').fadeIn();
+                                $('.payment_method.ubpay > div').show();
                             }else{
                                 Theme.ubpay = false;
 
@@ -285,7 +287,7 @@ var Theme = {
                                 $('.ub-container').remove();
 
                                 $('.payment_method > div').hide();
-                                $('.payment_method.direct > div').fadeIn();
+                                $('.payment_method.direct > div').show();
                             }
                         });
 
@@ -299,7 +301,7 @@ var Theme = {
                         $('.ub-container').remove();
 
                         $('.payment_method > div').hide();
-                        $('.payment_method.direct > div').fadeIn();
+                        $('.payment_method.direct > div').show();
 
                         /**
                          * 
