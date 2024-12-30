@@ -419,7 +419,7 @@ var Theme = {
             $('input[name="discount"]').val($('#discount-price').text());
         }
 
-        var validPromoCodes = ["EARLYXMAS10", "EARLYBIRD2024"];
+        var validPromoCodes = ["EARLYXMAS10", "EARLYBIRD2024", "EARLY2025"];
 
         //if(($('.choice.active').attr('data') == "4") && (Theme.discount.code != "EARLYXMAS10")){
         if(($('.choice.active').attr('data') == "4") && (validPromoCodes.indexOf(Theme.discount.code) === -1)){
