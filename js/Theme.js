@@ -223,12 +223,13 @@ var Theme = {
                     cont += '<label><input type="radio" name="payment_method" value="direct" checked="checked"> <b>Direct Online Payment Transfer</b></label>';
                     cont += "<div><p>When choosing the Direct Online Payment Transfer option, you'll need to wire transfer payment using this QR Code below. <b>This QR code accepts payments from UnionBank, BDO, Gcash, Maya, PalawanPay, Robinsons Bank Corp., ShopeePay, BPI/BP|Family, Gpay Network, Metropolitan Bank and Trust Company, Rizal Commercial Banking Corp., Asia United Bank, Land Bank of The Philippines and Security Bank.</b></p><img src='https://www.dietinaboxinc.com/wp-content/uploads/2024/09/diab-qr.jpg'><p class='highlight'>Proof of payment has to be sent to <a href='mailto:chime@dietinaboxinc.com'>chime@dietinaboxinc.com</a></p></div>"; // Corrected this line
                     cont += '</div>';
+                    /*
                     cont += '<div class="payment_method ubpay">';
                     cont += '<label><input type="radio" name="payment_method" value="ubpay"> <b>UPAY (Credit/Debit Cards, Instapay, E-Wallets, etc.)</b></label>';
                     cont += '<div><p>Selecting UPAY as your payment method allows you to conveniently pay using various options such as credit/debit cards, Instapay, GCash, and other e-wallets. Please note that an additional convenience fee may be added when using this payment method.</p></div>';
                     cont += '</div>';
                     cont += '</div>';
-                    
+                    */
                     //} //made live
 
                     cont += '<div class="review-order__terms">By submitting my order, I have read and agreed to all the <a href="#" data-toggle="modal" data-target="#termsAndConditionsModal" class="fw600">Terms & Conditions</a> of Diet in a Box</div>';

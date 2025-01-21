@@ -2169,7 +2169,7 @@ body.page-id-2 .header-banner::before {
   position: relative;
 }
 #payments:before {
-  content: 'PAYMENT OPTIONS';
+  content: 'PAYMENT CHANNEL';
   position: absolute;
   top: 7px;
   font-weight: 700;
@@ -2201,6 +2201,9 @@ body.page-id-2 .header-banner::before {
   width: 60px;
   height: 60px;
   margin: -30px 0 0 -30px;
+}
+.payment_method.ubpay {
+  display: none!important;
 }
 /*
 Animations
