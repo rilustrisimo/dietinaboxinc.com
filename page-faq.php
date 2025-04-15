@@ -83,6 +83,10 @@ get_header();
                             <div class="card-body">
                                 <hr />
                                 <p>Yes, we deliver. Depending on the address, the earliest time is 6:30 AM and the latest is 12:00 NN. We deliver on-the-day NOT a day before. Delivery is only good for 5 days - Monday to Friday.</p>
+                                <p>Delivery Time Frame:<p>
+                                <p>Option1: Anytime from 6:30AM to 8:00AM
+                                <br />
+                                    Option2: Anytime from 8:30AM to 10:00AM</p>
                             </div>
                         </div>
                     </div>
@@ -190,7 +194,7 @@ get_header();
                         <div id="faq-11" class="collapse" data-parent="#accordionList">
                             <div class="card-body">
                                 <hr />
-                                <p>You cannot just start anytime you like. Since we personalize and put a signature style of gourmet cooking in your daily meals, we need to make sure you have booked at least days before we start the delivery week. We have a Reservation CUT-OFF which is every Saturday, 3:00 P.M. Any orders logged beyond that time will be considered an early booking for the week after.</p>
+                                <p>You cannot just start anytime you like. Since we personalize and put a signature style of gourmet cooking in your daily meals, we need to make sure you have booked at least days before we start the delivery week. We have a Reservation CUT-OFF which is every Sunday, 3:00 P.M. Any orders logged beyond that time will be considered an early booking for the week after.</p>
                             </div>
                         </div>
                     </div>
