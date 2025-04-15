@@ -143,7 +143,7 @@ get_header();
                             <div class="card-body">
                                 <hr />
 								<p>Diet in a Box is presented with a great opportunity to hire more drivers that can deliver your food right at your doorstep. Many of these drivers have lost their jobs due to the pandemic, and we take this as our perfect timing to give them their livelihood back and be able to provide for their family. When you have your diet in a box meals delivered to you conveniently, there is a corresponding delivery fee added. This will apply to all entries within and outside of city premises.</p>
-<p>With regard to HOW MUCH, it’s key that you know your BRGY and call us at 0917 702 0539 or at 0922 478 1282 so we can inform you of the delivery fee.</p>
+<p>With regard to HOW MUCH, it’s key that you know your BRGY and call us at 0917 702 0539 or at 0920 905 1988 so we can inform you of the delivery fee.</p>
 <!--                                 <p>Deliveries done within the city proper is free, except some specific locations. Please refer to the chart below for the delivery charge for different locations:</p>
                                 <?php get_template_part( 'template-parts/content-delivery-charges'); ?> -->
                             </div>
