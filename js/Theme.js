@@ -860,7 +860,18 @@ var MealPlansManager = {
         
         this.initQuantityControls($);
         this.updateDeliveryDates($);
-        this.updateOrderSummary($);
+        // Ensure empty state is properly displayed after initialization
+        setTimeout(() => {
+            this.updateOrderSummary($);
+            // Double-check that empty state is visible if no items
+            var hasItems = $('#meal-plans-development .qty-field').filter(function() {
+                return parseInt($(this).val()) > 0;
+            }).length > 0;
+            
+            if (!hasItems) {
+                $('#meal-plans-development .empty-cart-state').show();
+            }
+        }, 100);
         this.initMobileOrderSummary($);
     },
 
@@ -1028,7 +1039,7 @@ var MealPlansManager = {
 
             // Update order summary using meal plans specific selectors
             $('#meal-plans-development .order-summary__items').html(content);
-            $('#meal-plans-development .order-summary__total .total-amount span').html(this.numberWithCommas(total.toFixed(2)));
+            $('#meal-plans-development .order-summary__total .total-amount').html('₱' + this.numberWithCommas(total.toFixed(2)));
             $('#meal-plans-development .meal-count').text(totalMeals + ' meals');
             $('#meal-plans-development .order-summary__button a').addClass('active');
             
@@ -1076,10 +1087,16 @@ var MealPlansManager = {
                 });
             }
         }else{
-            $('#meal-plans-development .order-summary__items').html('');
-            $('#meal-plans-development .empty-cart-state').show();
+            // Show proper empty cart state instead of just clearing
+            var emptyStateHTML = '<div class="empty-cart-state">' +
+                '<div class="empty-cart-price">₱0</div>' +
+                '<i class="fas fa-utensils empty-cart-icon"></i>' +
+                '<p class="empty-cart-message">No meal plans selected</p>' +
+                '<p class="empty-cart-submessage">Choose a plan to get started</p>' +
+                '</div>';
+            $('#meal-plans-development .order-summary__items').html(emptyStateHTML);
             $('#meal-plans-development .order-summary__button a').removeClass('active');
-            $('#meal-plans-development .order-summary__total .total-amount span').html('0.00');
+            $('#meal-plans-development .order-summary__total .total-amount').html('₱0.00');
             $('#meal-plans-development .meal-count').text('0 meals');
 
             $('#meal-plans-development .order-summary__button .btn').click(function(e){

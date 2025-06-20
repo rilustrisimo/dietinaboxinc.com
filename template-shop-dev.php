@@ -200,7 +200,7 @@ get_header();
 								<h2 class="order-summary__title">Order Summary</h2>
 								<div class="delivery-dates">
 									<i class="fas fa-calendar-alt"></i>
-									<span class="js-our-menu-date">For Jun 21 to Jun 25</span>
+									<span class="js-our-menu-date">For Date From to Date to</span>
 								</div>
 							</div>
 							

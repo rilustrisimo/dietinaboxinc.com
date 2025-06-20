@@ -108,6 +108,24 @@
   - **Mobile**: Added responsive sizing for smaller screens (3rem price, 2rem icon)
 - **Result**: Empty state now exactly matches mockup design and user experience
 
+#### **14. Price String Parsing Fix** ✅
+- **Problem**: `variant_price` was a string with commas (e.g., "3,600.00"), causing calculation errors
+- **Solution**: 
+  - **PHP Cleanup**: Used `str_replace(',', '', $v['variant_price'])` to remove commas
+  - **Type Conversion**: Cast to `(float)` for proper mathematical operations
+  - **Both Sections**: Fixed main meal plans and add-ons sections
+  - **Clean Variables**: Created `$cleanPrice` and `$cleanAddonPrice` variables
+- **Result**: Proper price calculations now work correctly (₱240 per meal from ₱3,600 total)
+
+#### **15. Order Summary Empty State JavaScript Fix** ✅
+- **Problem**: JavaScript was clearing order summary content but not properly restoring empty state
+- **Solution**: 
+  - **Proper Empty HTML**: JavaScript now injects complete empty state HTML instead of clearing
+  - **Selector Fix**: Fixed `.total-amount span` to `.total-amount` to match HTML structure
+  - **Initialization**: Added setTimeout and visibility check to ensure empty state shows on page load
+  - **Complete Empty State**: JS now creates proper empty state with ₱0, utensils icon, and messages
+- **Result**: Empty cart state now properly displays when no meal plans are selected
+
 ### **1. Template Structure Enhancements (template-shop-dev.php)**
 ✅ **Modern Layout**
 - Updated page header with proper title and subtitle
@@ -331,6 +349,24 @@ All user-reported issues have been successfully resolved:
    - Date Format: Updated header to show "For Jun 21 to Jun 25" format
    - Typography: Enhanced font weights and colors to match mockup
    - Mobile: Added responsive sizing for smaller screens (3rem price, 2rem icon)
+
+14. ✅ **Price String Parsing Fix**: 
+   - **Problem**: `variant_price` was a string with commas (e.g., "3,600.00"), causing calculation errors
+   - **Solution**: 
+     - **PHP Cleanup**: Used `str_replace(',', '', $v['variant_price'])` to remove commas
+     - **Type Conversion**: Cast to `(float)` for proper mathematical operations
+     - **Both Sections**: Fixed main meal plans and add-ons sections
+     - **Clean Variables**: Created `$cleanPrice` and `$cleanAddonPrice` variables
+   - **Result**: Proper price calculations now work correctly (₱240 per meal from ₱3,600 total)
+
+15. ✅ **Order Summary Empty State JavaScript Fix**: 
+   - **Problem**: JavaScript was clearing order summary content but not properly restoring empty state
+   - **Solution**: 
+     - **Proper Empty HTML**: JavaScript now injects complete empty state HTML instead of clearing
+     - **Selector Fix**: Fixed `.total-amount span` to `.total-amount` to match HTML structure
+     - **Initialization**: Added setTimeout and visibility check to ensure empty state shows on page load
+     - **Complete Empty State**: JS now creates proper empty state with ₱0, utensils icon, and messages
+   - **Result**: Empty cart state now properly displays when no meal plans are selected
 
 ### **Testing Verification**
 - ✅ PHP syntax validation passed
