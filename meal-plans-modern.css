@@ -1084,6 +1084,24 @@ body.meal-plans-template .btn-proceed:disabled,
         padding: 1rem 1.5rem;
     }
     
+    body.meal-plans-template .order-summary-footer .btn-proceed,
+    #meal-plans-development .order-summary-footer .btn-proceed {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    body.meal-plans-template .order-summary-footer .trust-indicators,
+    #meal-plans-development .order-summary-footer .trust-indicators {
+        padding: 0.5rem 0 0 0;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+    
     body.meal-plans-template .modern-order-summary.expanded,
     #meal-plans-development .modern-order-summary.expanded {
         transform: translateY(0);
@@ -1507,6 +1525,12 @@ body.meal-plans-template .btn-proceed:disabled,
         border-radius: 0.75rem;
         margin-top: 1rem;
     }
+
+    body.meal-plans-template .order-summary-footer .order-summary__button,
+    #meal-plans-development .order-summary-footer .order-summary__button{
+        margin: 10px 0 0 !important;
+        padding: 0 !important;
+    }
     
     body.meal-plans-template .order-summary__title,
     #meal-plans-development .order-summary__title {
@@ -1585,35 +1609,15 @@ body.meal-plans-template .btn-proceed:disabled,
     }
 }
 
-/* Desktop order summary footer */
+/* Desktop order summary - works normally */
 body.meal-plans-template .order-summary-footer,
 #meal-plans-development .order-summary-footer {
-    display: none; /* Hidden on desktop, button is inside order summary */
+    display: none; /* Hidden on desktop */
 }
 
-/* Desktop order summary button (inside the order summary) */
-@media (min-width: 992px) {
-    body.meal-plans-template .modern-order-summary .order-summary__button,
-    #meal-plans-development .modern-order-summary .order-summary__button {
-        display: block;
-        background: white;
-        padding: 1rem;
-        margin: 0;
-        border-top: 1px solid #e5e7eb;
-        border-radius: 0 0 1rem 1rem;
-    }
-    
-    body.meal-plans-template .modern-order-summary .order-summary__button .trust-indicators,
-    #meal-plans-development .modern-order-summary .order-summary__button .trust-indicators {
-        padding: 0.5rem 0 0 0;
-        text-align: center;
-        font-size: 0.75rem;
-        color: #6b7280;
-    }
-}
-
+/* Mobile/Tablet only modifications */
 @media (max-width: 991px) {
-    /* Show footer on mobile/tablet */
+    /* Show separate footer on mobile/tablet only */
     body.meal-plans-template .order-summary-footer,
     #meal-plans-development .order-summary-footer {
         display: block;
@@ -1621,13 +1625,13 @@ body.meal-plans-template .order-summary-footer,
         bottom: 0;
         left: 0;
         right: 0;
-        z-index: 1001; /* Higher than order summary */
+        z-index: 1001;
         background: white;
         border-top: 1px solid #e5e7eb;
         box-shadow: 0 -5px 15px -3px rgba(0, 0, 0, 0.1);
     }
     
-    /* Hide button inside order summary on mobile/tablet */
+    /* Hide button inside order summary on mobile/tablet only */
     body.meal-plans-template .modern-order-summary .order-summary__button,
     #meal-plans-development .modern-order-summary .order-summary__button {
         display: none;
