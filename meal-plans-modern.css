@@ -1637,6 +1637,53 @@ body.meal-plans-template .order-summary-footer,
         display: none;
     }
 }
+
+/* Desktop/Mobile Footer Management - TEMPLATE SPECIFIC */
+/* Desktop - Hide mobile footer, show button inside order summary */
+body.meal-plans-template .order-summary-footer,
+#meal-plans-development .order-summary-footer {
+    display: none;
+}
+
+/* Mobile footer button styling for mobile/tablet */
+@media (max-width: 991px) {
+    /* Show separate footer on mobile/tablet only */
+    body.meal-plans-template .order-summary-footer,
+    #meal-plans-development .order-summary-footer {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1001;
+        background: white;
+        border-top: 1px solid #e5e7eb;
+        box-shadow: 0 -5px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+    }
+    
+    /* Mobile footer button styling */
+    body.meal-plans-template .order-summary-footer .btn-proceed,
+    #meal-plans-development .order-summary-footer .btn-proceed {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    /* Mobile trust indicators in footer */
+    body.meal-plans-template .order-summary-footer .trust-indicators,
+    #meal-plans-development .order-summary-footer .trust-indicators {
+        padding: 0.5rem 0 0 0;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+}
+
+/* Animation for selection - TEMPLATE SPECIFIC */
 @keyframes selectPulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
