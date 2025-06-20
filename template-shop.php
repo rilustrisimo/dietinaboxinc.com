@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Meal Plans
+Template Name: Meal Plans Old - Deprecated
 */
 
 get_header();

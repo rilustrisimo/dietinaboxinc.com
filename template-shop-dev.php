@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Meal Plans Development
+Template Name: Meal Plans New
 */
 
 // Add template-specific body class for scoped styling
@@ -238,9 +238,6 @@ get_header();
 							<!-- Always visible button section -->
 							<div class="order-summary__button">
 								<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
-								<div class="trust-indicators">
-									<span>Delivered daily</span>
-								</div>
 							</div>
 					</div>
 					
@@ -248,9 +245,6 @@ get_header();
 					<div class="order-summary-footer">
 						<div class="order-summary__button">
 							<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
-							<div class="trust-indicators">
-								<span>Delivered daily</span>
-							</div>
 						</div>
 					</div>
 				</div> <!-- End of col-12 col-lg-4 -->
