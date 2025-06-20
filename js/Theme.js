@@ -856,6 +856,7 @@ var MealPlansManager = {
         this.initQuantityControls($);
         this.updateDeliveryDates($);
         this.updateOrderSummary($);
+        this.initMobileOrderSummary($);
     },
 
     initQuantityControls: function($) {
@@ -1111,6 +1112,25 @@ var MealPlansManager = {
         
             if (!(a.indexOf(k)>=0))
                 e.preventDefault();
+        });
+    },
+
+    initMobileOrderSummary: function($) {
+        var orderSummary = $('#meal-plans-development .modern-order-summary');
+        var header = $('#meal-plans-development .order-summary-header');
+        
+        // Toggle order summary on mobile/tablet
+        header.click(function() {
+            if ($(window).width() <= 991) {
+                orderSummary.toggleClass('expanded');
+            }
+        });
+        
+        // Handle window resize
+        $(window).resize(function() {
+            if ($(window).width() > 991) {
+                orderSummary.removeClass('expanded');
+            }
         });
     }
 };

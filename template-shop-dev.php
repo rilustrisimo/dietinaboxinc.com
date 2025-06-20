@@ -44,7 +44,7 @@ get_header();
 							<div class="products__item">
 								<div class="products__variants">
 									<?php foreach($fields['variants'] as $index => $v): 
-										$perMealPrice = number_format($v['variant_price'] / 15, 0);
+										$perMealPrice = round($v['variant_price'] / 15);
 									?>
 										<div class="products__variants__item meal-plan-card" data-plan-index="<?php echo $productIndex . '-' . ($index + 1); ?>">
 											<div class="selection-badge">
@@ -86,7 +86,7 @@ get_header();
 															</div>
 														</div>
 														<div class="per-meal-info">
-															<span class="per-meal-price">₱<?php echo $perMealPrice; ?> per meal</span> • Daily delivery
+															<span class="per-meal-price">₱<?php echo number_format($perMealPrice); ?> per meal</span> • Daily delivery
 														</div>
 													</div>
 													

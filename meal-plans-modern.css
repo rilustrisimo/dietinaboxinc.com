@@ -66,14 +66,29 @@ body.meal-plans-template .badge-category,
     letter-spacing: 0.05em;
 }
 
-/* Meal Plan Cards - TEMPLATE SPECIFIC - Remove double border */
+/* Meal Plans Container - TEMPLATE SPECIFIC - Fixed spacing and borders */
+body.meal-plans-template .meal-plans-container,
+#meal-plans-development .meal-plans-container {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+/* Meal Plan Group - More compact spacing */
+body.meal-plans-template .meal-plan-group,
+#meal-plans-development .meal-plan-group {
+    margin-bottom: 1rem !important; /* Reduced from 1.5rem */
+}
+
+/* Meal Plan Cards - TEMPLATE SPECIFIC - More compact and fixed borders */
 body.meal-plans-template .meal-plan-card,
 #meal-plans-development .meal-plan-card {
     position: relative;
     border: 2px solid #e5e7eb;
     border-radius: 1rem;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    padding: 1.25rem; /* Reduced from 1.5rem */
+    margin-bottom: 0; /* Remove bottom margin since we control it with .meal-plan-group */
     transition: all 0.3s ease;
     background: white;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -168,13 +183,13 @@ body.meal-plans-template .meal-details-section,
     min-width: 0;
 }
 
-/* Meal Header - TEMPLATE SPECIFIC - Improved font weights */
+/* Meal Header - TEMPLATE SPECIFIC - More compact spacing */
 body.meal-plans-template .meal-name,
 #meal-plans-development .meal-name {
     font-size: 1.25rem;
     font-weight: 800;
     color: #1f2937;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem; /* Reduced from 0.75rem */
     line-height: 1.3;
 }
 
@@ -182,9 +197,24 @@ body.meal-plans-template .meal-meta,
 #meal-plans-development .meal-meta {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
+    gap: 0.5rem; /* Reduced from 0.75rem */
+    margin-bottom: 0.5rem; /* Reduced spacing */
+}
+
+body.meal-plans-template .meal-description,
+#meal-plans-development .meal-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem; /* Reduced from default */
+    line-height: 1.5;
+}
+
+body.meal-plans-template .meal-delivery-info,
+#meal-plans-development .meal-delivery-info {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin-bottom: 0.75rem; /* Reduced spacing */
+    font-style: italic;
 }
 
 body.meal-plans-template .calories-badge,
@@ -289,6 +319,8 @@ body.meal-plans-template .meal-pricing-controls,
 body.meal-plans-template .price-section,
 #meal-plans-development .price-section {
     text-align: right;
+    min-width: 120px; /* Ensure enough space for full prices */
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 body.meal-plans-template .total-price,
@@ -297,6 +329,9 @@ body.meal-plans-template .total-price,
     font-weight: 800;
     color: #14b8a6;
     line-height: 1.2;
+    white-space: nowrap; /* Prevent price wrapping */
+    overflow: visible; /* Ensure full price is visible */
+    min-width: max-content; /* Ensure enough space for full price */
 }
 
 body.meal-plans-template .price-subtitle,
@@ -304,6 +339,7 @@ body.meal-plans-template .price-subtitle,
     font-size: 0.75rem;
     color: #6b7280;
     margin-top: 0.25rem;
+    white-space: nowrap;
 }
 
 /* Quantity Controls - TEMPLATE SPECIFIC - Fixed alignment */
@@ -796,7 +832,7 @@ body.meal-plans-template .btn-proceed:disabled,
 }
 
 /* Responsive Design Improvements - TEMPLATE SPECIFIC */
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
     body.meal-plans-template .modern-order-summary,
     #meal-plans-development .modern-order-summary {
         position: relative;
@@ -890,10 +926,88 @@ body.meal-plans-template .btn-proceed:disabled,
     }
 }
 
+/* Tablet-specific improvements - TEMPLATE SPECIFIC */
+@media (min-width: 576px) and (max-width: 991px) {
+    body.meal-plans-template #primary.content-area.meal-plans-content,
+    body.meal-plans-template #primary.content-area {
+        padding-bottom: 90px; /* Add space for sticky order summary */
+    }
+    
+    body.meal-plans-template .meal-card-content,
+    #meal-plans-development .meal-card-content {
+        gap: 1.25rem;
+    }
+    
+    body.meal-plans-template .meal-image,
+    #meal-plans-development .meal-image {
+        width: 5.5rem;
+        height: 5.5rem;
+    }
+    
+    body.meal-plans-template .modern-order-summary,
+    #meal-plans-development .modern-order-summary {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        max-height: 60vh;
+        border-radius: 1rem 1rem 0 0;
+        margin: 0;
+        z-index: 1000;
+        box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
+        transform: translateY(calc(100% - 80px));
+        transition: transform 0.3s ease;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded,
+    #meal-plans-development .modern-order-summary.expanded {
+        transform: translateY(0);
+    }
+    
+    body.meal-plans-template .order-summary-header,
+    #meal-plans-development .order-summary-header {
+        cursor: pointer;
+        position: relative;
+        padding: 1rem 1.5rem;
+        margin: 0;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    
+    body.meal-plans-template .order-summary-header::after,
+    #meal-plans-development .order-summary-header::after {
+        content: '↑';
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.25rem;
+        color: #6b7280;
+        transition: transform 0.3s ease;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-header::after,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-header::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    body.meal-plans-template .order-summary-content,
+    #meal-plans-development .order-summary-content {
+        max-height: calc(60vh - 80px);
+        overflow-y: auto;
+    }
+}
+
 @media (max-width: 576px) {
     body.meal-plans-template #primary.content-area.meal-plans-content,
     body.meal-plans-template #primary.content-area {
         padding: 0.5rem;
+        padding-bottom: 80px; /* Add space for sticky order summary */
+    }
+    
+    body.meal-plans-template .meal-plans-section,
+    #meal-plans-development .meal-plans-section {
+        padding-bottom: 1rem;
     }
     
     body.meal-plans-template .meal-plan-card,
@@ -932,6 +1046,75 @@ body.meal-plans-template .btn-proceed:disabled,
     body.meal-plans-template .breakdown-item:last-child,
     #meal-plans-development .breakdown-item:last-child {
         border-bottom: none;
+    }
+    
+    /* Mobile sticky order summary */
+    body.meal-plans-template .modern-order-summary,
+    #meal-plans-development .modern-order-summary {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        max-height: 50vh;
+        border-radius: 1rem 1rem 0 0;
+        margin: 0;
+        padding: 0;
+        z-index: 1000;
+        box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.2);
+        transform: translateY(calc(100% - 70px));
+        transition: transform 0.3s ease;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded,
+    #meal-plans-development .modern-order-summary.expanded {
+        transform: translateY(0);
+    }
+    
+    body.meal-plans-template .order-summary-header,
+    #meal-plans-development .order-summary-header {
+        cursor: pointer;
+        position: relative;
+        padding: 1rem;
+        margin: 0;
+        border-bottom: 1px solid #e5e7eb;
+        background: white;
+        border-radius: 1rem 1rem 0 0;
+    }
+    
+    body.meal-plans-template .order-summary-header::after,
+    #meal-plans-development .order-summary-header::after {
+        content: '↑';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.25rem;
+        color: #6b7280;
+        transition: transform 0.3s ease;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-header::after,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-header::after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    body.meal-plans-template .order-summary-content,
+    #meal-plans-development .order-summary-content {
+        max-height: calc(50vh - 70px);
+        overflow-y: auto;
+        padding: 1rem;
+    }
+    
+    body.meal-plans-template .order-summary__title,
+    #meal-plans-development .order-summary__title {
+        font-size: 1.125rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    body.meal-plans-template .delivery-dates,
+    #meal-plans-development .delivery-dates {
+        font-size: 0.8rem;
     }
     
     body.meal-plans-template .cart-meal-breakdown,
