@@ -981,7 +981,7 @@ var MealPlansManager = {
                     var mealsPerPlan = 15;
                     var planMeals = itemQty * mealsPerPlan;
                     totalMeals += planMeals;
-                    var perMealPrice = Math.round(itemPrice / 15);
+                    var perMealPrice = Math.round((itemPrice / 15) * 100) / 100; // Proper decimal rounding
                     
                     content += "<div class='cart__item cart__item--mealplan'>";
                     content += "<div class='cart-item-header'>";
@@ -999,7 +999,7 @@ var MealPlansManager = {
                     content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Dinner</small></div>";
                     content += "</div>";
                     content += "<div class='cart-item-summary'>";
-                    content += "Total: " + planMeals + " meals • <span class='per-meal-price'>₱" + perMealPrice + " per meal</span>";
+                    content += "Total: " + planMeals + " meals • <span class='per-meal-price'>₱" + Math.round(perMealPrice) + " per meal</span>";
                     content += "</div>";
                     content += "</div>";
                     

@@ -626,6 +626,21 @@ body.meal-plans-template #meal-plans-development .col-lg-4,
     }
 }
 
+/* Tablet breakpoint for better responsive design */
+@media (min-width: 768px) and (max-width: 991px) {
+    body.meal-plans-template #meal-plans-development .col-lg-8,
+    #meal-plans-development .col-lg-8 {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+    
+    body.meal-plans-template #meal-plans-development .col-lg-4,
+    #meal-plans-development .col-lg-4 {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+}
+
 body.meal-plans-template .order-summary-header,
 #meal-plans-development .order-summary-header {
     margin-bottom: 1.5rem;
@@ -974,7 +989,7 @@ body.meal-plans-template .btn-proceed:disabled,
     body.meal-plans-template .meal-plan-card,
     #meal-plans-development .meal-plan-card {
         padding: 1.25rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem; /* Maintain consistent spacing on mobile */
     }
     
     body.meal-plans-template .meal-card-content,
@@ -1095,7 +1110,7 @@ body.meal-plans-template .btn-proceed:disabled,
     body.meal-plans-template .meal-plan-card,
     #meal-plans-development .meal-plan-card {
         padding: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem; /* Maintain consistent spacing on mobile */
     }
     
     body.meal-plans-template .meal-name,
