@@ -154,9 +154,11 @@ function diet_scripts() {
 
 	wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/custom-styles.css', array('diet-style'), '1.0');
 
-	wp_enqueue_style( 'meal-plans-modern', get_template_directory_uri() . '/meal-plans-modern.css', array('custom-style'), '1.0');
-
-	wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' );
+	// Only load meal plans modern CSS for the specific template
+	if ( is_page_template( 'template-shop-dev.php' ) ) {
+		wp_enqueue_style( 'meal-plans-modern', get_template_directory_uri() . '/meal-plans-modern.css', array('custom-style'), '1.0');
+		wp_enqueue_style( 'fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' );
+	}
 
 	wp_enqueue_style( 'daterangepicker', 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css' );
 	

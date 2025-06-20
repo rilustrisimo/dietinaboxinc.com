@@ -1,0 +1,1012 @@
+/* ==========================================================================
+   Meal Plans Modern Styles - TEMPLATE SPECIFIC ONLY
+   Only applies to the Meal Plans Development template (template-shop-dev.php)
+   ========================================================================== */
+
+/* Template-specific background - SCOPED TO THIS TEMPLATE ONLY */
+body.meal-plans-template #primary.content-area.meal-plans-content {
+    background-color: #f8fafc !important;
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Ensure background extends fully - TEMPLATE SPECIFIC */
+body.meal-plans-template #primary.content-area,
+body.meal-plans-template .content-area.meal-plans-content,
+body.page-template-template-shop-dev #primary.content-area,
+body.page-template-template-shop-dev .content-area {
+    background-color: #f8fafc !important;
+}
+
+/* Page Header - TEMPLATE SPECIFIC */
+body.meal-plans-template .meal-plans-modern .page-header,
+#meal-plans-development .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+body.meal-plans-template .meal-plans-modern .page-title,
+#meal-plans-development .page-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+body.meal-plans-template .meal-plans-modern .page-subtitle,
+#meal-plans-development .page-subtitle {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Category Badge - TEMPLATE SPECIFIC */
+body.meal-plans-template .category-badge,
+#meal-plans-development .category-badge {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+body.meal-plans-template .badge-category,
+#meal-plans-development .badge-category {
+    background-color: #14b8a6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Meal Plan Cards - TEMPLATE SPECIFIC - Remove double border */
+body.meal-plans-template .meal-plan-card,
+#meal-plans-development .meal-plan-card {
+    position: relative;
+    border: 2px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+body.meal-plans-template .meal-plan-card:hover,
+#meal-plans-development .meal-plan-card:hover {
+    border-color: #14b8a6;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+body.meal-plans-template .meal-plan-card.selected,
+#meal-plans-development .meal-plan-card.selected {
+    border-color: #14b8a6;
+    box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.1), 0 10px 10px -5px rgba(20, 184, 166, 0.04);
+}
+
+/* Remove any nested container borders that cause double borders - TEMPLATE SPECIFIC */
+body.meal-plans-template .meal-plan-card .container,
+body.meal-plans-template .meal-plan-card .row,
+body.meal-plans-template .meal-plan-card .products__variants,
+body.meal-plans-template .meal-plan-card .products__variants__item,
+body.meal-plans-template .meal-plan-card .products__item,
+#meal-plans-development .meal-plan-card .container,
+#meal-plans-development .meal-plan-card .row,
+#meal-plans-development .meal-plan-card .products__variants,
+#meal-plans-development .meal-plan-card .products__variants__item,
+#meal-plans-development .meal-plan-card .products__item {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Selection Badge - TEMPLATE SPECIFIC */
+body.meal-plans-template .selection-badge,
+#meal-plans-development .selection-badge {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+body.meal-plans-template .selection-badge.visible,
+#meal-plans-development .selection-badge.visible {
+    opacity: 1;
+}
+
+body.meal-plans-template .badge-number,
+#meal-plans-development .badge-number {
+    background-color: #14b8a6;
+    color: white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+/* Meal Card Content - TEMPLATE SPECIFIC */
+body.meal-plans-template .meal-card-content,
+#meal-plans-development .meal-card-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+body.meal-plans-template .meal-image-section,
+#meal-plans-development .meal-image-section {
+    flex-shrink: 0;
+}
+
+body.meal-plans-template .meal-image,
+#meal-plans-development .meal-image {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.75rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #e5e7eb;
+}
+
+body.meal-plans-template .meal-details-section,
+#meal-plans-development .meal-details-section {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Meal Header - TEMPLATE SPECIFIC - Improved font weights */
+body.meal-plans-template .meal-name,
+#meal-plans-development .meal-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+
+body.meal-plans-template .meal-meta,
+#meal-plans-development .meal-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+body.meal-plans-template .calories-badge,
+#meal-plans-development .calories-badge {
+    color: #14b8a6;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+body.meal-plans-template .meals-total-badge,
+#meal-plans-development .meals-total-badge {
+    background-color: #fef2f2;
+    color: #dc2626;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+body.meal-plans-template .meal-description,
+#meal-plans-development .meal-description {
+    color: #6b7280;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+body.meal-plans-template .meal-delivery-info,
+#meal-plans-development .meal-delivery-info {
+    color: #6b7280;
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Meal Breakdown */
+.meal-breakdown {
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.breakdown-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.breakdown-item {
+    text-align: center;
+}
+
+.breakdown-number {
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.breakdown-label {
+    color: #6b7280;
+    font-size: 0.75rem;
+}
+
+.breakdown-days {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+.per-meal-info {
+    text-align: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.per-meal-price {
+    font-weight: bold;
+    color: #dc2626;
+}
+
+/* Pricing and Controls - Fixed alignment */
+.meal-pricing-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.price-section {
+    text-align: right;
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #14b8a6;
+    line-height: 1.2;
+}
+
+.price-subtitle {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+/* Quantity Controls - Fixed alignment */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.qty-btn {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #14b8a6;
+    background-color: white;
+    color: #14b8a6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+}
+
+.qty-btn:hover {
+    background-color: #f0fdfa;
+    transform: translateY(-1px);
+}
+
+.qty-btn:disabled,
+.qty-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.qty-field {
+    width: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border: none;
+    background: transparent;
+    color: #1f2937;
+}
+
+/* Quantity Indicator - Fixed positioning */
+.quantity-indicator {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #14b8a6;
+    color: white;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.quantity-indicator.show {
+    display: flex !important;
+}
+
+/* Addon Cards - Improved styling */
+.addon-card {
+    position: relative;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.addon-card:hover {
+    border-color: #14b8a6;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.addon-card.selected {
+    border-color: #14b8a6;
+    box-shadow: 0 4px 6px -1px rgba(20, 184, 166, 0.1), 0 2px 4px -1px rgba(20, 184, 166, 0.06);
+}
+
+/* Remove any nested container borders for addon cards */
+.addon-card .container,
+.addon-card .row,
+.addon-card .products__variants,
+.addon-card .products__variants__item,
+.addon-card .products__item {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+.addon-card-content {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.addon-image-section {
+    flex-shrink: 0;
+}
+
+.addon-image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #e5e7eb;
+}
+
+.addon-details-section {
+    flex: 1;
+    min-width: 0;
+}
+
+.addon-header {
+    margin-bottom: 1rem;
+}
+
+.addon-name {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.addon-description {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.addon-pricing-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.addon-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #14b8a6;
+}
+
+/* Addon quantity controls use same styling as meal plans */
+.addon-card .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.addon-card .quantity-indicator {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #14b8a6;
+    color: white;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 5;
+}
+
+.addon-card .quantity-indicator.show {
+    display: flex;
+}
+
+/* Modern Order Summary - Fixed sticky positioning */
+.modern-order-summary {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: 1.5rem;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.order-summary-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 1rem;
+}
+
+.order-summary__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.delivery-dates {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.delivery-dates i {
+    color: #14b8a6;
+}
+
+/* Empty Cart State */
+.empty-cart-state {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.empty-cart-icon {
+    font-size: 3rem;
+    color: #d1d5db;
+    margin-bottom: 0.75rem;
+}
+
+.empty-cart-message {
+    color: #6b7280;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.empty-cart-submessage {
+    color: #9ca3af;
+    font-size: 0.875rem;
+}
+
+/* Cart Items */
+.cart__item {
+    margin-bottom: 1rem;
+}
+
+.cart__item--mealplan {
+    background-color: #f0fdfa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-left: 4px solid #14b8a6;
+}
+
+.cart-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.cart-item-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    flex: 1;
+}
+
+.cart-item-price {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #14b8a6;
+}
+
+.cart-item-details {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+}
+
+.cart-meal-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-meal-breakdown .breakdown-item {
+    text-align: center;
+}
+
+.cart-meal-breakdown .breakdown-item span {
+    font-weight: 500;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.cart-meal-breakdown .breakdown-item small {
+    display: block;
+    color: #6b7280;
+    font-size: 0.75rem;
+}
+
+.cart-item-summary {
+    text-align: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.per-meal-price {
+    font-weight: bold;
+    color: #dc2626;
+}
+
+.cart__item--addon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+.cart-addon-qty {
+    font-weight: 600;
+}
+
+.cart-addon-name {
+    flex: 1;
+    margin-left: 0.5rem;
+}
+
+.cart-addon-price {
+    font-weight: 600;
+    color: #14b8a6;
+}
+
+/* Order Totals - Enhanced styling */
+.order-totals {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.total-meals {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.meal-count {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.order-summary__total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.total-label {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #14b8a6;
+}
+
+.total-amount span {
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+
+/* Delivery Info */
+.delivery-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background-color: #f0fdfa;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.delivery-info i {
+    color: #14b8a6;
+    margin-top: 0.125rem;
+}
+
+.delivery-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery-title {
+    font-weight: 500;
+    color: #115e59;
+    font-size: 0.875rem;
+}
+
+.delivery-subtitle {
+    color: #0f766e;
+    font-size: 0.75rem;
+}
+
+/* Proceed Button */
+.btn-proceed {
+    width: 100%;
+    background-color: #14b8a6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-proceed:hover {
+    background-color: #0f766e;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-proceed:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Trust Indicators */
+.trust-indicators {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* Responsive Design - Enhanced */
+@media (max-width: 991px) {
+    .meal-plans-modern #primary.content-area {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    .meal-card-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .meal-image {
+        width: 4rem;
+        height: 4rem;
+        align-self: flex-start;
+    }
+    
+    .modern-order-summary {
+        position: static;
+        margin-top: 2rem;
+        max-height: none;
+    }
+    
+    .meal-pricing-controls {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .price-section {
+        text-align: center;
+        order: 2;
+    }
+    
+    .quantity-controls {
+        justify-content: center;
+        order: 1;
+    }
+    
+    .meal-plans-modern .page-title {
+        font-size: 2rem;
+    }
+    
+    .meal-plans-modern .page-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .meal-plans-modern #primary.content-area {
+        padding: 1rem;
+    }
+    
+    .meal-plan-card {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .meal-card-content {
+        gap: 1rem;
+    }
+    
+    .meal-image {
+        width: 5rem;
+        height: 5rem;
+    }
+    
+    .breakdown-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .modern-order-summary {
+        padding: 1.25rem;
+        border-radius: 0.75rem;
+        margin-top: 1.5rem;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .meal-plans-modern #primary.content-area {
+        padding: 0.5rem;
+    }
+    
+    .meal-plan-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .meal-name {
+        font-size: 1rem;
+    }
+    
+    .meal-image {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    
+    .breakdown-grid {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        text-align: left;
+    }
+    
+    .breakdown-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.25rem 0;
+    }
+    
+    .cart-meal-breakdown {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+    
+    .cart-meal-breakdown .breakdown-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+    
+    .modern-order-summary {
+        padding: 1rem;
+        border-radius: 0.75rem;
+    }
+    
+    .order-summary__title {
+        font-size: 1.25rem;
+    }
+    
+    .total-price {
+        font-size: 1.25rem;
+    }
+    
+    .meal-pricing-controls {
+        gap: 0.75rem;
+    }
+    
+    /* Addon responsive adjustments */
+    .addon-card {
+        padding: 1rem;
+    }
+    
+    .addon-card-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .addon-image {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .addon-pricing-controls {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+    
+    .addon-name {
+        font-size: 1rem;
+    }
+}
+
+/* Animation for selection */
+@keyframes selectPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.meal-plan-card.selected {
+    animation: selectPulse 0.3s ease-out;
+}
+
+/* Hover effects */
+.qty-btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-proceed:hover {
+    transform: translateY(-1px);
+}
+
+/* Focus styles for accessibility */
+.qty-btn:focus,
+.btn-proceed:focus {
+    outline: 2px solid #14b8a6;
+    outline-offset: 2px;
+}
+
+/* Additional responsive improvements */
+@media (max-width: 768px) {
+    .meal-plans-modern #primary.content-area {
+        padding: 1rem;
+    }
+    
+    .meal-plan-card {
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .meal-card-content {
+        gap: 1rem;
+    }
+    
+    .meal-image {
+        width: 5rem;
+        height: 5rem;
+    }
+    
+    .breakdown-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    
+    .modern-order-summary {
+        padding: 1.25rem;
+        border-radius: 0.75rem;
+        margin-top: 1.5rem;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .meal-plans-modern {
+        background: white !important;
+    }
+    
+    .meal-plan-card,
+    .addon-card,
+    .modern-order-summary {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .meal-plan-card {
+        border-width: 3px;
+    }
+    
+    .meal-plan-card.selected {
+        border-width: 4px;
+    }
+}

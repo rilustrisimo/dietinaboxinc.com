@@ -3,11 +3,18 @@
 Template Name: Meal Plans Development
 */
 
+// Add template-specific body class for scoped styling
+add_filter('body_class', function($classes) {
+    $classes[] = 'meal-plans-template';
+    $classes[] = 'page-template-meal-plans-dev';
+    return $classes;
+});
+
 get_header();
 ?>
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area meal-plans-content">
 		<main id="main" class="site-main">
-		<div class="container shop-page meal-plans-modern">
+		<div class="container shop-page meal-plans-modern" id="meal-plans-development">
 			<!-- Page Header -->
 			<div class="page-header mb-5">
 				<h1 class="page-title"><?php the_title(); ?></h1>
