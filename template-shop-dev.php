@@ -26,7 +26,7 @@ get_header();
 					<div class="meal-plans-section">
 						<!-- Meal Plans Category Badge -->
 						<div class="category-badge mb-4">
-							<span class="badge badge-category">CALORIE COUNTED</span>
+							<span class="badge badge-category">SELECT A MEAL PLAN</span>
 						</div>
 						
 						<div class="meal-plans-container">
