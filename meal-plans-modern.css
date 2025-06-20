@@ -93,7 +93,7 @@ body.meal-plans-template .meal-plans-container,
 /* Meal Plan Group - More compact spacing */
 body.meal-plans-template .meal-plan-group,
 #meal-plans-development .meal-plan-group {
-    margin-bottom: 1rem !important; /* Reduced from 1.5rem */
+    margin-bottom: 2rem !important; /* Increased spacing between cards */
 }
 
 /* Meal Plan Cards - TEMPLATE SPECIFIC - More compact and fixed borders */
@@ -545,7 +545,7 @@ body.meal-plans-template .addon-card .quantity-controls,
     gap: 0.5rem;
 }
 
-/* Modern Order Summary - TEMPLATE SPECIFIC - Fixed sticky positioning */
+/* Modern Order Summary - TEMPLATE SPECIFIC - Fixed sticky positioning and alignment */
 body.meal-plans-template .modern-order-summary,
 #meal-plans-development .modern-order-summary {
     background: white;
@@ -557,6 +557,7 @@ body.meal-plans-template .modern-order-summary,
     max-height: calc(100vh - 4rem);
     overflow-y: auto;
     z-index: 10;
+    margin-top: 0; /* Align with products naturally */
 }
 
 /* Force Bootstrap Grid Layout - TEMPLATE SPECIFIC */
@@ -603,18 +604,16 @@ body.meal-plans-template #meal-plans-development .col-lg-4,
     
     body.meal-plans-template #meal-plans-development .col-lg-8,
     #meal-plans-development .col-lg-8 {
-        flex: 0 0 66.666667% !important;
-        max-width: 66.666667% !important;
-        background: rgba(255, 0, 0, 0.1) !important; /* Temporary debug background */
-        border: 1px solid red !important; /* Temporary debug border */
+        flex: 0 0 58.333333% !important;
+        max-width: 58.333333% !important;
+        padding-right: 20px !important;
     }
     
     body.meal-plans-template #meal-plans-development .col-lg-4,
     #meal-plans-development .col-lg-4 {
-        flex: 0 0 33.333333% !important;
-        max-width: 33.333333% !important;
-        background: rgba(0, 255, 0, 0.1) !important; /* Temporary debug background */
-        border: 1px solid green !important; /* Temporary debug border */
+        flex: 0 0 41.666667% !important;
+        max-width: 41.666667% !important;
+        padding-left: 20px !important;
     }
     
     body.meal-plans-template .modern-order-summary,

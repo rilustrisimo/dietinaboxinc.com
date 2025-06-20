@@ -44,7 +44,7 @@ get_header();
 							<div class="products__item">
 								<div class="products__variants">
 									<?php foreach($fields['variants'] as $index => $v): 
-										$perMealPrice = round($v['variant_price'] / 15);
+										$perMealPrice = round($v['variant_price'] / 15, 2);
 									?>
 										<div class="products__variants__item meal-plan-card" data-plan-index="<?php echo $productIndex . '-' . ($index + 1); ?>">
 											<div class="selection-badge">
@@ -86,13 +86,13 @@ get_header();
 															</div>
 														</div>
 														<div class="per-meal-info">
-															<span class="per-meal-price">₱<?php echo number_format($perMealPrice); ?> per meal</span> • Daily delivery
+															<span class="per-meal-price">₱<?php echo number_format($perMealPrice, 0); ?> per meal</span> • Daily delivery
 														</div>
 													</div>
 													
 													<div class="meal-pricing-controls">
 														<div class="price-section">
-															<div class="total-price">₱ <?php echo number_format($v['variant_price']); ?></div>
+															<div class="total-price">₱<?php echo number_format($v['variant_price'], 0); ?></div>
 															<div class="price-subtitle">for 15 meals</div>
 														</div>
 														
@@ -237,11 +237,10 @@ get_header();
 									</div>
 								</div>
 							</div>
-						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+				</div> <!-- End of col-12 col-lg-4 -->
+			</div> <!-- End of row -->
+		</div> <!-- End of container -->
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
