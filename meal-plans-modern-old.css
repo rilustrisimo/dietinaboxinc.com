@@ -712,6 +712,10 @@ body.meal-plans-template .meal-delivery-info,
     font-size: 0.75rem;
 }
 
+.trust-indicators  {
+    margin-bottom: 15px;
+}
+
 /* Proceed Button */
 .btn-proceed {
     width: 100%;

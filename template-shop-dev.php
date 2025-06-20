@@ -43,6 +43,7 @@ get_header();
 						<div class="meal-plan-group mb-4">
 							<div class="products__item">
 								<div class="products__variants">
+									<?php var_dump($fields['variants']); ?>
 									<?php foreach($fields['variants'] as $index => $v): 
 										$perMealPrice = round($v['variant_price'] / 15, 2);
 									?>

@@ -712,9 +712,6 @@ body.woocommerce-shop .shop-custom__item .product .prod-right p {
   padding: 0;
 }
 .shop-page .products__item {
-  border-radius: 15px;
-  border: solid 1px rgba(0, 0, 0, 0.2);
-  padding: 0 15px!important;
   margin-bottom: 15px;
 }
 .shop-page .products__title {

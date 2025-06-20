@@ -103,7 +103,7 @@ body.meal-plans-template .meal-plan-card,
     border: 2px solid #e5e7eb;
     border-radius: 1rem;
     padding: 1.25rem; /* Reduced from 1.5rem */
-    margin-bottom: 0; /* Remove bottom margin since we control it with .meal-plan-group */
+    margin-bottom: 15px; 
     transition: all 0.3s ease;
     background: white;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -926,6 +926,12 @@ body.meal-plans-template .btn-proceed:disabled,
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
+}
+
+.meal-plans-section {
+    border-radius: 15px;
+    background-color: #ffffff;
+    padding: 15px;
 }
 
 /* Responsive Design Improvements - TEMPLATE SPECIFIC */
