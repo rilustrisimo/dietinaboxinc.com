@@ -207,7 +207,6 @@ get_header();
 							<div class="order-summary-content">
 								<div class="order-summary__items">
 									<div class="empty-cart-state">
-										<div class="empty-cart-price">₱0</div>
 										<i class="fas fa-utensils empty-cart-icon"></i>
 										<p class="empty-cart-message">No meal plans selected</p>
 										<p class="empty-cart-submessage">Choose a plan to get started</p>
@@ -239,7 +238,7 @@ get_header();
 									</div>
 									
 									<div class="trust-indicators">
-										<span>Free delivery • Cancel anytime</span>
+										<span>&nbsp;</span>
 									</div>
 								</div>
 							</div>

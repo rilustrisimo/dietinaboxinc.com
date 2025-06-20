@@ -1089,7 +1089,6 @@ var MealPlansManager = {
         }else{
             // Show proper empty cart state instead of just clearing
             var emptyStateHTML = '<div class="empty-cart-state">' +
-                '<div class="empty-cart-price">₱0</div>' +
                 '<i class="fas fa-utensils empty-cart-icon"></i>' +
                 '<p class="empty-cart-message">No meal plans selected</p>' +
                 '<p class="empty-cart-submessage">Choose a plan to get started</p>' +
