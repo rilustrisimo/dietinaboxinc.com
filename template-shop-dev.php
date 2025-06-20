@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Meal Plans
+Template Name: Meal Plans Development
 */
 
 get_header();
