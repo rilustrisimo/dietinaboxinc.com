@@ -204,42 +204,42 @@ get_header();
 								</div>
 							</div>
 							
+							<!-- Always visible totals section for mobile -->
+							<div class="order-totals">
+								<div class="total-meals">
+									<span>Total Meals:</span>
+									<span class="meal-count">0 meals</span>
+								</div>
+								<div class="order-summary__total">
+									<span class="total-label">Total</span>
+									<span class="total-amount">₱0.00</span>
+								</div>
+							</div>
+							
 							<div class="order-summary-content">
 								<div class="order-summary__items">
 									<div class="empty-cart-state">
+										<div class="empty-cart-price">₱0</div>
 										<i class="fas fa-utensils empty-cart-icon"></i>
 										<p class="empty-cart-message">No meal plans selected</p>
 										<p class="empty-cart-submessage">Choose a plan to get started</p>
 									</div>
 								</div>
 								
-								<div class="order-summary-footer">
-									<div class="order-totals">
-										<div class="total-meals">
-											<span>Total Meals:</span>
-											<span class="meal-count">0 meals</span>
-										</div>
-										<div class="order-summary__total">
-											<span class="total-label">Total</span>
-											<span class="total-amount">₱0.00</span>
-										</div>
+								<div class="delivery-info">
+									<i class="fas fa-clock"></i>
+									<div class="delivery-text">
+										<span class="delivery-title">Daily Delivery Schedule</span>
+										<span class="delivery-subtitle">3 meals delivered fresh each morning for 5 consecutive days</span>
 									</div>
-									
-									<div class="delivery-info">
-										<i class="fas fa-clock"></i>
-										<div class="delivery-text">
-											<span class="delivery-title">Daily Delivery Schedule</span>
-											<span class="delivery-subtitle">3 meals delivered fresh each morning for 5 consecutive days</span>
-										</div>
-									</div>
-									
-									<div class="order-summary__button">
-										<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
-									</div>
-									
-									<div class="trust-indicators">
-										<span>&nbsp;</span>
-									</div>
+								</div>
+							</div>
+							
+							<!-- Always visible button section -->
+							<div class="order-summary__button">
+								<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
+								<div class="trust-indicators">
+									<span>Free delivery • Cancel anytime</span>
 								</div>
 							</div>
 					</div>

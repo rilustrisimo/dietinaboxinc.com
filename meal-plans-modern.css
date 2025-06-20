@@ -1046,7 +1046,7 @@ body.meal-plans-template .btn-proceed:disabled,
 @media (min-width: 576px) and (max-width: 991px) {
     body.meal-plans-template #primary.content-area.meal-plans-content,
     body.meal-plans-template #primary.content-area {
-        padding-bottom: 90px; /* Add space for sticky order summary */
+        padding-bottom: 220px; /* Increased space for sticky order summary */
     }
     
     body.meal-plans-template .meal-card-content,
@@ -1072,8 +1072,10 @@ body.meal-plans-template .btn-proceed:disabled,
         margin: 0;
         z-index: 1000;
         box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
-        transform: translateY(calc(100% - 140px)); /* Show header + footer always */
+        transform: translateY(calc(100% - 200px)); /* Increased for better button spacing */
         transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
     }
     
     body.meal-plans-template .modern-order-summary.expanded,
@@ -1090,6 +1092,17 @@ body.meal-plans-template .btn-proceed:disabled,
         border-bottom: 1px solid #e5e7eb;
         background: white;
         border-radius: 1rem 1rem 0 0;
+        flex-shrink: 0;
+    }
+    
+    /* Tablet totals section */
+    body.meal-plans-template .order-totals,
+    #meal-plans-development .order-totals {
+        padding: 1rem 1.5rem;
+        margin: 0;
+        border-bottom: 1px solid #e5e7eb;
+        background: white;
+        flex-shrink: 0;
     }
     
     /* Enhanced collapse indicator - chevron style */
@@ -1137,11 +1150,13 @@ body.meal-plans-template .btn-proceed:disabled,
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease;
+        flex: 1;
+        min-height: 0;
     }
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
     #meal-plans-development .modern-order-summary.expanded .order-summary-content {
-        max-height: calc(60vh - 140px);
+        max-height: calc(60vh - 200px);
         overflow-y: auto;
     }
     
@@ -1153,6 +1168,23 @@ body.meal-plans-template .btn-proceed:disabled,
         padding: 1rem 1.5rem;
         margin: 0;
         border-radius: 0 0 1rem 1rem;
+        flex-shrink: 0;
+        margin-top: auto;
+    }
+    
+    /* Tablet button and trust indicators */
+    body.meal-plans-template .order-summary__button,
+    #meal-plans-development .order-summary__button {
+        flex-shrink: 0;
+        margin-top: auto;
+    }
+    
+    body.meal-plans-template .order-summary__button .trust-indicators,
+    #meal-plans-development .order-summary__button .trust-indicators {
+        padding: 0.5rem 0 0 0;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6b7280;
     }
     
     /* Hide delivery info in mobile to save space, show only in expanded */
@@ -1171,7 +1203,7 @@ body.meal-plans-template .btn-proceed:disabled,
     body.meal-plans-template #primary.content-area.meal-plans-content,
     body.meal-plans-template #primary.content-area {
         padding: 0.5rem;
-        padding-bottom: 80px; /* Add space for sticky order summary */
+        padding-bottom: 200px; /* Increased space for sticky order summary */
     }
     
     body.meal-plans-template .meal-plans-section,
@@ -1225,14 +1257,17 @@ body.meal-plans-template .btn-proceed:disabled,
         left: 0;
         right: 0;
         top: auto;
-        max-height: 50vh;
+        max-height: 60vh;
         border-radius: 1rem 1rem 0 0;
         margin: 0;
         padding: 0;
         z-index: 1000;
         box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.2);
-        transform: translateY(calc(100% - 120px)); /* Show header + footer always */
+        transform: translateY(calc(100% - 180px)); /* Increased to properly accommodate header, totals, and button */
         transition: transform 0.3s ease;
+        background: white;
+        display: flex;
+        flex-direction: column;
     }
     
     body.meal-plans-template .modern-order-summary.expanded,
@@ -1244,11 +1279,12 @@ body.meal-plans-template .btn-proceed:disabled,
     #meal-plans-development .order-summary-header {
         cursor: pointer;
         position: relative;
-        padding: 1rem;
+        padding: 1rem 1rem 0.75rem 1rem;
         margin: 0;
-        border-bottom: 1px solid #e5e7eb;
         background: white;
         border-radius: 1rem 1rem 0 0;
+        border-bottom: none;
+        flex-shrink: 0; /* Prevent header from shrinking */
     }
     
     /* Enhanced collapse indicator - chevron style for mobile */
@@ -1257,23 +1293,22 @@ body.meal-plans-template .btn-proceed:disabled,
         content: '';
         position: absolute;
         right: 1rem;
-        top: 50%;
+        top: 1.25rem;
         width: 6px;
         height: 6px;
         border-top: 2px solid #6b7280;
         border-right: 2px solid #6b7280;
-        transform: translateY(-50%) rotate(-45deg);
+        transform: rotate(-45deg);
         transition: transform 0.3s ease;
     }
     
     /* Add visual hint for collapsible on mobile */
     body.meal-plans-template .order-summary-header::before,
     #meal-plans-development .order-summary-header::before {
-        content: 'Tap to view';
+        content: 'Tap to view items';
         position: absolute;
         right: 2.5rem;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 1.25rem;
         font-size: 0.7rem;
         color: #9ca3af;
         opacity: 1;
@@ -1282,12 +1317,23 @@ body.meal-plans-template .btn-proceed:disabled,
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-header::after,
     #meal-plans-development .modern-order-summary.expanded .order-summary-header::after {
-        transform: translateY(-50%) rotate(135deg);
+        transform: rotate(135deg);
     }
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-header::before,
     #meal-plans-development .modern-order-summary.expanded .order-summary-header::before {
         content: 'Tap to hide';
+    }
+    
+    /* Totals section - always visible in mobile */
+    body.meal-plans-template .order-totals,
+    #meal-plans-development .order-totals {
+        padding: 0.75rem 1rem 1rem 1rem;
+        margin: 0;
+        border-top: none;
+        background: white;
+        flex-shrink: 0; /* Prevent totals from shrinking */
+        border-bottom: 1px solid #e5e7eb;
     }
     
     /* Content area that collapses - only the items */
@@ -1297,23 +1343,51 @@ body.meal-plans-template .btn-proceed:disabled,
         overflow: hidden;
         transition: max-height 0.3s ease;
         padding: 0 1rem;
+        margin: 0;
+        flex: 1; /* Allow content to grow/shrink */
+        min-height: 0; /* Ensure proper flexbox behavior */
     }
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
     #meal-plans-development .modern-order-summary.expanded .order-summary-content {
-        max-height: calc(50vh - 120px);
+        max-height: calc(60vh - 220px); /* Adjusted for proper spacing */
         overflow-y: auto;
         padding: 1rem;
     }
     
-    /* Keep footer always visible with totals and button */
-    body.meal-plans-template .order-summary-footer,
-    #meal-plans-development .order-summary-footer {
+    /* Button section - always visible and properly positioned */
+    body.meal-plans-template .order-summary__button,
+    #meal-plans-development .order-summary__button {
         background: white;
-        border-top: 1px solid #e5e7eb;
-        padding: 1rem;
+        padding: 1rem 1rem 0.75rem 1rem;
         margin: 0;
+        border-top: 1px solid #e5e7eb;
         border-radius: 0 0 1rem 1rem;
+        flex-shrink: 0; /* Prevent button from shrinking */
+        margin-top: auto; /* Push button to bottom */
+    }
+    
+    /* Trust indicators within button section */
+    body.meal-plans-template .order-summary__button .trust-indicators,
+    #meal-plans-development .order-summary__button .trust-indicators {
+        padding: 0.5rem 0 0 0;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #6b7280;
+        background: transparent;
+        border-radius: 0;
+        margin: 0;
+    }
+    
+    /* Mobile button styling */
+    body.meal-plans-template .btn-proceed,
+    #meal-plans-development .btn-proceed {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
     
     /* Hide delivery info in mobile to save space */
