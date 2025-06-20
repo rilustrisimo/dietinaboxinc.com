@@ -126,6 +126,27 @@
   - **Complete Empty State**: JS now creates proper empty state with ₱0, utensils icon, and messages
 - **Result**: Empty cart state now properly displays when no meal plans are selected
 
+#### **16. Delivery Date Logic Update** ✅
+- **Problem**: Date calculation was using simple "tomorrow + 4 days" logic
+- **Solution**: Implemented proper business logic for delivery date calculation:
+  - **Monday Start**: Calculates Monday of current week as delivery start
+  - **COVID Check**: Ensures dates are not before May 18, 2020
+  - **Wednesday Cutoff**: If current time is past Wednesday 8 AM, moves to next week
+  - **Friday End**: Calculates Friday (Monday + 4 days) as delivery end
+  - **Proper Format**: Shows "For June 21 to June 25" format
+- **Result**: Delivery dates now follow proper business rules and customer expectations
+
+#### **17. Mobile Order Summary UX Improvements** ✅
+- **Problem**: Entire mobile order summary collapsed, including important checkout button
+- **Solution**: Redesigned mobile layout for better UX:
+  - **Always Visible**: Header with totals and checkout button remain visible
+  - **Collapsible Content**: Only the items section collapses/expands
+  - **Enhanced Icon**: Replaced arrow with modern chevron-style indicator
+  - **Clear Labels**: Added "Tap to view/hide" hints for discoverability
+  - **Better Heights**: Adjusted collapsed height to show essential elements
+  - **Smart Spacing**: Hides delivery info when collapsed to save space
+- **Result**: Users can always see totals and checkout button, with optional item details
+
 ### **1. Template Structure Enhancements (template-shop-dev.php)**
 ✅ **Modern Layout**
 - Updated page header with proper title and subtitle
@@ -368,6 +389,27 @@ All user-reported issues have been successfully resolved:
      - **Complete Empty State**: JS now creates proper empty state with ₱0, utensils icon, and messages
    - **Result**: Empty cart state now properly displays when no meal plans are selected
 
+16. ✅ **Delivery Date Logic Update**: 
+   - **Problem**: Date calculation was using simple "tomorrow + 4 days" logic
+   - **Solution**: Implemented proper business logic for delivery date calculation:
+     - **Monday Start**: Calculates Monday of current week as delivery start
+     - **COVID Check**: Ensures dates are not before May 18, 2020
+     - **Wednesday Cutoff**: If current time is past Wednesday 8 AM, moves to next week
+     - **Friday End**: Calculates Friday (Monday + 4 days) as delivery end
+     - **Proper Format**: Shows "For June 21 to June 25" format
+   - **Result**: Delivery dates now follow proper business rules and customer expectations
+
+17. ✅ **Mobile Order Summary UX Improvements**: 
+   - **Problem**: Entire mobile order summary collapsed, including important checkout button
+   - **Solution**: Redesigned mobile layout for better UX:
+     - **Always Visible**: Header with totals and checkout button remain visible
+     - **Collapsible Content**: Only the items section collapses/expands
+     - **Enhanced Icon**: Replaced arrow with modern chevron-style indicator
+     - **Clear Labels**: Added "Tap to view/hide" hints for discoverability
+     - **Better Heights**: Adjusted collapsed height to show essential elements
+     - **Smart Spacing**: Hides delivery info when collapsed to save space
+   - **Result**: Users can always see totals and checkout button, with optional item details
+
 ### **Testing Verification**
 - ✅ PHP syntax validation passed
 - ✅ JavaScript syntax validation passed  
@@ -454,5 +496,3 @@ All MealPlansManager functions use template-specific selectors:
 | **Selectors** | Global (`.qty-field`) | Scoped (`#meal-plans-development .qty-field`) |
 | **Initialization** | Always runs | Conditional (template detection) |
 | **Dependencies** | None on meal plans | None on Theme.js |
-
-This approach ensures **absolute zero interference** between the meal plans template and the rest of the WordPress site.

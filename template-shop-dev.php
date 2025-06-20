@@ -62,7 +62,7 @@ get_header();
 													<div class="meal-header">
 														<h3 class="meal-name"><?php echo $v['variant_name']; ?></h3>
 														<div class="meal-meta">
-															<span class="calories-badge"><?php echo number_format($v['variant_calories']); ?> Calories</span>
+															<span class="calories-badge"><?php echo $v['variant_calories']; ?> Calories</span>
 															<span class="meals-total-badge">15 MEALS TOTAL</span>
 														</div>
 														<p class="meal-description"><?php echo $v['variant_description']; ?></p>

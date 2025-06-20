@@ -1105,18 +1105,43 @@ var MealPlansManager = {
     },
 
     updateDeliveryDates: function($) {
+        // Get current date
         var today = new Date();
-        var startDate = new Date(today);
-        startDate.setDate(today.getDate() + 1); // Start tomorrow
         
-        var endDate = new Date(startDate);
-        endDate.setDate(startDate.getDate() + 4); // 5 days total
+        // Find Monday of current week (start of week + 1 day since Sunday = 0)
+        var currentDay = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
+        var daysFromMonday = currentDay === 0 ? 6 : currentDay - 1; // Handle Sunday case
+        var monday = new Date(today);
+        monday.setDate(today.getDate() - daysFromMonday);
         
-        var options = { month: 'short', day: 'numeric' };
-        var startStr = startDate.toLocaleDateString('en-US', options);
-        var endStr = endDate.toLocaleDateString('en-US', options);
+        // COVID logic - if Monday is before May 18, 2020, move to next week
+        var covidDate = new Date('2020-05-18');
+        if (monday < covidDate) {
+            monday.setDate(monday.getDate() + 7);
+        }
         
-        $('#meal-plans-development .js-our-menu-date').text('For ' + startStr + ' to ' + endStr);
+        // Calculate Friday (Monday + 4 days)
+        var friday = new Date(monday);
+        friday.setDate(monday.getDate() + 4);
+        
+        // Calculate Wednesday of the week at 8 AM
+        var wednesdayOfWeek = new Date(monday);
+        wednesdayOfWeek.setDate(monday.getDate() + 2);
+        wednesdayOfWeek.setHours(8, 0, 0, 0);
+        
+        // If current time is same or after Wednesday 8 AM, move to next week
+        if (today >= wednesdayOfWeek) {
+            monday.setDate(monday.getDate() + 7);
+            friday.setDate(friday.getDate() + 7);
+        }
+        
+        // Format dates (e.g., "For June 21 to June 25")
+        var options = { month: 'long', day: 'numeric' };
+        var mondayStr = monday.toLocaleDateString('en-US', options);
+        var fridayStr = friday.toLocaleDateString('en-US', options);
+        
+        var dateRange = 'For ' + mondayStr + ' to ' + fridayStr;
+        $('#meal-plans-development .js-our-menu-date').text(dateRange);
     },
 
     numberWithCommas: function(x) {

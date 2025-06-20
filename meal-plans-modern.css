@@ -1072,7 +1072,7 @@ body.meal-plans-template .btn-proceed:disabled,
         margin: 0;
         z-index: 1000;
         box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
-        transform: translateY(calc(100% - 80px));
+        transform: translateY(calc(100% - 140px)); /* Show header + footer always */
         transition: transform 0.3s ease;
     }
     
@@ -1088,29 +1088,82 @@ body.meal-plans-template .btn-proceed:disabled,
         padding: 1rem 1.5rem;
         margin: 0;
         border-bottom: 1px solid #e5e7eb;
+        background: white;
+        border-radius: 1rem 1rem 0 0;
     }
     
+    /* Enhanced collapse indicator - chevron style */
     body.meal-plans-template .order-summary-header::after,
     #meal-plans-development .order-summary-header::after {
-        content: '↑';
+        content: '';
         position: absolute;
         right: 1.5rem;
         top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.25rem;
-        color: #6b7280;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid #6b7280;
+        border-right: 2px solid #6b7280;
+        transform: translateY(-50%) rotate(-45deg);
         transition: transform 0.3s ease;
+    }
+    
+    /* Add visual hint for collapsible */
+    body.meal-plans-template .order-summary-header::before,
+    #meal-plans-development .order-summary-header::before {
+        content: 'Tap to view items';
+        position: absolute;
+        right: 3rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.75rem;
+        color: #9ca3af;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-header::after,
     #meal-plans-development .modern-order-summary.expanded .order-summary-header::after {
-        transform: translateY(-50%) rotate(180deg);
+        transform: translateY(-50%) rotate(135deg);
     }
     
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-header::before,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-header::before {
+        content: 'Tap to collapse';
+    }
+    
+    /* Content area that collapses - only the items */
     body.meal-plans-template .order-summary-content,
     #meal-plans-development .order-summary-content {
-        max-height: calc(60vh - 80px);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-content {
+        max-height: calc(60vh - 140px);
         overflow-y: auto;
+    }
+    
+    /* Keep footer always visible with totals and button */
+    body.meal-plans-template .order-summary-footer,
+    #meal-plans-development .order-summary-footer {
+        background: white;
+        border-top: 1px solid #e5e7eb;
+        padding: 1rem 1.5rem;
+        margin: 0;
+        border-radius: 0 0 1rem 1rem;
+    }
+    
+    /* Hide delivery info in mobile to save space, show only in expanded */
+    body.meal-plans-template .delivery-info,
+    #meal-plans-development .delivery-info {
+        display: none;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded .delivery-info,
+    #meal-plans-development .modern-order-summary.expanded .delivery-info {
+        display: flex;
     }
 }
 
@@ -1178,7 +1231,7 @@ body.meal-plans-template .btn-proceed:disabled,
         padding: 0;
         z-index: 1000;
         box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.2);
-        transform: translateY(calc(100% - 70px));
+        transform: translateY(calc(100% - 120px)); /* Show header + footer always */
         transition: transform 0.3s ease;
     }
     
@@ -1198,28 +1251,81 @@ body.meal-plans-template .btn-proceed:disabled,
         border-radius: 1rem 1rem 0 0;
     }
     
+    /* Enhanced collapse indicator - chevron style for mobile */
     body.meal-plans-template .order-summary-header::after,
     #meal-plans-development .order-summary-header::after {
-        content: '↑';
+        content: '';
         position: absolute;
         right: 1rem;
         top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.25rem;
-        color: #6b7280;
+        width: 6px;
+        height: 6px;
+        border-top: 2px solid #6b7280;
+        border-right: 2px solid #6b7280;
+        transform: translateY(-50%) rotate(-45deg);
         transition: transform 0.3s ease;
+    }
+    
+    /* Add visual hint for collapsible on mobile */
+    body.meal-plans-template .order-summary-header::before,
+    #meal-plans-development .order-summary-header::before {
+        content: 'Tap to view';
+        position: absolute;
+        right: 2.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.7rem;
+        color: #9ca3af;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-header::after,
     #meal-plans-development .modern-order-summary.expanded .order-summary-header::after {
-        transform: translateY(-50%) rotate(180deg);
+        transform: translateY(-50%) rotate(135deg);
     }
     
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-header::before,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-header::before {
+        content: 'Tap to hide';
+    }
+    
+    /* Content area that collapses - only the items */
     body.meal-plans-template .order-summary-content,
     #meal-plans-development .order-summary-content {
-        max-height: calc(50vh - 70px);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding: 0 1rem;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-content {
+        max-height: calc(50vh - 120px);
         overflow-y: auto;
         padding: 1rem;
+    }
+    
+    /* Keep footer always visible with totals and button */
+    body.meal-plans-template .order-summary-footer,
+    #meal-plans-development .order-summary-footer {
+        background: white;
+        border-top: 1px solid #e5e7eb;
+        padding: 1rem;
+        margin: 0;
+        border-radius: 0 0 1rem 1rem;
+    }
+    
+    /* Hide delivery info in mobile to save space */
+    body.meal-plans-template .delivery-info,
+    #meal-plans-development .delivery-info {
+        display: none;
+    }
+    
+    body.meal-plans-template .modern-order-summary.expanded .delivery-info,
+    #meal-plans-development .modern-order-summary.expanded .delivery-info {
+        display: flex;
+        margin-bottom: 0.5rem;
     }
     
     body.meal-plans-template .order-summary__title,
