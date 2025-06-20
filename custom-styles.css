@@ -391,12 +391,6 @@ body.ubpay::before {
   color: #ff4343;
   font-weight: 700;
 }
-
-p.highlight {
-  color: #ff4343;
-  font-weight: 700;
-}
-
 .custom-modal__content .btn {
   display: inline-block;
   vertical-align: top;
@@ -825,6 +819,7 @@ body.page-id-50 .header-banner .container {
 }
 body.woocommerce-page .woocommerce-tabs p,
 body.page-template-template-shop .woocommerce-tabs p,
+body.page-template-template-shop-dev .woocommerce-tabs p,
 body.page-template-template-checkout .woocommerce-tabs p,
 body.page-template-template-thankyou .woocommerce-tabs p,
 body.page-id-50 .woocommerce-tabs p {
@@ -832,6 +827,7 @@ body.page-id-50 .woocommerce-tabs p {
 }
 body.woocommerce-page .woocommerce-message,
 body.page-template-template-shop .woocommerce-message,
+body.page-template-template-shop-dev .woocommerce-message,
 body.page-template-template-checkout .woocommerce-message,
 body.page-template-template-thankyou .woocommerce-message,
 body.page-id-50 .woocommerce-message {
@@ -839,6 +835,7 @@ body.page-id-50 .woocommerce-message {
 }
 body.woocommerce-page .woocommerce-message::before,
 body.page-template-template-shop .woocommerce-message::before,
+body.page-template-template-shop-dev .woocommerce-message::before,
 body.page-template-template-checkout .woocommerce-message::before,
 body.page-template-template-thankyou .woocommerce-message::before,
 body.page-id-50 .woocommerce-message::before {
@@ -846,6 +843,7 @@ body.page-id-50 .woocommerce-message::before {
 }
 body.woocommerce-page .woocommerce-message .button,
 body.page-template-template-shop .woocommerce-message .button,
+body.page-template-template-shop-dev .woocommerce-message .button,
 body.page-template-template-checkout .woocommerce-message .button,
 body.page-template-template-thankyou .woocommerce-message .button,
 body.page-id-50 .woocommerce-message .button {
@@ -857,6 +855,7 @@ body.page-id-50 .woocommerce-message .button {
 }
 body.woocommerce-page .woocommerce-message .button:hover,
 body.page-template-template-shop .woocommerce-message .button:hover,
+body.page-template-template-shop-dev .woocommerce-message .button:hover,
 body.page-template-template-checkout .woocommerce-message .button:hover,
 body.page-template-template-thankyou .woocommerce-message .button:hover,
 body.page-id-50 .woocommerce-message .button:hover {
@@ -865,6 +864,7 @@ body.page-id-50 .woocommerce-message .button:hover {
 }
 body.woocommerce-page #primary,
 body.page-template-template-shop #primary,
+body.page-template-template-shop-dev #primary,
 body.page-template-template-checkout #primary,
 body.page-template-template-thankyou #primary,
 body.page-id-50 #primary {
@@ -872,6 +872,7 @@ body.page-id-50 #primary {
 }
 body.woocommerce-page #primary .site-main,
 body.page-template-template-shop #primary .site-main,
+body.page-template-template-shop-dev #primary .site-main,
 body.page-template-template-checkout #primary .site-main,
 body.page-template-template-thankyou #primary .site-main,
 body.page-id-50 #primary .site-main {
@@ -881,6 +882,7 @@ body.page-id-50 #primary .site-main {
 }
 body.woocommerce-page #primary .site-main .entry-title,
 body.page-template-template-shop #primary .site-main .entry-title,
+body.page-template-template-shop-dev #primary .site-main .entry-title,
 body.page-template-template-checkout #primary .site-main .entry-title,
 body.page-template-template-thankyou #primary .site-main .entry-title,
 body.page-id-50 #primary .site-main .entry-title {
@@ -889,6 +891,7 @@ body.page-id-50 #primary .site-main .entry-title {
 }
 body.woocommerce-page #primary .site-main .entry-content .woocommerce-result-count,
 body.page-template-template-shop #primary .site-main .entry-content .woocommerce-result-count,
+body.page-template-template-shop-dev #primary .site-main .entry-content .woocommerce-result-count,
 body.page-template-template-checkout #primary .site-main .entry-content .woocommerce-result-count,
 body.page-template-template-thankyou #primary .site-main .entry-content .woocommerce-result-count,
 body.page-id-50 #primary .site-main .entry-content .woocommerce-result-count {
@@ -896,6 +899,7 @@ body.page-id-50 #primary .site-main .entry-content .woocommerce-result-count {
 }
 body.woocommerce-page #primary .site-main .entry-content .product .size-woocommerce_thumbnail,
 body.page-template-template-shop #primary .site-main .entry-content .product .size-woocommerce_thumbnail,
+body.page-template-template-shop-dev #primary .site-main .entry-content .product .size-woocommerce_thumbnail,
 body.page-template-template-checkout #primary .site-main .entry-content .product .size-woocommerce_thumbnail,
 body.page-template-template-thankyou #primary .site-main .entry-content .product .size-woocommerce_thumbnail,
 body.page-id-50 #primary .site-main .entry-content .product .size-woocommerce_thumbnail {
@@ -903,6 +907,7 @@ body.page-id-50 #primary .site-main .entry-content .product .size-woocommerce_th
 }
 body.woocommerce-page #primary .site-main .entry-content .product .woocommerce-loop-product__title,
 body.page-template-template-shop #primary .site-main .entry-content .product .woocommerce-loop-product__title,
+body.page-template-template-shop-dev #primary .site-main .entry-content .product .woocommerce-loop-product__title,
 body.page-template-template-checkout #primary .site-main .entry-content .product .woocommerce-loop-product__title,
 body.page-template-template-thankyou #primary .site-main .entry-content .product .woocommerce-loop-product__title,
 body.page-id-50 #primary .site-main .entry-content .product .woocommerce-loop-product__title {
@@ -910,6 +915,7 @@ body.page-id-50 #primary .site-main .entry-content .product .woocommerce-loop-pr
 }
 body.woocommerce-page #primary .site-main .entry-content .product .price,
 body.page-template-template-shop #primary .site-main .entry-content .product .price,
+body.page-template-template-shop-dev #primary .site-main .entry-content .product .price,
 body.page-template-template-checkout #primary .site-main .entry-content .product .price,
 body.page-template-template-thankyou #primary .site-main .entry-content .product .price,
 body.page-id-50 #primary .site-main .entry-content .product .price {
@@ -918,6 +924,7 @@ body.page-id-50 #primary .site-main .entry-content .product .price {
 }
 body.woocommerce-page #primary .site-main .entry-content .product a.button,
 body.page-template-template-shop #primary .site-main .entry-content .product a.button,
+body.page-template-template-shop-dev #primary .site-main .entry-content .product a.button,
 body.page-template-template-checkout #primary .site-main .entry-content .product a.button,
 body.page-template-template-thankyou #primary .site-main .entry-content .product a.button,
 body.page-id-50 #primary .site-main .entry-content .product a.button {
@@ -929,6 +936,7 @@ body.page-id-50 #primary .site-main .entry-content .product a.button {
 }
 body.woocommerce-page #primary .site-main .entry-content .product a.button:hover,
 body.page-template-template-shop #primary .site-main .entry-content .product a.button:hover,
+body.page-template-template-shop-dev #primary .site-main .entry-content .product a.button:hover,
 body.page-template-template-checkout #primary .site-main .entry-content .product a.button:hover,
 body.page-template-template-thankyou #primary .site-main .entry-content .product a.button:hover,
 body.page-id-50 #primary .site-main .entry-content .product a.button:hover {
@@ -937,6 +945,7 @@ body.page-id-50 #primary .site-main .entry-content .product a.button:hover {
 }
 body.woocommerce-page .woocommerce-ordering,
 body.page-template-template-shop .woocommerce-ordering,
+body.page-template-template-shop-dev .woocommerce-ordering,
 body.page-template-template-checkout .woocommerce-ordering,
 body.page-template-template-thankyou .woocommerce-ordering,
 body.page-id-50 .woocommerce-ordering {
@@ -944,6 +953,7 @@ body.page-id-50 .woocommerce-ordering {
 }
 body.woocommerce-page #menu-main li:not(.menu-item-22702) a,
 body.page-template-template-shop #menu-main li:not(.menu-item-22702) a,
+body.page-template-template-shop-dev #menu-main li:not(.menu-item-22702) a,
 body.page-template-template-checkout #menu-main li:not(.menu-item-22702) a,
 body.page-template-template-thankyou #menu-main li:not(.menu-item-22702) a,
 body.page-id-50 #menu-main li:not(.menu-item-22702) a {
@@ -951,6 +961,7 @@ body.page-id-50 #menu-main li:not(.menu-item-22702) a {
 }
 body.woocommerce-page #menu-main li:not(.menu-item-22702) a:hover,
 body.page-template-template-shop #menu-main li:not(.menu-item-22702) a:hover,
+body.page-template-template-shop-dev #menu-main li:not(.menu-item-22702) a:hover,
 body.page-template-template-checkout #menu-main li:not(.menu-item-22702) a:hover,
 body.page-template-template-thankyou #menu-main li:not(.menu-item-22702) a:hover,
 body.page-id-50 #menu-main li:not(.menu-item-22702) a:hover {
@@ -958,6 +969,7 @@ body.page-id-50 #menu-main li:not(.menu-item-22702) a:hover {
 }
 body.woocommerce-page .cart-contents:before,
 body.page-template-template-shop .cart-contents:before,
+body.page-template-template-shop-dev .cart-contents:before,
 body.page-template-template-checkout .cart-contents:before,
 body.page-template-template-thankyou .cart-contents:before,
 body.page-id-50 .cart-contents:before {
@@ -966,6 +978,7 @@ body.page-id-50 .cart-contents:before {
 }
 body.woocommerce-page .woocommerce-product-gallery,
 body.page-template-template-shop .woocommerce-product-gallery,
+body.page-template-template-shop-dev .woocommerce-product-gallery,
 body.page-template-template-checkout .woocommerce-product-gallery,
 body.page-template-template-thankyou .woocommerce-product-gallery,
 body.page-id-50 .woocommerce-product-gallery {
@@ -973,6 +986,7 @@ body.page-id-50 .woocommerce-product-gallery {
 }
 body.woocommerce-page .woocommerce-product-gallery__image,
 body.page-template-template-shop .woocommerce-product-gallery__image,
+body.page-template-template-shop-dev .woocommerce-product-gallery__image,
 body.page-template-template-checkout .woocommerce-product-gallery__image,
 body.page-template-template-thankyou .woocommerce-product-gallery__image,
 body.page-id-50 .woocommerce-product-gallery__image {
@@ -980,6 +994,7 @@ body.page-id-50 .woocommerce-product-gallery__image {
 }
 body.woocommerce-page .woocommerce-product-gallery .flex-control-nav,
 body.page-template-template-shop .woocommerce-product-gallery .flex-control-nav,
+body.page-template-template-shop-dev .woocommerce-product-gallery .flex-control-nav,
 body.page-template-template-checkout .woocommerce-product-gallery .flex-control-nav,
 body.page-template-template-thankyou .woocommerce-product-gallery .flex-control-nav,
 body.page-id-50 .woocommerce-product-gallery .flex-control-nav {
@@ -987,6 +1002,7 @@ body.page-id-50 .woocommerce-product-gallery .flex-control-nav {
 }
 body.woocommerce-page .woocommerce-product-gallery .flex-control-nav li,
 body.page-template-template-shop .woocommerce-product-gallery .flex-control-nav li,
+body.page-template-template-shop-dev .woocommerce-product-gallery .flex-control-nav li,
 body.page-template-template-checkout .woocommerce-product-gallery .flex-control-nav li,
 body.page-template-template-thankyou .woocommerce-product-gallery .flex-control-nav li,
 body.page-id-50 .woocommerce-product-gallery .flex-control-nav li {
@@ -995,6 +1011,7 @@ body.page-id-50 .woocommerce-product-gallery .flex-control-nav li {
 }
 body.woocommerce-page .summary.entry-summary,
 body.page-template-template-shop .summary.entry-summary,
+body.page-template-template-shop-dev .summary.entry-summary,
 body.page-template-template-checkout .summary.entry-summary,
 body.page-template-template-thankyou .summary.entry-summary,
 body.page-id-50 .summary.entry-summary {
@@ -1002,6 +1019,7 @@ body.page-id-50 .summary.entry-summary {
 }
 body.woocommerce-page.single-product .entry-summary,
 body.page-template-template-shop.single-product .entry-summary,
+body.page-template-template-shop-dev.single-product .entry-summary,
 body.page-template-template-checkout.single-product .entry-summary,
 body.page-template-template-thankyou.single-product .entry-summary,
 body.page-id-50.single-product .entry-summary {
@@ -1009,6 +1027,7 @@ body.page-id-50.single-product .entry-summary {
 }
 body.woocommerce-page.single-product .entry-summary .price,
 body.page-template-template-shop.single-product .entry-summary .price,
+body.page-template-template-shop-dev.single-product .entry-summary .price,
 body.page-template-template-checkout.single-product .entry-summary .price,
 body.page-template-template-thankyou.single-product .entry-summary .price,
 body.page-id-50.single-product .entry-summary .price {
@@ -1016,6 +1035,7 @@ body.page-id-50.single-product .entry-summary .price {
 }
 body.woocommerce-page.single-product .entry-summary .woocommerce-product-details__short-description p,
 body.page-template-template-shop.single-product .entry-summary .woocommerce-product-details__short-description p,
+body.page-template-template-shop-dev.single-product .entry-summary .woocommerce-product-details__short-description p,
 body.page-template-template-checkout.single-product .entry-summary .woocommerce-product-details__short-description p,
 body.page-template-template-thankyou.single-product .entry-summary .woocommerce-product-details__short-description p,
 body.page-id-50.single-product .entry-summary .woocommerce-product-details__short-description p {
@@ -1026,6 +1046,7 @@ body.page-id-50.single-product .entry-summary .woocommerce-product-details__shor
 }
 body.woocommerce-page.single-product .entry-summary .variations label,
 body.page-template-template-shop.single-product .entry-summary .variations label,
+body.page-template-template-shop-dev.single-product .entry-summary .variations label,
 body.page-template-template-checkout.single-product .entry-summary .variations label,
 body.page-template-template-thankyou.single-product .entry-summary .variations label,
 body.page-id-50.single-product .entry-summary .variations label {
@@ -1034,6 +1055,7 @@ body.page-id-50.single-product .entry-summary .variations label {
 }
 body.woocommerce-page.single-product .entry-summary .variations .woo-selected-variation-item-name,
 body.page-template-template-shop.single-product .entry-summary .variations .woo-selected-variation-item-name,
+body.page-template-template-shop-dev.single-product .entry-summary .variations .woo-selected-variation-item-name,
 body.page-template-template-checkout.single-product .entry-summary .variations .woo-selected-variation-item-name,
 body.page-template-template-thankyou.single-product .entry-summary .variations .woo-selected-variation-item-name,
 body.page-id-50.single-product .entry-summary .variations .woo-selected-variation-item-name {
@@ -1043,6 +1065,7 @@ body.page-id-50.single-product .entry-summary .variations .woo-selected-variatio
 }
 body.woocommerce-page.single-product .entry-summary .variations tr td.woo-variation-items-wrapper,
 body.page-template-template-shop.single-product .entry-summary .variations tr td.woo-variation-items-wrapper,
+body.page-template-template-shop-dev.single-product .entry-summary .variations tr td.woo-variation-items-wrapper,
 body.page-template-template-checkout.single-product .entry-summary .variations tr td.woo-variation-items-wrapper,
 body.page-template-template-thankyou.single-product .entry-summary .variations tr td.woo-variation-items-wrapper,
 body.page-id-50.single-product .entry-summary .variations tr td.woo-variation-items-wrapper {
@@ -1050,6 +1073,7 @@ body.page-id-50.single-product .entry-summary .variations tr td.woo-variation-it
 }
 body.woocommerce-page.single-product .entry-summary .variations li.variable-item.selected,
 body.page-template-template-shop.single-product .entry-summary .variations li.variable-item.selected,
+body.page-template-template-shop-dev.single-product .entry-summary .variations li.variable-item.selected,
 body.page-template-template-checkout.single-product .entry-summary .variations li.variable-item.selected,
 body.page-template-template-thankyou.single-product .entry-summary .variations li.variable-item.selected,
 body.page-id-50.single-product .entry-summary .variations li.variable-item.selected {
@@ -1057,6 +1081,7 @@ body.page-id-50.single-product .entry-summary .variations li.variable-item.selec
 }
 body.woocommerce-page.single-product .entry-summary .variations .reset_variations,
 body.page-template-template-shop.single-product .entry-summary .variations .reset_variations,
+body.page-template-template-shop-dev.single-product .entry-summary .variations .reset_variations,
 body.page-template-template-checkout.single-product .entry-summary .variations .reset_variations,
 body.page-template-template-thankyou.single-product .entry-summary .variations .reset_variations,
 body.page-id-50.single-product .entry-summary .variations .reset_variations {
@@ -1073,6 +1098,7 @@ body.page-id-50.single-product .entry-summary .variations .reset_variations {
 }
 body.woocommerce-page.single-product .entry-summary .variations .reset_variations:hover,
 body.page-template-template-shop.single-product .entry-summary .variations .reset_variations:hover,
+body.page-template-template-shop-dev.single-product .entry-summary .variations .reset_variations:hover,
 body.page-template-template-checkout.single-product .entry-summary .variations .reset_variations:hover,
 body.page-template-template-thankyou.single-product .entry-summary .variations .reset_variations:hover,
 body.page-id-50.single-product .entry-summary .variations .reset_variations:hover {
@@ -1081,6 +1107,7 @@ body.page-id-50.single-product .entry-summary .variations .reset_variations:hove
 }
 body.woocommerce-page.single-product .entry-summary .woocommerce-variation-price,
 body.page-template-template-shop.single-product .entry-summary .woocommerce-variation-price,
+body.page-template-template-shop-dev.single-product .entry-summary .woocommerce-variation-price,
 body.page-template-template-checkout.single-product .entry-summary .woocommerce-variation-price,
 body.page-template-template-thankyou.single-product .entry-summary .woocommerce-variation-price,
 body.page-id-50.single-product .entry-summary .woocommerce-variation-price {
@@ -1088,6 +1115,7 @@ body.page-id-50.single-product .entry-summary .woocommerce-variation-price {
 }
 body.woocommerce-page.single-product .entry-summary .woocommerce-variation-price span,
 body.page-template-template-shop.single-product .entry-summary .woocommerce-variation-price span,
+body.page-template-template-shop-dev.single-product .entry-summary .woocommerce-variation-price span,
 body.page-template-template-checkout.single-product .entry-summary .woocommerce-variation-price span,
 body.page-template-template-thankyou.single-product .entry-summary .woocommerce-variation-price span,
 body.page-id-50.single-product .entry-summary .woocommerce-variation-price span {
@@ -1097,6 +1125,7 @@ body.page-id-50.single-product .entry-summary .woocommerce-variation-price span 
 }
 body.woocommerce-page.single-product .entry-summary .product_meta,
 body.page-template-template-shop.single-product .entry-summary .product_meta,
+body.page-template-template-shop-dev.single-product .entry-summary .product_meta,
 body.page-template-template-checkout.single-product .entry-summary .product_meta,
 body.page-template-template-thankyou.single-product .entry-summary .product_meta,
 body.page-id-50.single-product .entry-summary .product_meta {
@@ -1104,6 +1133,7 @@ body.page-id-50.single-product .entry-summary .product_meta {
 }
 body.woocommerce-page.single-product .entry-summary .quantity,
 body.page-template-template-shop.single-product .entry-summary .quantity,
+body.page-template-template-shop-dev.single-product .entry-summary .quantity,
 body.page-template-template-checkout.single-product .entry-summary .quantity,
 body.page-template-template-thankyou.single-product .entry-summary .quantity,
 body.page-id-50.single-product .entry-summary .quantity {
@@ -1112,6 +1142,7 @@ body.page-id-50.single-product .entry-summary .quantity {
 }
 body.woocommerce-page.single-product .entry-summary .quantity .qty,
 body.page-template-template-shop.single-product .entry-summary .quantity .qty,
+body.page-template-template-shop-dev.single-product .entry-summary .quantity .qty,
 body.page-template-template-checkout.single-product .entry-summary .quantity .qty,
 body.page-template-template-thankyou.single-product .entry-summary .quantity .qty,
 body.page-id-50.single-product .entry-summary .quantity .qty {
@@ -1120,6 +1151,7 @@ body.page-id-50.single-product .entry-summary .quantity .qty {
 }
 body.woocommerce-page.single-product .entry-summary .quantity button,
 body.page-template-template-shop.single-product .entry-summary .quantity button,
+body.page-template-template-shop-dev.single-product .entry-summary .quantity button,
 body.page-template-template-checkout.single-product .entry-summary .quantity button,
 body.page-template-template-thankyou.single-product .entry-summary .quantity button,
 body.page-id-50.single-product .entry-summary .quantity button {
@@ -1135,6 +1167,7 @@ body.page-id-50.single-product .entry-summary .quantity button {
 }
 body.woocommerce-page.single-product .entry-summary .quantity button:hover,
 body.page-template-template-shop.single-product .entry-summary .quantity button:hover,
+body.page-template-template-shop-dev.single-product .entry-summary .quantity button:hover,
 body.page-template-template-checkout.single-product .entry-summary .quantity button:hover,
 body.page-template-template-thankyou.single-product .entry-summary .quantity button:hover,
 body.page-id-50.single-product .entry-summary .quantity button:hover {
@@ -1142,6 +1175,7 @@ body.page-id-50.single-product .entry-summary .quantity button:hover {
 }
 body.woocommerce-page.single-product .entry-summary .single_add_to_cart_button,
 body.page-template-template-shop.single-product .entry-summary .single_add_to_cart_button,
+body.page-template-template-shop-dev.single-product .entry-summary .single_add_to_cart_button,
 body.page-template-template-checkout.single-product .entry-summary .single_add_to_cart_button,
 body.page-template-template-thankyou.single-product .entry-summary .single_add_to_cart_button,
 body.page-id-50.single-product .entry-summary .single_add_to_cart_button {
@@ -1154,6 +1188,7 @@ body.page-id-50.single-product .entry-summary .single_add_to_cart_button {
 }
 body.woocommerce-page.single-product .entry-summary .single_add_to_cart_button:hover,
 body.page-template-template-shop.single-product .entry-summary .single_add_to_cart_button:hover,
+body.page-template-template-shop-dev.single-product .entry-summary .single_add_to_cart_button:hover,
 body.page-template-template-checkout.single-product .entry-summary .single_add_to_cart_button:hover,
 body.page-template-template-thankyou.single-product .entry-summary .single_add_to_cart_button:hover,
 body.page-id-50.single-product .entry-summary .single_add_to_cart_button:hover {
@@ -1162,6 +1197,7 @@ body.page-id-50.single-product .entry-summary .single_add_to_cart_button:hover {
 }
 body.woocommerce-page.woocommerce-cart .quantity,
 body.page-template-template-shop.woocommerce-cart .quantity,
+body.page-template-template-shop-dev.woocommerce-cart .quantity,
 body.page-template-template-checkout.woocommerce-cart .quantity,
 body.page-template-template-thankyou.woocommerce-cart .quantity,
 body.page-id-50.woocommerce-cart .quantity {
@@ -1170,6 +1206,7 @@ body.page-id-50.woocommerce-cart .quantity {
 }
 body.woocommerce-page.woocommerce-cart .quantity .qty,
 body.page-template-template-shop.woocommerce-cart .quantity .qty,
+body.page-template-template-shop-dev.woocommerce-cart .quantity .qty,
 body.page-template-template-checkout.woocommerce-cart .quantity .qty,
 body.page-template-template-thankyou.woocommerce-cart .quantity .qty,
 body.page-id-50.woocommerce-cart .quantity .qty {
@@ -1178,6 +1215,7 @@ body.page-id-50.woocommerce-cart .quantity .qty {
 }
 body.woocommerce-page.woocommerce-cart .quantity button,
 body.page-template-template-shop.woocommerce-cart .quantity button,
+body.page-template-template-shop-dev.woocommerce-cart .quantity button,
 body.page-template-template-checkout.woocommerce-cart .quantity button,
 body.page-template-template-thankyou.woocommerce-cart .quantity button,
 body.page-id-50.woocommerce-cart .quantity button {
@@ -1193,6 +1231,7 @@ body.page-id-50.woocommerce-cart .quantity button {
 }
 body.woocommerce-page.woocommerce-cart .quantity button:hover,
 body.page-template-template-shop.woocommerce-cart .quantity button:hover,
+body.page-template-template-shop-dev.woocommerce-cart .quantity button:hover,
 body.page-template-template-checkout.woocommerce-cart .quantity button:hover,
 body.page-template-template-thankyou.woocommerce-cart .quantity button:hover,
 body.page-id-50.woocommerce-cart .quantity button:hover {
@@ -1200,11 +1239,13 @@ body.page-id-50.woocommerce-cart .quantity button:hover {
 }
 body.woocommerce-page.woocommerce-cart button,
 body.page-template-template-shop.woocommerce-cart button,
+body.page-template-template-shop-dev.woocommerce-cart button,
 body.page-template-template-checkout.woocommerce-cart button,
 body.page-template-template-thankyou.woocommerce-cart button,
 body.page-id-50.woocommerce-cart button,
 body.woocommerce-page.woocommerce-cart .button,
 body.page-template-template-shop.woocommerce-cart .button,
+body.page-template-template-shop-dev.woocommerce-cart .button,
 body.page-template-template-checkout.woocommerce-cart .button,
 body.page-template-template-thankyou.woocommerce-cart .button,
 body.page-id-50.woocommerce-cart .button {
@@ -1216,11 +1257,13 @@ body.page-id-50.woocommerce-cart .button {
 }
 body.woocommerce-page.woocommerce-cart button:hover,
 body.page-template-template-shop.woocommerce-cart button:hover,
+body.page-template-template-shop-dev.woocommerce-cart button:hover,
 body.page-template-template-checkout.woocommerce-cart button:hover,
 body.page-template-template-thankyou.woocommerce-cart button:hover,
 body.page-id-50.woocommerce-cart button:hover,
 body.woocommerce-page.woocommerce-cart .button:hover,
 body.page-template-template-shop.woocommerce-cart .button:hover,
+body.page-template-template-shop-dev.woocommerce-cart .button:hover,
 body.page-template-template-checkout.woocommerce-cart .button:hover,
 body.page-template-template-thankyou.woocommerce-cart .button:hover,
 body.page-id-50.woocommerce-cart .button:hover {
@@ -1229,6 +1272,7 @@ body.page-id-50.woocommerce-cart .button:hover {
 }
 body.woocommerce-page.woocommerce-cart .cart_item .product-remove a,
 body.page-template-template-shop.woocommerce-cart .cart_item .product-remove a,
+body.page-template-template-shop-dev.woocommerce-cart .cart_item .product-remove a,
 body.page-template-template-checkout.woocommerce-cart .cart_item .product-remove a,
 body.page-template-template-thankyou.woocommerce-cart .cart_item .product-remove a,
 body.page-id-50.woocommerce-cart .cart_item .product-remove a {
@@ -1237,6 +1281,7 @@ body.page-id-50.woocommerce-cart .cart_item .product-remove a {
 }
 body.woocommerce-page.woocommerce-cart .cart_item .product-thumbnail img,
 body.page-template-template-shop.woocommerce-cart .cart_item .product-thumbnail img,
+body.page-template-template-shop-dev.woocommerce-cart .cart_item .product-thumbnail img,
 body.page-template-template-checkout.woocommerce-cart .cart_item .product-thumbnail img,
 body.page-template-template-thankyou.woocommerce-cart .cart_item .product-thumbnail img,
 body.page-id-50.woocommerce-cart .cart_item .product-thumbnail img {
@@ -1245,6 +1290,7 @@ body.page-id-50.woocommerce-cart .cart_item .product-thumbnail img {
 }
 body.woocommerce-page.woocommerce-cart .cart_item .product-name a,
 body.page-template-template-shop.woocommerce-cart .cart_item .product-name a,
+body.page-template-template-shop-dev.woocommerce-cart .cart_item .product-name a,
 body.page-template-template-checkout.woocommerce-cart .cart_item .product-name a,
 body.page-template-template-thankyou.woocommerce-cart .cart_item .product-name a,
 body.page-id-50.woocommerce-cart .cart_item .product-name a {
@@ -1252,6 +1298,7 @@ body.page-id-50.woocommerce-cart .cart_item .product-name a {
 }
 body.woocommerce-page.woocommerce-cart .cart_item .product-name .variation p,
 body.page-template-template-shop.woocommerce-cart .cart_item .product-name .variation p,
+body.page-template-template-shop-dev.woocommerce-cart .cart_item .product-name .variation p,
 body.page-template-template-checkout.woocommerce-cart .cart_item .product-name .variation p,
 body.page-template-template-thankyou.woocommerce-cart .cart_item .product-name .variation p,
 body.page-id-50.woocommerce-cart .cart_item .product-name .variation p {
@@ -1260,6 +1307,7 @@ body.page-id-50.woocommerce-cart .cart_item .product-name .variation p {
 }
 body.woocommerce-page.woocommerce-cart .coupon .input-text,
 body.page-template-template-shop.woocommerce-cart .coupon .input-text,
+body.page-template-template-shop-dev.woocommerce-cart .coupon .input-text,
 body.page-template-template-checkout.woocommerce-cart .coupon .input-text,
 body.page-template-template-thankyou.woocommerce-cart .coupon .input-text,
 body.page-id-50.woocommerce-cart .coupon .input-text {
@@ -1269,6 +1317,7 @@ body.page-id-50.woocommerce-cart .coupon .input-text {
 }
 body.woocommerce-page.woocommerce-checkout .checkout_coupon .input-text,
 body.page-template-template-shop.woocommerce-checkout .checkout_coupon .input-text,
+body.page-template-template-shop-dev.woocommerce-checkout .checkout_coupon .input-text,
 body.page-template-template-checkout.woocommerce-checkout .checkout_coupon .input-text,
 body.page-template-template-thankyou.woocommerce-checkout .checkout_coupon .input-text,
 body.page-id-50.woocommerce-checkout .checkout_coupon .input-text {
@@ -1278,11 +1327,13 @@ body.page-id-50.woocommerce-checkout .checkout_coupon .input-text {
 }
 body.woocommerce-page.woocommerce-checkout button,
 body.page-template-template-shop.woocommerce-checkout button,
+body.page-template-template-shop-dev.woocommerce-checkout button,
 body.page-template-template-checkout.woocommerce-checkout button,
 body.page-template-template-thankyou.woocommerce-checkout button,
 body.page-id-50.woocommerce-checkout button,
 body.woocommerce-page.woocommerce-checkout .button,
 body.page-template-template-shop.woocommerce-checkout .button,
+body.page-template-template-shop-dev.woocommerce-checkout .button,
 body.page-template-template-checkout.woocommerce-checkout .button,
 body.page-template-template-thankyou.woocommerce-checkout .button,
 body.page-id-50.woocommerce-checkout .button {
@@ -1294,11 +1345,13 @@ body.page-id-50.woocommerce-checkout .button {
 }
 body.woocommerce-page.woocommerce-checkout button:hover,
 body.page-template-template-shop.woocommerce-checkout button:hover,
+body.page-template-template-shop-dev.woocommerce-checkout button:hover,
 body.page-template-template-checkout.woocommerce-checkout button:hover,
 body.page-template-template-thankyou.woocommerce-checkout button:hover,
 body.page-id-50.woocommerce-checkout button:hover,
 body.woocommerce-page.woocommerce-checkout .button:hover,
 body.page-template-template-shop.woocommerce-checkout .button:hover,
+body.page-template-template-shop-dev.woocommerce-checkout .button:hover,
 body.page-template-template-checkout.woocommerce-checkout .button:hover,
 body.page-template-template-thankyou.woocommerce-checkout .button:hover,
 body.page-id-50.woocommerce-checkout .button:hover {
@@ -1307,6 +1360,7 @@ body.page-id-50.woocommerce-checkout .button:hover {
 }
 body.woocommerce-page.woocommerce-checkout h3,
 body.page-template-template-shop.woocommerce-checkout h3,
+body.page-template-template-shop-dev.woocommerce-checkout h3,
 body.page-template-template-checkout.woocommerce-checkout h3,
 body.page-template-template-thankyou.woocommerce-checkout h3,
 body.page-id-50.woocommerce-checkout h3 {
@@ -1315,6 +1369,7 @@ body.page-id-50.woocommerce-checkout h3 {
 }
 body.woocommerce-page.woocommerce-checkout .form-row label,
 body.page-template-template-shop.woocommerce-checkout .form-row label,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row label,
 body.page-template-template-checkout.woocommerce-checkout .form-row label,
 body.page-template-template-thankyou.woocommerce-checkout .form-row label,
 body.page-id-50.woocommerce-checkout .form-row label {
@@ -1324,6 +1379,7 @@ body.page-id-50.woocommerce-checkout .form-row label {
 }
 body.woocommerce-page.woocommerce-checkout .form-row .woocommerce-input-wrapper,
 body.page-template-template-shop.woocommerce-checkout .form-row .woocommerce-input-wrapper,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row .woocommerce-input-wrapper,
 body.page-template-template-checkout.woocommerce-checkout .form-row .woocommerce-input-wrapper,
 body.page-template-template-thankyou.woocommerce-checkout .form-row .woocommerce-input-wrapper,
 body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper {
@@ -1332,6 +1388,7 @@ body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper {
 }
 body.woocommerce-page.woocommerce-checkout .form-row .woocommerce-input-wrapper .input-text,
 body.page-template-template-shop.woocommerce-checkout .form-row .woocommerce-input-wrapper .input-text,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row .woocommerce-input-wrapper .input-text,
 body.page-template-template-checkout.woocommerce-checkout .form-row .woocommerce-input-wrapper .input-text,
 body.page-template-template-thankyou.woocommerce-checkout .form-row .woocommerce-input-wrapper .input-text,
 body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .input-text {
@@ -1341,6 +1398,7 @@ body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .input
 }
 body.woocommerce-page.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection,
 body.page-template-template-shop.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection,
 body.page-template-template-checkout.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection,
 body.page-template-template-thankyou.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection,
 body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection {
@@ -1349,6 +1407,7 @@ body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .selec
 }
 body.woocommerce-page.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__rendered,
 body.page-template-template-shop.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__rendered,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__rendered,
 body.page-template-template-checkout.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__rendered,
 body.page-template-template-thankyou.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__rendered,
 body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__rendered {
@@ -1356,6 +1415,7 @@ body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .selec
 }
 body.woocommerce-page.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__arrow,
 body.page-template-template-shop.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__arrow,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__arrow,
 body.page-template-template-checkout.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__arrow,
 body.page-template-template-thankyou.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__arrow,
 body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .select2-selection .select2-selection__arrow {
@@ -1363,6 +1423,7 @@ body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper .selec
 }
 body.woocommerce-page.woocommerce-checkout .form-row .woocommerce-input-wrapper textarea,
 body.page-template-template-shop.woocommerce-checkout .form-row .woocommerce-input-wrapper textarea,
+body.page-template-template-shop-dev.woocommerce-checkout .form-row .woocommerce-input-wrapper textarea,
 body.page-template-template-checkout.woocommerce-checkout .form-row .woocommerce-input-wrapper textarea,
 body.page-template-template-thankyou.woocommerce-checkout .form-row .woocommerce-input-wrapper textarea,
 body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper textarea {
@@ -1371,6 +1432,7 @@ body.page-id-50.woocommerce-checkout .form-row .woocommerce-input-wrapper textar
 }
 body.woocommerce-page.woocommerce-checkout #order_review p,
 body.page-template-template-shop.woocommerce-checkout #order_review p,
+body.page-template-template-shop-dev.woocommerce-checkout #order_review p,
 body.page-template-template-checkout.woocommerce-checkout #order_review p,
 body.page-template-template-thankyou.woocommerce-checkout #order_review p,
 body.page-id-50.woocommerce-checkout #order_review p {
@@ -1379,6 +1441,7 @@ body.page-id-50.woocommerce-checkout #order_review p {
 }
 body.woocommerce-page.woocommerce-checkout #order_review .variation,
 body.page-template-template-shop.woocommerce-checkout #order_review .variation,
+body.page-template-template-shop-dev.woocommerce-checkout #order_review .variation,
 body.page-template-template-checkout.woocommerce-checkout #order_review .variation,
 body.page-template-template-thankyou.woocommerce-checkout #order_review .variation,
 body.page-id-50.woocommerce-checkout #order_review .variation {
@@ -1386,6 +1449,7 @@ body.page-id-50.woocommerce-checkout #order_review .variation {
 }
 body.woocommerce-page.woocommerce-checkout #order_review .order-total .amount,
 body.page-template-template-shop.woocommerce-checkout #order_review .order-total .amount,
+body.page-template-template-shop-dev.woocommerce-checkout #order_review .order-total .amount,
 body.page-template-template-checkout.woocommerce-checkout #order_review .order-total .amount,
 body.page-template-template-thankyou.woocommerce-checkout #order_review .order-total .amount,
 body.page-id-50.woocommerce-checkout #order_review .order-total .amount {
@@ -1393,6 +1457,7 @@ body.page-id-50.woocommerce-checkout #order_review .order-total .amount {
 }
 body.woocommerce-page.woocommerce-checkout #order_review .woocommerce-terms-and-conditions-wrapper,
 body.page-template-template-shop.woocommerce-checkout #order_review .woocommerce-terms-and-conditions-wrapper,
+body.page-template-template-shop-dev.woocommerce-checkout #order_review .woocommerce-terms-and-conditions-wrapper,
 body.page-template-template-checkout.woocommerce-checkout #order_review .woocommerce-terms-and-conditions-wrapper,
 body.page-template-template-thankyou.woocommerce-checkout #order_review .woocommerce-terms-and-conditions-wrapper,
 body.page-id-50.woocommerce-checkout #order_review .woocommerce-terms-and-conditions-wrapper {
@@ -1400,6 +1465,7 @@ body.page-id-50.woocommerce-checkout #order_review .woocommerce-terms-and-condit
 }
 body.woocommerce-page.woocommerce-checkout #order_review .payment_box p,
 body.page-template-template-shop.woocommerce-checkout #order_review .payment_box p,
+body.page-template-template-shop-dev.woocommerce-checkout #order_review .payment_box p,
 body.page-template-template-checkout.woocommerce-checkout #order_review .payment_box p,
 body.page-template-template-thankyou.woocommerce-checkout #order_review .payment_box p,
 body.page-id-50.woocommerce-checkout #order_review .payment_box p {
@@ -1407,6 +1473,7 @@ body.page-id-50.woocommerce-checkout #order_review .payment_box p {
 }
 body.woocommerce-page.woocommerce-order-received .woocommerce-order,
 body.page-template-template-shop.woocommerce-order-received .woocommerce-order,
+body.page-template-template-shop-dev.woocommerce-order-received .woocommerce-order,
 body.page-template-template-checkout.woocommerce-order-received .woocommerce-order,
 body.page-template-template-thankyou.woocommerce-order-received .woocommerce-order,
 body.page-id-50.woocommerce-order-received .woocommerce-order {
@@ -1878,53 +1945,65 @@ body.page-id-50.woocommerce-order-received .woocommerce-order {
   margin-top: 125px;
 }
 .in-mobile.woocommerce-page #primary,
-.in-mobile.page-template-template-shop #primary {
+.in-mobile.page-template-template-shop #primary,
+.in-mobile.page-template-template-shop-dev #primary {
   padding: 0 15px;
   margin-top: 125px;
 }
 .in-mobile.woocommerce-page ul.products li.product,
-.in-mobile.page-template-template-shop ul.products li.product {
+.in-mobile.page-template-template-shop ul.products li.product,
+.in-mobile.page-template-template-shop-dev ul.products li.product {
   width: 100%;
 }
 .in-mobile.woocommerce-page .summary.entry-summary,
-.in-mobile.page-template-template-shop .summary.entry-summary {
+.in-mobile.page-template-template-shop .summary.entry-summary,
+.in-mobile.page-template-template-shop-dev .summary.entry-summary {
   width: 100%!important;
 }
 .in-mobile.woocommerce-page .summary.entry-summary .variations td ul li.variable-item,
-.in-mobile.page-template-template-shop .summary.entry-summary .variations td ul li.variable-item {
+.in-mobile.page-template-template-shop .summary.entry-summary .variations td ul li.variable-item,
+.in-mobile.page-template-template-shop-dev .summary.entry-summary .variations td ul li.variable-item {
   padding: 30px 2px;
 }
 .in-mobile.woocommerce-page .summary.entry-summary .variations td ul li .variable-item-contents span,
-.in-mobile.page-template-template-shop .summary.entry-summary .variations td ul li .variable-item-contents span {
+.in-mobile.page-template-template-shop .summary.entry-summary .variations td ul li .variable-item-contents span,
+.in-mobile.page-template-template-shop-dev .summary.entry-summary .variations td ul li .variable-item-contents span {
   line-height: 17px;
 }
 .in-mobile.woocommerce-page .woocommerce-cart-form input[name="coupon_code"],
-.in-mobile.page-template-template-shop .woocommerce-cart-form input[name="coupon_code"] {
+.in-mobile.page-template-template-shop .woocommerce-cart-form input[name="coupon_code"],
+.in-mobile.page-template-template-shop-dev .woocommerce-cart-form input[name="coupon_code"] {
   min-width: 155px;
 }
 .in-mobile.woocommerce-page #customer_details,
-.in-mobile.page-template-template-shop #customer_details {
+.in-mobile.page-template-template-shop #customer_details,
+.in-mobile.page-template-template-shop-dev #customer_details {
   margin: 0;
 }
 .in-mobile.woocommerce-page button.navbar-toggler,
-.in-mobile.page-template-template-shop button.navbar-toggler {
+.in-mobile.page-template-template-shop button.navbar-toggler,
+.in-mobile.page-template-template-shop-dev button.navbar-toggler {
   background: none;
   border: none;
 }
 .in-mobile.woocommerce-page.woocommerce-checkout .form-row-first,
 .in-mobile.page-template-template-shop.woocommerce-checkout .form-row-first,
+.in-mobile.page-template-template-shop-dev.woocommerce-checkout .form-row-first,
 .in-mobile.woocommerce-page.woocommerce-checkout .form-row-last,
-.in-mobile.page-template-template-shop.woocommerce-checkout .form-row-last {
+.in-mobile.page-template-template-shop.woocommerce-checkout .form-row-last,
+.in-mobile.page-template-template-shop-dev.woocommerce-checkout .form-row-last {
   width: 100%;
   text-align: center;
   display: block;
 }
 .in-mobile.woocommerce-page.woocommerce-checkout .checkout_coupon p,
-.in-mobile.page-template-template-shop.woocommerce-checkout .checkout_coupon p {
+.in-mobile.page-template-template-shop.woocommerce-checkout .checkout_coupon p,
+.in-mobile.page-template-template-shop-dev.woocommerce-checkout .checkout_coupon p {
   line-height: 22px;
 }
 .in-mobile.woocommerce-page.woocommerce-checkout .woocommerce-billing-fields__field-wrapper label,
-.in-mobile.page-template-template-shop.woocommerce-checkout .woocommerce-billing-fields__field-wrapper label {
+.in-mobile.page-template-template-shop.woocommerce-checkout .woocommerce-billing-fields__field-wrapper label,
+.in-mobile.page-template-template-shop-dev.woocommerce-checkout .woocommerce-billing-fields__field-wrapper label {
   text-align: left;
 }
 .in-mobile.woocommerce-shop .shop-custom .prod-right {
