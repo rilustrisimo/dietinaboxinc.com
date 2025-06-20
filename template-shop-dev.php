@@ -123,6 +123,7 @@ get_header();
 						<?php
 							endforeach;
 						?>
+						</div>
 						
 						<!-- Add-ons Section -->
 						<div class="addons-section mt-5">
