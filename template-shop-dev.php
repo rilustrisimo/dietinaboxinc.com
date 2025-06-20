@@ -7,92 +7,228 @@ get_header();
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-		<h1><?php the_title(); ?></h1>
-		<div class="container shop-page">
+		<div class="container shop-page meal-plans-modern">
+			<!-- Page Header -->
+			<div class="page-header mb-5">
+				<h1 class="page-title"><?php the_title(); ?></h1>
+				<p class="page-subtitle">Each plan includes 15 meals total - 3 meals per day for 5 days</p>
+			</div>
+			
 			<div class="row">
-				<div class="col-12 col-md-8">
-					<div class="products container">
-						<div class="row">
+				<div class="col-12 col-lg-8">
+					<div class="meal-plans-section">
+						<!-- Meal Plans Category Badge -->
+						<div class="category-badge mb-4">
+							<span class="badge badge-category">CALORIE COUNTED</span>
+						</div>
+						
+						<div class="meal-plans-container">
 						<?php
 							$products = getAllProducts();
+							$productIndex = 0;
 
 							foreach($products as $p):
 								$id = $p->ID;
 								$fields = get_fields($id);
+								$productIndex++;
 						?>
 
-						
-							<div class="products__item col-md-12">
-								<div class="products__title"><?php echo $fields['product_name']; ?></div>
+						<div class="meal-plan-group mb-4">
+							<div class="products__item">
 								<div class="products__variants">
-									<?php foreach($fields['variants'] as $v): ?>
-										<div class="products__variants__item container">
-											<div class="row">
-												<div class="col-4 col-md-3 left"><div class="image" style="background: url(<?php echo $v['variant_image']['url']; ?>);"></div></div>
-												<div class="col-8 col-md-9 right container">
-													<div class="row">
-														<div class="name col-md-12"><?php echo $v['variant_name']; ?></div>
-														<div class="calories col-md-12"><?php echo $v['variant_calories']; ?> Calories</div>
-														<div class="desc col-md-12"><?php echo $v['variant_description']; ?></div>
-														<div class="qty col-5 col-md-3"><span class="minus">-</span><input type="text" class="qty-field" value="0" data-pid="<?php echo $id;?>" data-var="<?php echo $v['variant_name']; ?>" data-type="mealplan"><span class="plus">+</span></div>
-														<div class="price col-7 col-md-9">&#8369; <span><?php echo $v['variant_price']; ?></span></div>
-														<div class="count">0</div>
+									<?php foreach($fields['variants'] as $index => $v): 
+										$perMealPrice = number_format($v['variant_price'] / 15, 0);
+									?>
+										<div class="products__variants__item meal-plan-card" data-plan-index="<?php echo $productIndex . '-' . ($index + 1); ?>">
+											<div class="selection-badge">
+												<span class="badge-number"><?php echo $productIndex; ?></span>
+											</div>
+											
+											<div class="meal-card-content">
+												<div class="meal-image-section">
+													<div class="meal-image" style="background-image: url(<?php echo $v['variant_image']['url']; ?>);"></div>
+												</div>
+												
+												<div class="meal-details-section">
+													<div class="meal-header">
+														<h3 class="meal-name"><?php echo $v['variant_name']; ?></h3>
+														<div class="meal-meta">
+															<span class="calories-badge"><?php echo number_format($v['variant_calories']); ?> Calories</span>
+															<span class="meals-total-badge">15 MEALS TOTAL</span>
+														</div>
+														<p class="meal-description"><?php echo $v['variant_description']; ?></p>
+														<p class="meal-delivery-info">15 Meals Total for 5 days worth of Delivery - Monday to Friday</p>
+													</div>
+													
+													<div class="meal-breakdown">
+														<div class="breakdown-grid">
+															<div class="breakdown-item">
+																<div class="breakdown-number">5</div>
+																<div class="breakdown-label">Breakfast</div>
+																<div class="breakdown-days">Mon-Fri</div>
+															</div>
+															<div class="breakdown-item">
+																<div class="breakdown-number">5</div>
+																<div class="breakdown-label">Lunch</div>
+																<div class="breakdown-days">Mon-Fri</div>
+															</div>
+															<div class="breakdown-item">
+																<div class="breakdown-number">5</div>
+																<div class="breakdown-label">Dinner</div>
+																<div class="breakdown-days">Mon-Fri</div>
+															</div>
+														</div>
+														<div class="per-meal-info">
+															<span class="per-meal-price">₱<?php echo $perMealPrice; ?> per meal</span> • Daily delivery
+														</div>
+													</div>
+													
+													<div class="meal-pricing-controls">
+														<div class="price-section">
+															<div class="total-price">₱ <?php echo number_format($v['variant_price']); ?></div>
+															<div class="price-subtitle">for 15 meals</div>
+														</div>
+														
+														<div class="quantity-controls">
+															<button class="qty-btn minus" type="button">
+																<i class="fas fa-minus"></i>
+															</button>
+															<input type="text" class="qty-field" value="0" 
+																   data-pid="<?php echo $id;?>" 
+																   data-var="<?php echo $v['variant_name']; ?>" 
+																   data-type="mealplan"
+																   data-calories="<?php echo $v['variant_calories']; ?>"
+																   data-price="<?php echo $v['variant_price']; ?>">
+															<button class="qty-btn plus" type="button">
+																<i class="fas fa-plus"></i>
+															</button>
+														</div>
 													</div>
 												</div>
 											</div>
+											<div class="count quantity-indicator">0</div>
 										</div>
 									<?php endforeach; ?>
 								</div>
 							</div>
-						
-						<?php
-							endforeach;
-						?>
 						</div>
-						<div class="row">
-						<?php
-							$products = getAllAddons();
-
-							foreach($products as $p):
-								$id = $p->ID;
-								$fields = get_fields($id);
-						?>
-
-						
-							<div class="products__item col-md-12">
-								<div class="products__title"><?php echo $fields['product_name']; ?></div>
-								<div class="products__variants">
-									<?php foreach($fields['variants'] as $v): ?>
-										<div class="products__variants__item container">
-											<div class="row">
-												<div class="col-4 col-md-3 left"><div class="image" style="background: url(<?php echo $v['variant_image']['url']; ?>);"></div></div>
-												<div class="col-8 col-md-9 right container">
-													<div class="row">
-														<div class="name col-md-12"><?php echo $v['variant_name']; ?></div>
-														<div class="desc col-md-12"><?php echo $v['variant_description']; ?></div>
-														<div class="qty col-5 col-md-3"><span class="minus">-</span><input type="text" class="qty-field" value="0" data-pid="<?php echo $id;?>" data-var="<?php echo $v['variant_name']; ?>" data-type="addon"><span class="plus">+</span></div>
-														<div class="price col-7 col-md-9">&#8369; <span><?php echo $v['variant_price']; ?></span></div>
-														<div class="count">0</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									<?php endforeach; ?>
-								</div>
-							</div>
 						
 						<?php
 							endforeach;
 						?>
+						
+						<!-- Add-ons Section -->
+						<div class="addons-section mt-5">
+							<div class="category-badge mb-4">
+								<span class="badge badge-category">ADD-ONS</span>
+							</div>
+							
+							<?php
+								$products = getAllAddons();
+
+								foreach($products as $p):
+									$id = $p->ID;
+									$fields = get_fields($id);
+							?>
+
+							<div class="addon-group mb-4">
+								<div class="products__item">
+									<div class="products__variants">
+										<?php foreach($fields['variants'] as $v): ?>
+											<div class="products__variants__item addon-card">
+												<div class="addon-card-content">
+													<div class="addon-image-section">
+														<div class="addon-image" style="background-image: url(<?php echo $v['variant_image']['url']; ?>);"></div>
+													</div>
+													
+													<div class="addon-details-section">
+														<div class="addon-header">
+															<h4 class="addon-name"><?php echo $v['variant_name']; ?></h4>
+															<p class="addon-description"><?php echo $v['variant_description']; ?></p>
+														</div>
+														
+														<div class="addon-pricing-controls">
+															<div class="price-section">
+																<div class="addon-price">₱ <?php echo number_format($v['variant_price']); ?></div>
+															</div>
+															
+															<div class="quantity-controls">
+																<button class="qty-btn minus" type="button">
+																	<i class="fas fa-minus"></i>
+																</button>
+																<input type="text" class="qty-field" value="0" 
+																	   data-pid="<?php echo $id;?>" 
+																	   data-var="<?php echo $v['variant_name']; ?>" 
+																	   data-type="addon"
+																	   data-price="<?php echo $v['variant_price']; ?>">
+																<button class="qty-btn plus" type="button">
+																	<i class="fas fa-plus"></i>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="count quantity-indicator">0</div>
+											</div>
+										<?php endforeach; ?>
+									</div>
+								</div>
+							</div>
+
+							<?php
+								endforeach;
+							?>
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-md-4">
-					<div class="order-summary">
-						<div class="order-summary__title">Order Summary<span class="js-our-menu-date"></span></div>
-						<div class="order-summary__items"><span class="empty">Your Cart is Empty</span></div>
-						<div class="order-summary__total">Total &#8369; <span>0.00</span></div>
-						<div class="order-summary__button"><a href="#" class="btn">Proceed</a></div>
+				<div class="col-12 col-lg-4">
+					<div class="order-summary modern-order-summary">
+						<div class="order-summary-header">
+							<h2 class="order-summary__title">Order Summary</h2>
+							<div class="delivery-dates">
+								<i class="fas fa-calendar-alt"></i>
+								<span class="js-our-menu-date">Select your delivery dates</span>
+							</div>
+						</div>
+						
+						<div class="order-summary-content">
+							<div class="order-summary__items">
+								<div class="empty-cart-state">
+									<i class="fas fa-utensils empty-cart-icon"></i>
+									<p class="empty-cart-message">No meal plans selected</p>
+									<p class="empty-cart-submessage">Choose a plan to get started</p>
+								</div>
+							</div>
+							
+							<div class="order-summary-footer">
+								<div class="order-totals">
+									<div class="total-meals">
+										<span>Total Meals:</span>
+										<span class="meal-count">0 meals</span>
+									</div>
+									<div class="order-summary__total">
+										<span class="total-label">Total</span>
+										<span class="total-amount">₱ <span>0.00</span></span>
+									</div>
+								</div>
+								
+								<div class="delivery-info">
+									<i class="fas fa-clock"></i>
+									<div class="delivery-text">
+										<span class="delivery-title">Daily Delivery Schedule</span>
+										<span class="delivery-subtitle">3 meals delivered fresh each morning for 5 consecutive days</span>
+									</div>
+								</div>
+								
+								<div class="order-summary__button">
+									<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
+								</div>
+								
+								<div class="trust-indicators">
+									<span>Free delivery • Cancel anytime</span>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
