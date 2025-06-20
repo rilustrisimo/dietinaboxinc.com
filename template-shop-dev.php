@@ -234,14 +234,16 @@ get_header();
 									</div>
 								</div>
 							</div>
-							
-							<!-- Always visible button section -->
-							<div class="order-summary__button">
-								<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
-								<div class="trust-indicators">
-									<span>Free delivery • Cancel anytime</span>
-								</div>
+					</div>
+					
+					<!-- Always visible button section outside the collapsible container -->
+					<div class="order-summary-footer">
+						<div class="order-summary__button">
+							<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
+							<div class="trust-indicators">
+								<span>Free delivery • Cancel anytime</span>
 							</div>
+						</div>
 					</div>
 				</div> <!-- End of col-12 col-lg-4 -->
 			</div> <!-- End of row -->
