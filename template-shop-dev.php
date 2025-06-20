@@ -98,7 +98,7 @@ get_header();
 																   data-var="<?php echo $v['variant_name']; ?>" 
 																   data-type="mealplan"
 																   data-calories="<?php echo $v['variant_calories']; ?>"
-																   data-price="<?php echo $v['variant_price']; ?>">
+																   data-price="<?php echo str_replace(',', '', $v['variant_price']); ?>">
 															<button class="qty-btn plus" type="button">
 																<i class="fas fa-plus"></i>
 															</button>
@@ -160,7 +160,7 @@ get_header();
 																	   data-pid="<?php echo $id;?>" 
 																	   data-var="<?php echo $v['variant_name']; ?>" 
 																	   data-type="addon"
-																	   data-price="<?php echo $v['variant_price']; ?>">
+																	   data-price="<?php echo str_replace(',', '', $v['variant_price']); ?>">
 																<button class="qty-btn plus" type="button">
 																	<i class="fas fa-plus"></i>
 																</button>

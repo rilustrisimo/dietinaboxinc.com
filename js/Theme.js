@@ -504,8 +504,8 @@ var Theme = {
 
         if (qty.length > 0) {
             Theme.allowOnlyNumbers(qty);
-            Theme.orderSummary($);
             Theme.updateDeliveryDates($);
+            Theme.orderSummary($);
 
             qty.keyup(function(){
                 if($(this).val().length == 0){
@@ -555,12 +555,12 @@ var Theme = {
 
         if(f > 0){    
             c.text(f);
-            c.show();
+            c.addClass('show').show();
             m.addClass('active');
             card.addClass('active selected');
             badge.addClass('visible');
         }else{
-            c.hide();
+            c.removeClass('show').hide();
             m.removeClass('active');
             card.removeClass('active selected');
             badge.removeClass('visible');
@@ -624,7 +624,19 @@ var Theme = {
                 var name = ci.attr('data-var');
                 var type = ci.attr('data-type');
                 var calories = ci.attr('data-calories') || '';
-                var itemPrice = parseFloat(ci.attr('data-price') || ci.parents('.products__variants__item').find('.price span, .total-price, .addon-price').text().replace(/[₱,]/g, ''));
+                
+                // Fix price parsing - handle commas and currency symbols
+                var itemPrice = 0;
+                if(ci.attr('data-price')) {
+                    itemPrice = parseFloat(ci.attr('data-price').toString().replace(/[₱,]/g, ''));
+                } else {
+                    var priceText = ci.parents('.products__variants__item').find('.total-price, .addon-price').text();
+                    itemPrice = parseFloat(priceText.replace(/[₱,\s]/g, ''));
+                }
+                
+                if(isNaN(itemPrice)) {
+                    itemPrice = 0;
+                }
                 
                 if(type == "mealplan"){
                     var mealsPerPlan = 15;
