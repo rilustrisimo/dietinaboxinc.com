@@ -496,7 +496,7 @@ var Theme = {
 
     initShopScripts: function($) {
         var qty = $('.products__variants .qty-field');
-        var qbuts = $('.products__variants .qty-btn, .products__variants .qty span');
+        var qbuts = $('.products__variants .qty span');
         
         $('.order-summary__button .btn').click(function(e){
             e.preventDefault();
@@ -504,7 +504,6 @@ var Theme = {
 
         if (qty.length > 0) {
             Theme.allowOnlyNumbers(qty);
-            Theme.updateDeliveryDates($);
             Theme.orderSummary($);
 
             qty.keyup(function(){
@@ -521,26 +520,20 @@ var Theme = {
 
             qbuts.click(function(){
                 if($(this).hasClass('plus')){
-                    var inp = $(this).siblings('input');
-                    if(inp.length === 0) {
-                        inp = $(this).parent().find('input');
-                    }
+                    var inp = $(this).parent().find('input');
                     var curval = parseInt(inp.val());
                     inp.val(curval + 1);
 
-                    Theme.countChecker($, curval + 1, inp);
+                    Theme.countChecker($, curval + 1, $(this));
                 }
 
                 if($(this).hasClass('minus')){
-                    var inp = $(this).siblings('input');
-                    if(inp.length === 0) {
-                        inp = $(this).parent().find('input');
-                    }
+                    var inp = $(this).parent().find('input');
                     var curval = parseInt(inp.val());
                     if(curval > 0){
                         inp.val(curval - 1);
 
-                        Theme.countChecker($, curval - 1, inp);
+                        Theme.countChecker($, curval - 1, $(this));
                     }
                 }
             });
@@ -548,22 +541,18 @@ var Theme = {
     },
 
     countChecker: function($, f, qty){
-        var c = qty.parents('.products__variants__item').find('.count, .quantity-indicator');
-        var m = qty.parents('.products__variants__item').find('.minus, .qty-btn.minus');
-        var card = qty.parents('.products__variants__item');
-        var badge = card.find('.selection-badge');
+        var c = qty.parents('.products__variants__item').find('.count');
+        var m = qty.parents('.products__variants__item').find('span.minus');
 
         if(f > 0){    
             c.text(f);
-            c.addClass('show').show();
+            c.show();
             m.addClass('active');
-            card.addClass('active selected');
-            badge.addClass('visible');
+            qty.parents('.products__variants__item').addClass('active');
         }else{
-            c.removeClass('show').hide();
+            c.hide();
             m.removeClass('active');
-            card.removeClass('active selected');
-            badge.removeClass('visible');
+            qty.parents('.products__variants__item').removeClass('active');
         }
 
         Theme.orderSummary($);
@@ -614,93 +603,44 @@ var Theme = {
             var total = 0;
             var mealtotal = 0;
             var addtotal = 0;
-            var totalMeals = 0;
             var cartfinal = {};
             var cartitems = [];
 
             for(var i=0;i < cart.length;i++){
                 var ci = cart[i];
-                var itemQty = parseInt(ci.val());
+                var qty = parseInt(ci.val());
                 var name = ci.attr('data-var');
                 var type = ci.attr('data-type');
-                var calories = ci.attr('data-calories') || '';
-                
-                // Fix price parsing - handle commas and currency symbols
-                var itemPrice = 0;
-                if(ci.attr('data-price')) {
-                    itemPrice = parseFloat(ci.attr('data-price').toString().replace(/[₱,]/g, ''));
-                } else {
-                    var priceText = ci.parents('.products__variants__item').find('.total-price, .addon-price').text();
-                    itemPrice = parseFloat(priceText.replace(/[₱,\s]/g, ''));
-                }
-                
-                if(isNaN(itemPrice)) {
-                    itemPrice = 0;
-                }
-                
-                if(type == "mealplan"){
-                    var mealsPerPlan = 15;
-                    var planMeals = itemQty * mealsPerPlan;
-                    totalMeals += planMeals;
-                    var perMealPrice = Math.round(itemPrice / 15);
-                    
-                    content += "<div class='cart__item cart__item--mealplan'>";
-                    content += "<div class='cart-item-header'>";
-                    content += "<h4 class='cart-item-title'>" + itemQty + "x " + name + "</h4>";
-                    content += "<div class='cart-item-price'>₱ " + Theme.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</div>";
-                    content += "</div>";
-                    content += "<div class='cart-item-details'>";
-                    if(calories) {
-                        content += "<div class='cart-item-calories'>" + calories + " calories • 15 Meals Total for 5 days worth of Delivery - Monday to Friday</div>";
-                    }
-                    content += "</div>";
-                    content += "<div class='cart-meal-breakdown'>";
-                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Breakfast</small></div>";
-                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Lunch</small></div>";
-                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Dinner</small></div>";
-                    content += "</div>";
-                    content += "<div class='cart-item-summary'>";
-                    content += "Total: " + planMeals + " meals • <span class='per-meal-price'>₱" + perMealPrice + " per meal</span>";
-                    content += "</div>";
-                    content += "</div>";
-                    
-                    mealtotal += (itemPrice * itemQty);
-                } else {
-                    content += "<div class='cart__item cart__item--addon'>";
-                    content += "<span class='cart-addon-qty'>" + itemQty + "x</span> ";
-                    content += "<span class='cart-addon-name'>" + name + "</span>";
-                    content += "<span class='cart-addon-price'>₱ " + Theme.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</span>";
-                    content += "</div>";
-                    
-                    addtotal += (itemPrice * itemQty);
+                var price = parseFloat(ci.parents('.products__variants__item').find('.price span').text().replace(',','')).toFixed(2);
+
+                content += "<div class='cart__item'><span>" + qty +  "x</span> " + name + " - <span>&#8369; " + Theme.numberWithCommas(price * qty) + "</span></div>";
+
+                total += (price * qty);
+
+                if(type == "addon"){
+                    addtotal += (price * qty);
+                }else{
+                    mealtotal += (price * qty);
                 }
 
-                total += (itemPrice * itemQty);
 
                 cartitems[cartitems.length] = {
                     'name': name,
-                    'qty': itemQty,
-                    'price': itemPrice,
-                    'totalprice': (itemPrice * itemQty),
-                    'type': type,
-                    'calories': calories
+                    'qty': qty,
+                    'price': price,
+                    'totalprice': (price * qty),
+                    'type': type
                 }
             }
 
-            // Update order summary
+            $('.order-summary__total span').html(Theme.numberWithCommas(total.toFixed(2)));
             $('.order-summary__items').html(content);
-            $('.order-summary__total .total-amount span').html(Theme.numberWithCommas(total.toFixed(2)));
-            $('.meal-count').text(totalMeals + ' meals');
             $('.order-summary__button a').addClass('active');
-            
-            // Hide empty state
-            $('.empty-cart-state').hide();
 
             cartfinal = {
                 'totalprice': total,
                 'mealtotal': mealtotal,
                 'addtotal': addtotal,
-                'totalmeals': totalMeals,
                 'items': cartitems
             };
 
@@ -737,31 +677,14 @@ var Theme = {
                 });
             }
         }else{
-            $('.order-summary__items').html('');
-            $('.empty-cart-state').show();
+            $('.order-summary__items').html('<span class="empty">Your Cart is Empty</span>');
             $('.order-summary__button a').removeClass('active');
-            $('.order-summary__total .total-amount span').html('0.00');
-            $('.meal-count').text('0 meals');
+            $('.order-summary__total span').html('0.00');
 
             $('.order-summary__button .btn').click(function(e){
                 e.preventDefault();
             });
         }
-    },
-
-    updateDeliveryDates: function($) {
-        var today = new Date();
-        var startDate = new Date(today);
-        startDate.setDate(today.getDate() + 1); // Start tomorrow
-        
-        var endDate = new Date(startDate);
-        endDate.setDate(startDate.getDate() + 4); // 5 days total
-        
-        var options = { month: 'short', day: 'numeric' };
-        var startStr = startDate.toLocaleDateString('en-US', options);
-        var endStr = endDate.toLocaleDateString('en-US', options);
-        
-        $('.js-our-menu-date').text('For ' + startStr + ' to ' + endStr);
     },
 
     numberWithCommas: function(x) {
@@ -910,9 +833,291 @@ var Theme = {
                 $('.custom-modal').hide();
             });
         }
+    },
+
+    // =======================================================================
+    // MEAL PLANS TEMPLATE SPECIFIC FUNCTIONS - ISOLATED FROM OTHER TEMPLATES
+    // Only affects template-shop-dev.php (Meal Plans Development template)
+    // =======================================================================
+    
+};
+
+// Completely separate MealPlansManager for template-shop-dev.php
+// This ensures zero interference with existing Theme functionality
+var MealPlansManager = {
+    init: function($) {
+        // Only run if we're on the meal plans template
+        if (!($('body.meal-plans-template').length > 0 || $('#meal-plans-development').length > 0)) {
+            return;
+        }
+
+        console.log('Initializing MealPlansManager for template-shop-dev.php');
+        
+        this.initQuantityControls($);
+        this.updateDeliveryDates($);
+        this.updateOrderSummary($);
+    },
+
+    initQuantityControls: function($) {
+        var qty = $('#meal-plans-development .qty-field');
+        var qbuts = $('#meal-plans-development .qty-btn');
+        
+        // Prevent default behavior on order summary button
+        $('#meal-plans-development .order-summary__button .btn').click(function(e){
+            e.preventDefault();
+        });
+
+        if (qty.length > 0) {
+            this.allowOnlyNumbers(qty);
+
+            var self = this;
+
+            qty.keyup(function(){
+                if($(this).val().length == 0){
+                    $(this).val('0');
+                    self.updateQuantityDisplay($, 0, $(this));
+                }else{
+                    var f = parseInt($(this).val()) + 0;
+                    $(this).val(f);
+                    self.updateQuantityDisplay($, f, $(this));
+                }
+            });
+
+            qbuts.click(function(){
+                if($(this).hasClass('plus')){
+                    var inp = $(this).siblings('input');
+                    if(inp.length === 0) {
+                        inp = $(this).parent().find('input');
+                    }
+                    var curval = parseInt(inp.val());
+                    inp.val(curval + 1);
+                    self.updateQuantityDisplay($, curval + 1, inp);
+                }
+
+                if($(this).hasClass('minus')){
+                    var inp = $(this).siblings('input');
+                    if(inp.length === 0) {
+                        inp = $(this).parent().find('input');
+                    }
+                    var curval = parseInt(inp.val());
+                    if(curval > 0){
+                        inp.val(curval - 1);
+                        self.updateQuantityDisplay($, curval - 1, inp);
+                    }
+                }
+            });
+        }
+    },
+
+    updateQuantityDisplay: function($, quantity, qtyInput) {
+        var c = qtyInput.parents('.products__variants__item').find('.count, .quantity-indicator');
+        var m = qtyInput.parents('.products__variants__item').find('.minus, .qty-btn.minus');
+        var card = qtyInput.parents('.products__variants__item');
+        var badge = card.find('.selection-badge');
+
+        if(quantity > 0){    
+            c.text(quantity);
+            c.addClass('show').show();
+            m.addClass('active');
+            card.addClass('active selected');
+            badge.addClass('visible');
+        }else{
+            c.removeClass('show').hide();
+            m.removeClass('active');
+            card.removeClass('active selected');
+            badge.removeClass('visible');
+        }
+
+        this.updateOrderSummary($);
+    },
+
+    updateOrderSummary: function($){
+        var qty = $('#meal-plans-development .qty-field');
+        var cart = [];
+
+        qty.each(function(){
+            var q = parseInt($(this).val());
+            if(q > 0){
+                cart[cart.length] = $(this);
+            }
+        });
+
+        if(cart.length > 0){
+            var content = "";
+            var total = 0;
+            var mealtotal = 0;
+            var addtotal = 0;
+            var totalMeals = 0;
+            var cartfinal = {};
+            var cartitems = [];
+
+            for(var i=0;i < cart.length;i++){
+                var ci = cart[i];
+                var itemQty = parseInt(ci.val());
+                var name = ci.attr('data-var');
+                var type = ci.attr('data-type');
+                var calories = ci.attr('data-calories') || '';
+                
+                // Fix price parsing - handle commas and currency symbols
+                var itemPrice = 0;
+                if(ci.attr('data-price')) {
+                    itemPrice = parseFloat(ci.attr('data-price').toString().replace(/[₱,]/g, ''));
+                } else {
+                    var priceText = ci.parents('.products__variants__item').find('.total-price, .addon-price').text();
+                    itemPrice = parseFloat(priceText.replace(/[₱,\s]/g, ''));
+                }
+                
+                if(isNaN(itemPrice)) {
+                    itemPrice = 0;
+                }
+                
+                if(type == "mealplan"){
+                    var mealsPerPlan = 15;
+                    var planMeals = itemQty * mealsPerPlan;
+                    totalMeals += planMeals;
+                    var perMealPrice = Math.round(itemPrice / 15);
+                    
+                    content += "<div class='cart__item cart__item--mealplan'>";
+                    content += "<div class='cart-item-header'>";
+                    content += "<h4 class='cart-item-title'>" + itemQty + "x " + name + "</h4>";
+                    content += "<div class='cart-item-price'>₱ " + this.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</div>";
+                    content += "</div>";
+                    content += "<div class='cart-item-details'>";
+                    if(calories) {
+                        content += "<div class='cart-item-calories'>" + calories + " calories • 15 Meals Total for 5 days worth of Delivery - Monday to Friday</div>";
+                    }
+                    content += "</div>";
+                    content += "<div class='cart-meal-breakdown'>";
+                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Breakfast</small></div>";
+                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Lunch</small></div>";
+                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Dinner</small></div>";
+                    content += "</div>";
+                    content += "<div class='cart-item-summary'>";
+                    content += "Total: " + planMeals + " meals • <span class='per-meal-price'>₱" + perMealPrice + " per meal</span>";
+                    content += "</div>";
+                    content += "</div>";
+                    
+                    mealtotal += (itemPrice * itemQty);
+                } else {
+                    content += "<div class='cart__item cart__item--addon'>";
+                    content += "<span class='cart-addon-qty'>" + itemQty + "x</span> ";
+                    content += "<span class='cart-addon-name'>" + name + "</span>";
+                    content += "<span class='cart-addon-price'>₱ " + this.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</span>";
+                    content += "</div>";
+                    
+                    addtotal += (itemPrice * itemQty);
+                }
+
+                total += (itemPrice * itemQty);
+
+                cartitems[cartitems.length] = {
+                    'name': name,
+                    'qty': itemQty,
+                    'price': itemPrice,
+                    'totalprice': (itemPrice * itemQty),
+                    'type': type,
+                    'calories': calories
+                }
+            }
+
+            // Update order summary using meal plans specific selectors
+            $('#meal-plans-development .order-summary__items').html(content);
+            $('#meal-plans-development .order-summary__total .total-amount span').html(this.numberWithCommas(total.toFixed(2)));
+            $('#meal-plans-development .meal-count').text(totalMeals + ' meals');
+            $('#meal-plans-development .order-summary__button a').addClass('active');
+            
+            // Hide empty state
+            $('#meal-plans-development .empty-cart-state').hide();
+
+            cartfinal = {
+                'totalprice': total,
+                'mealtotal': mealtotal,
+                'addtotal': addtotal,
+                'totalmeals': totalMeals,
+                'items': cartitems
+            };
+
+            $('#meal-plans-development .order-summary__button .btn').unbind('click');
+
+            if(cartfinal){
+                $('#meal-plans-development .order-summary__button .btn').click(function(e){
+                    e.preventDefault();
+
+                    $.ajax({
+                        url: $('#ajax-url').val(),
+                        type: 'POST',
+                        dataType: 'JSON',
+                        data: {
+                            action: 'process_cart',
+                            cart: cartfinal
+                        },
+                        success: function(resp) {
+                            console.log(resp);
+
+                            if(resp.success){
+                                window.location.href = resp.data.redirect;
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            console.log('Request failed: ' + thrownError.message);
+                            alert('Request failed: ' + thrownError.message);
+                        },
+                    });
+                });
+            }else{
+                $('#meal-plans-development .order-summary__button .btn').click(function(e){
+                    e.preventDefault();
+                });
+            }
+        }else{
+            $('#meal-plans-development .order-summary__items').html('');
+            $('#meal-plans-development .empty-cart-state').show();
+            $('#meal-plans-development .order-summary__button a').removeClass('active');
+            $('#meal-plans-development .order-summary__total .total-amount span').html('0.00');
+            $('#meal-plans-development .meal-count').text('0 meals');
+
+            $('#meal-plans-development .order-summary__button .btn').click(function(e){
+                e.preventDefault();
+            });
+        }
+    },
+
+    updateDeliveryDates: function($) {
+        var today = new Date();
+        var startDate = new Date(today);
+        startDate.setDate(today.getDate() + 1); // Start tomorrow
+        
+        var endDate = new Date(startDate);
+        endDate.setDate(startDate.getDate() + 4); // 5 days total
+        
+        var options = { month: 'short', day: 'numeric' };
+        var startStr = startDate.toLocaleDateString('en-US', options);
+        var endStr = endDate.toLocaleDateString('en-US', options);
+        
+        $('#meal-plans-development .js-our-menu-date').text('For ' + startStr + ' to ' + endStr);
+    },
+
+    numberWithCommas: function(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+
+    allowOnlyNumbers: function(qty){
+        qty.keypress(function(e) {
+            var a = [];
+            var k = e.which;
+        
+            for (i = 48; i < 58; i++)
+                a.push(i);
+        
+            if (!(a.indexOf(k)>=0))
+                e.preventDefault();
+        });
     }
 };
 
 jQuery(function($) {
     Theme.init($);
+    
+    // Initialize MealPlansManager separately
+    MealPlansManager.init($);
 });
