@@ -44,7 +44,9 @@ get_header();
 							<div class="products__item">
 								<div class="products__variants">
 									<?php foreach($fields['variants'] as $index => $v): 
-										$perMealPrice = round(parseFloat($v['variant_price']) / 15, 2);
+										// Remove commas and convert to float for proper calculation
+										$cleanPrice = (float) str_replace(',', '', $v['variant_price']);
+										$perMealPrice = round($cleanPrice / 15, 2);
 									?>
 										<div class="products__variants__item meal-plan-card" data-plan-index="<?php echo $productIndex . '-' . ($index + 1); ?>">
 											<div class="selection-badge">
@@ -92,7 +94,7 @@ get_header();
 													
 													<div class="meal-pricing-controls">
 														<div class="price-section">
-															<div class="total-price">₱<?php echo number_format($v['variant_price'], 0); ?></div>
+															<div class="total-price">₱<?php echo number_format($cleanPrice, 0); ?></div>
 															<div class="price-subtitle">for 15 meals</div>
 														</div>
 														
@@ -142,7 +144,10 @@ get_header();
 							<div class="addon-group mb-4">
 								<div class="products__item">
 									<div class="products__variants">
-										<?php foreach($fields['variants'] as $v): ?>
+										<?php foreach($fields['variants'] as $v): 
+											// Clean price for add-ons too
+											$cleanAddonPrice = (float) str_replace(',', '', $v['variant_price']);
+										?>
 											<div class="products__variants__item addon-card">
 												<div class="addon-card-content">
 													<div class="addon-image-section">
@@ -157,7 +162,7 @@ get_header();
 														
 														<div class="addon-pricing-controls">
 															<div class="price-section">
-																<div class="addon-price">₱ <?php echo number_format($v['variant_price']); ?></div>
+																<div class="addon-price">₱<?php echo number_format($cleanAddonPrice, 0); ?></div>
 															</div>
 															
 															<div class="quantity-controls">
@@ -195,13 +200,14 @@ get_header();
 								<h2 class="order-summary__title">Order Summary</h2>
 								<div class="delivery-dates">
 									<i class="fas fa-calendar-alt"></i>
-									<span class="js-our-menu-date">Select your delivery dates</span>
+									<span class="js-our-menu-date">For Jun 21 to Jun 25</span>
 								</div>
 							</div>
 							
 							<div class="order-summary-content">
 								<div class="order-summary__items">
 									<div class="empty-cart-state">
+										<div class="empty-cart-price">₱0</div>
 										<i class="fas fa-utensils empty-cart-icon"></i>
 										<p class="empty-cart-message">No meal plans selected</p>
 										<p class="empty-cart-submessage">Choose a plan to get started</p>
@@ -216,7 +222,7 @@ get_header();
 										</div>
 										<div class="order-summary__total">
 											<span class="total-label">Total</span>
-											<span class="total-amount">₱ <span>0.00</span></span>
+											<span class="total-amount">₱0.00</span>
 										</div>
 									</div>
 									

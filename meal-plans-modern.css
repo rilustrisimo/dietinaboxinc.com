@@ -663,11 +663,13 @@ body.meal-plans-template .delivery-dates,
     gap: 0.5rem;
     color: #6b7280;
     font-size: 0.875rem;
+    font-weight: 500;
 }
 
 body.meal-plans-template .delivery-dates i,
 #meal-plans-development .delivery-dates i {
     color: #14b8a6;
+    font-size: 1rem;
 }
 
 /* Empty Cart State - TEMPLATE SPECIFIC */
@@ -677,25 +679,36 @@ body.meal-plans-template .empty-cart-state,
     padding: 2rem 0;
 }
 
+body.meal-plans-template .empty-cart-price,
+#meal-plans-development .empty-cart-price {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
 body.meal-plans-template .empty-cart-icon,
 #meal-plans-development .empty-cart-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #d1d5db;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    display: block;
 }
 
 body.meal-plans-template .empty-cart-message,
 #meal-plans-development .empty-cart-message {
-    color: #6b7280;
+    color: #374151;
     font-weight: 600;
-    margin-bottom: 0.25rem;
-    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
 }
 
 body.meal-plans-template .empty-cart-submessage,
 #meal-plans-development .empty-cart-submessage {
     color: #9ca3af;
     font-size: 0.875rem;
+    margin: 0;
 }
 
 /* Cart Items - TEMPLATE SPECIFIC */
