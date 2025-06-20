@@ -21,9 +21,9 @@ get_header();
 				<p class="page-subtitle">Each plan includes 15 meals total - 3 meals per day for 5 days</p>
 			</div>
 			
-			<div class="row">
-				<div class="col-12 col-lg-8">
-					<div class="meal-plans-section">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="meal-plans-section col-lg-8">
 						<!-- Meal Plans Category Badge -->
 						<div class="category-badge mb-4">
 							<span class="badge badge-category">CALORIE COUNTED</span>
@@ -187,52 +187,52 @@ get_header();
 							?>
 						</div>
 					</div>
-				</div>
-				<div class="col-12 col-lg-4">
-					<div class="order-summary modern-order-summary">
-						<div class="order-summary-header">
-							<h2 class="order-summary__title">Order Summary</h2>
-							<div class="delivery-dates">
-								<i class="fas fa-calendar-alt"></i>
-								<span class="js-our-menu-date">Select your delivery dates</span>
-							</div>
-						</div>
-						
-						<div class="order-summary-content">
-							<div class="order-summary__items">
-								<div class="empty-cart-state">
-									<i class="fas fa-utensils empty-cart-icon"></i>
-									<p class="empty-cart-message">No meal plans selected</p>
-									<p class="empty-cart-submessage">Choose a plan to get started</p>
+					<div class="col-12 col-lg-4">
+						<div class="order-summary modern-order-summary">
+							<div class="order-summary-header">
+								<h2 class="order-summary__title">Order Summary</h2>
+								<div class="delivery-dates">
+									<i class="fas fa-calendar-alt"></i>
+									<span class="js-our-menu-date">Select your delivery dates</span>
 								</div>
 							</div>
 							
-							<div class="order-summary-footer">
-								<div class="order-totals">
-									<div class="total-meals">
-										<span>Total Meals:</span>
-										<span class="meal-count">0 meals</span>
-									</div>
-									<div class="order-summary__total">
-										<span class="total-label">Total</span>
-										<span class="total-amount">₱ <span>0.00</span></span>
+							<div class="order-summary-content">
+								<div class="order-summary__items">
+									<div class="empty-cart-state">
+										<i class="fas fa-utensils empty-cart-icon"></i>
+										<p class="empty-cart-message">No meal plans selected</p>
+										<p class="empty-cart-submessage">Choose a plan to get started</p>
 									</div>
 								</div>
 								
-								<div class="delivery-info">
-									<i class="fas fa-clock"></i>
-									<div class="delivery-text">
-										<span class="delivery-title">Daily Delivery Schedule</span>
-										<span class="delivery-subtitle">3 meals delivered fresh each morning for 5 consecutive days</span>
+								<div class="order-summary-footer">
+									<div class="order-totals">
+										<div class="total-meals">
+											<span>Total Meals:</span>
+											<span class="meal-count">0 meals</span>
+										</div>
+										<div class="order-summary__total">
+											<span class="total-label">Total</span>
+											<span class="total-amount">₱ <span>0.00</span></span>
+										</div>
 									</div>
-								</div>
-								
-								<div class="order-summary__button">
-									<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
-								</div>
-								
-								<div class="trust-indicators">
-									<span>Free delivery • Cancel anytime</span>
+									
+									<div class="delivery-info">
+										<i class="fas fa-clock"></i>
+										<div class="delivery-text">
+											<span class="delivery-title">Daily Delivery Schedule</span>
+											<span class="delivery-subtitle">3 meals delivered fresh each morning for 5 consecutive days</span>
+										</div>
+									</div>
+									
+									<div class="order-summary__button">
+										<a href="#" class="btn btn-proceed">Proceed to Checkout</a>
+									</div>
+									
+									<div class="trust-indicators">
+										<span>Free delivery • Cancel anytime</span>
+									</div>
 								</div>
 							</div>
 						</div>
