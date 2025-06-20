@@ -21,9 +21,9 @@ get_header();
 				<p class="page-subtitle">Each plan includes 15 meals total - 3 meals per day for 5 days</p>
 			</div>
 			
-			<div class="container-fluid">
-				<div class="row">
-					<div class="meal-plans-section col-lg-8">
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<div class="meal-plans-section">
 						<!-- Meal Plans Category Badge -->
 						<div class="category-badge mb-4">
 							<span class="badge badge-category">CALORIE COUNTED</span>
@@ -187,8 +187,9 @@ get_header();
 							?>
 						</div>
 					</div>
-					<div class="col-12 col-lg-4">
-						<div class="order-summary modern-order-summary">
+				</div>
+				<div class="col-12 col-lg-4">
+					<div class="order-summary modern-order-summary">
 							<div class="order-summary-header">
 								<h2 class="order-summary__title">Order Summary</h2>
 								<div class="delivery-dates">

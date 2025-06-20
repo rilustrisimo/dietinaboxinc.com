@@ -544,6 +544,35 @@ body.meal-plans-template .modern-order-summary,
     z-index: 10;
 }
 
+/* Force desktop layout - TEMPLATE SPECIFIC */
+@media (min-width: 992px) {
+    body.meal-plans-template #meal-plans-development .row,
+    #meal-plans-development .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    body.meal-plans-template #meal-plans-development .col-lg-8,
+    #meal-plans-development .col-lg-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+    
+    body.meal-plans-template #meal-plans-development .col-lg-4,
+    #meal-plans-development .col-lg-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    
+    body.meal-plans-template .modern-order-summary,
+    #meal-plans-development .modern-order-summary {
+        position: sticky;
+        top: 2rem;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+    }
+}
+
 body.meal-plans-template .order-summary-header,
 #meal-plans-development .order-summary-header {
     margin-bottom: 1.5rem;

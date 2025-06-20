@@ -495,6 +495,11 @@ var Theme = {
     },
 
     initShopScripts: function($) {
+        // Skip if we're on the meal plans template - it has its own manager
+        if ($('body.meal-plans-template').length > 0 || $('#meal-plans-development').length > 0) {
+            return;
+        }
+        
         var qty = $('.products__variants .qty-field');
         var qbuts = $('.products__variants .qty span');
         
