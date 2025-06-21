@@ -68,7 +68,7 @@
 					?>
 				</div>
 				<!--
-				<div class="cart-icon"><?php echo do_shortcode("[woo_cart_but]"); ?></div>
+				<div class="cart-icon"><?php echo do_shortcode("[woo_cart_but]"); ?></div> 
 						-->
 			</div>
 		</nav>
