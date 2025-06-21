@@ -1340,6 +1340,7 @@ body.meal-plans-template .btn-proceed:disabled,
     #meal-plans-development .meal-delivery-info {
         text-align: center;
         font-size: 0.85rem;
+        line-height: 1.5em;
     }
     
     body.meal-plans-template .meal-image,
