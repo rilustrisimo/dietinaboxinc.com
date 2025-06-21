@@ -113,7 +113,7 @@ get_header();
 															<span class="calories-badge"><?php echo $v['variant_calories']; ?> Calories</span>
 															<span class="meals-total-badge"><?php echo $totalMeals; ?> MEALS TOTAL</span>
 														</div>
-														<p class="meal-delivery-info show-mobile"><?php echo $totalMeals; ?> Meals Total for 5 days worth of Delivery - Monday to Friday</p>
+														<p class="meal-delivery-info hide-mobile"><?php echo $totalMeals; ?> Meals Total for 5 days worth of Delivery - Monday to Friday</p>
 													</div>
 													
 													<div class="meal-breakdown hide-mobile">
