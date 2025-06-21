@@ -266,14 +266,6 @@ get_header();
 										<p class="empty-cart-submessage">Choose a plan to get started</p>
 									</div>
 								</div>
-								
-								<div class="delivery-info">
-									<i class="fas fa-clock"></i>
-									<div class="delivery-text">
-										<span class="delivery-title">Daily Delivery Schedule</span>
-										<span class="delivery-subtitle">3 meals delivered fresh each morning for 5 consecutive days</span>
-									</div>
-								</div>
 							</div>
 							
 							<!-- Always visible button section -->
