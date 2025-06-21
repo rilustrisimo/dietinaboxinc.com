@@ -298,7 +298,7 @@ body.meal-plans-template .breakdown-label,
 #meal-plans-development .breakdown-label {
     font-size: 0.75rem;
     color: #6b7280;
-    margin-top: 0.25rem;
+    margin: 0 10px 0 5px;
 }
 
 body.meal-plans-template .breakdown-days,
@@ -1185,7 +1185,7 @@ body.meal-plans-template .btn-proceed:disabled,
         content: '';
         position: absolute;
         right: 1.5rem;
-        top: 50%;
+        top: 37%;
         width: 8px;
         height: 8px;
         border-top: 2px solid #6b7280;
@@ -1200,7 +1200,7 @@ body.meal-plans-template .btn-proceed:disabled,
         content: 'Tap to view items';
         position: absolute;
         right: 3rem;
-        top: 50%;
+        top: 38%;
         transform: translateY(-50%);
         font-size: 0.75rem;
         color: #9ca3af;
@@ -1646,7 +1646,7 @@ body.meal-plans-template .btn-proceed:disabled,
         content: '';
         position: absolute;
         right: 1.5rem;
-        top: 50%;
+        top: 37%;
         width: 8px;
         height: 8px;
         border-top: 2px solid #6b7280;
@@ -1661,7 +1661,7 @@ body.meal-plans-template .btn-proceed:disabled,
         content: 'Tap to expand';
         position: absolute;
         right: 3rem;
-        top: 50%;
+        top: 38%;
         transform: translateY(-50%);
         font-size: 0.75rem;
         color: #9ca3af;
