@@ -1003,38 +1003,48 @@ var MealPlansManager = {
                     content += "<div class='cart__item cart__item--mealplan'>";
                     content += "<div class='cart-item-header'>";
                     content += "<h4 class='cart-item-title'>" + itemQty + "x " + name + "</h4>";
-                    content += "<div class='cart-item-price'>₱ " + this.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</div>";
+                    content += "<div class='cart-item-price'>₱" + this.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</div>";
                     content += "</div>";
                     content += "<div class='cart-item-details'>";
                     if(calories) {
-                        content += "<div class='cart-item-calories'>" + calories + " calories • " + mealsPerPlan + " Meals Total for 5 days worth of Delivery - Monday to Friday</div>";
+                        content += calories + " calories • " + mealsPerPlan + " Meals Total for 5 days worth of Delivery - Monday to Friday";
                     }
                     content += "</div>";
-                    content += "<div class='cart-meal-breakdown'>";
+                    content += "<div class='cart-item-breakdown'>";
                     
                     // Dynamic breakdown based on actual meal types
                     if(breakfastCount > 0) {
-                        content += "<div class='breakdown-item'><span>" + (breakfastCount * 5 * itemQty) + "</span><small>Breakfast</small></div>";
+                        content += "<div class='breakdown-item'>";
+                        content += "<div class='breakdown-number'>" + (breakfastCount * 5 * itemQty) + "</div>";
+                        content += "<div class='breakdown-label'>Breakfast</div>";
+                        content += "</div>";
                     }
                     if(lunchCount > 0) {
-                        content += "<div class='breakdown-item'><span>" + (lunchCount * 5 * itemQty) + "</span><small>Lunch</small></div>";
+                        content += "<div class='breakdown-item'>";
+                        content += "<div class='breakdown-number'>" + (lunchCount * 5 * itemQty) + "</div>";
+                        content += "<div class='breakdown-label'>Lunch</div>";
+                        content += "</div>";
                     }
                     if(dinnerCount > 0) {
-                        content += "<div class='breakdown-item'><span>" + (dinnerCount * 5 * itemQty) + "</span><small>Dinner</small></div>";
+                        content += "<div class='breakdown-item'>";
+                        content += "<div class='breakdown-number'>" + (dinnerCount * 5 * itemQty) + "</div>";
+                        content += "<div class='breakdown-label'>Dinner</div>";
+                        content += "</div>";
                     }
                     
                     content += "</div>";
-                    content += "<div class='cart-item-summary'>";
-                    content += "Total: " + planMeals + " meals • <span class='per-meal-price'>₱" + Math.round(perMealPrice) + " per meal</span>";
+                    content += "<div class='per-meal-info'>";
+                    content += "Total: " + planMeals + " meals • ₱" + Math.round(perMealPrice) + " per meal";
                     content += "</div>";
                     content += "</div>";
                     
                     mealtotal += (itemPrice * itemQty);
                 } else {
                     content += "<div class='cart__item cart__item--addon'>";
-                    content += "<span class='cart-addon-qty'>" + itemQty + "x</span> ";
-                    content += "<span class='cart-addon-name'>" + name + "</span>";
-                    content += "<span class='cart-addon-price'>₱ " + this.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</span>";
+                    content += "<div class='cart-item-header'>";
+                    content += "<h4 class='cart-item-title'>" + itemQty + "x " + name + "</h4>";
+                    content += "<div class='cart-item-price'>₱" + this.numberWithCommas((itemPrice * itemQty).toFixed(2)) + "</div>";
+                    content += "</div>";
                     content += "</div>";
                     
                     addtotal += (itemPrice * itemQty);
