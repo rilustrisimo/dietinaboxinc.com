@@ -107,7 +107,7 @@ get_header();
 												
 												<div class="meal-details-section">
 													<div class="meal-header">
-														<h3 class="meal-name"><?php echo strtoupper($v['variant_name']); ?></h3>
+														<h3 class="meal-name"><?php echo $v['variant_name']; ?></h3>
 														<p class="meal-description"><?php echo $v['variant_description']; ?></p>
 														<div class="meal-meta">
 															<span class="calories-badge"><?php echo $v['variant_calories']; ?> Calories</span>
