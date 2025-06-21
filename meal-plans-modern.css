@@ -310,6 +310,11 @@ body.meal-plans-template .breakdown-label,
     margin: 0 10px 0 5px;
 }
 
+body.meal-plans-template .breakdown-label i,
+#meal-plans-development .breakdown-label i{
+    color: #079669;
+}
+
 body.meal-plans-template .breakdown-days,
 #meal-plans-development .breakdown-days {
     font-size: 0.625rem;
