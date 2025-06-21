@@ -83,6 +83,25 @@ get_header();
 															<div class="total-price">₱<?php echo number_format($cleanPrice, 0); ?></div>
 															<div class="price-subtitle">for <?php echo $totalMeals; ?> meals</div>
 														</div>
+														<div class="quantity-controls">
+															<button class="qty-btn minus" type="button">
+																<i class="fas fa-minus"></i>
+															</button>
+															<input type="text" class="qty-field" value="0" 
+																   data-pid="<?php echo $id;?>" 
+																   data-var="<?php echo $v['variant_name']; ?>" 
+																   data-type="mealplan"
+																   data-calories="<?php echo $v['variant_calories']; ?>"
+																   data-price="<?php echo str_replace(',', '', $v['variant_price']); ?>"
+																   data-total-meals="<?php echo $totalMeals; ?>"
+																   data-meals-per-day="<?php echo $mealsPerDay; ?>"
+																   data-breakfast-count="<?php echo $breakfastCount; ?>"
+																   data-lunch-count="<?php echo $lunchCount; ?>"
+																   data-dinner-count="<?php echo $dinnerCount; ?>">
+															<button class="qty-btn plus" type="button">
+																<i class="fas fa-plus"></i>
+															</button>
+														</div>
 													</div>
 												</div>
 												
@@ -128,8 +147,8 @@ get_header();
 														</div>
 													</div>
 													
-													<div class="meal-pricing-controls">
-														<div class="price-section hide-mobile">
+													<div class="meal-pricing-controls hide-mobile">
+														<div class="price-section">
 															<div class="total-price">₱<?php echo number_format($cleanPrice, 0); ?></div>
 															<div class="price-subtitle">for <?php echo $totalMeals; ?> meals</div>
 														</div>
