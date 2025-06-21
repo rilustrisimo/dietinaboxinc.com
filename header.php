@@ -50,7 +50,7 @@
 			<div class="container">
 				<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<?php if(wp_is_mobile() && get_the_ID() == 22670): ?>
-						<span class="text-logo">DIET IN A BOX</span>
+						<span class="text-logo"><h1>DIET IN A BOX</h1></span>
 					<?php elseif(is_front_page()): ?>
 						<img class="logo" src="<?php echo get_template_directory_uri() ?>/dist/images/logo-white.png">
 					<?php else: ?>
