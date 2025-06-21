@@ -17,7 +17,7 @@ get_header();
 		<div class="container shop-page meal-plans-modern" id="meal-plans-development">
 			<!-- Page Header -->
 			<div class="page-header mb-5">
-				<h1 class="page-title"><?php strtoupper(the_title()); ?></h1>
+				<h1 class="page-title"><?php echo strtoupper(get_the_title()); ?></h1>
 				<p class="page-subtitle">Diet in a Box has 5 meal plans: Calorie Counted, Keto, Lean Machine, Vegan, and Pescatarian. We deliver fresh meals daily, Monday to Friday. Choose your plan below and let us handle the rest!</p>
 			</div>
 			
@@ -88,7 +88,7 @@ get_header();
 												
 												<div class="meal-details-section">
 													<div class="meal-header">
-														<h3 class="meal-name"><?php echo $v['variant_name']; ?></h3>
+														<h3 class="meal-name"><?php echo strtoupper($v['variant_name']); ?></h3>
 														<p class="meal-description"><?php echo $v['variant_description']; ?></p>
 														<div class="meal-meta">
 															<span class="calories-badge"><?php echo $v['variant_calories']; ?> Calories</span>
