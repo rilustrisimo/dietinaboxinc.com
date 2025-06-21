@@ -989,10 +989,16 @@ var MealPlansManager = {
                 }
                 
                 if(type == "mealplan"){
-                    var mealsPerPlan = 15;
+                    // Get dynamic meal counts from data attributes
+                    var mealsPerPlan = parseInt(ci.attr('data-total-meals')) || 15;
+                    var mealsPerDay = parseInt(ci.attr('data-meals-per-day')) || 3;
+                    var breakfastCount = parseInt(ci.attr('data-breakfast-count')) || 0;
+                    var lunchCount = parseInt(ci.attr('data-lunch-count')) || 0;
+                    var dinnerCount = parseInt(ci.attr('data-dinner-count')) || 0;
+                    
                     var planMeals = itemQty * mealsPerPlan;
                     totalMeals += planMeals;
-                    var perMealPrice = Math.round((itemPrice / 15) * 100) / 100; // Proper decimal rounding
+                    var perMealPrice = Math.round((itemPrice / mealsPerPlan) * 100) / 100; // Use dynamic meal count
                     
                     content += "<div class='cart__item cart__item--mealplan'>";
                     content += "<div class='cart-item-header'>";
@@ -1001,13 +1007,22 @@ var MealPlansManager = {
                     content += "</div>";
                     content += "<div class='cart-item-details'>";
                     if(calories) {
-                        content += "<div class='cart-item-calories'>" + calories + " calories • 15 Meals Total for 5 days worth of Delivery - Monday to Friday</div>";
+                        content += "<div class='cart-item-calories'>" + calories + " calories • " + mealsPerPlan + " Meals Total for 5 days worth of Delivery - Monday to Friday</div>";
                     }
                     content += "</div>";
                     content += "<div class='cart-meal-breakdown'>";
-                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Breakfast</small></div>";
-                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Lunch</small></div>";
-                    content += "<div class='breakdown-item'><span>" + (5 * itemQty) + "</span><small>Dinner</small></div>";
+                    
+                    // Dynamic breakdown based on actual meal types
+                    if(breakfastCount > 0) {
+                        content += "<div class='breakdown-item'><span>" + (breakfastCount * 5 * itemQty) + "</span><small>Breakfast</small></div>";
+                    }
+                    if(lunchCount > 0) {
+                        content += "<div class='breakdown-item'><span>" + (lunchCount * 5 * itemQty) + "</span><small>Lunch</small></div>";
+                    }
+                    if(dinnerCount > 0) {
+                        content += "<div class='breakdown-item'><span>" + (dinnerCount * 5 * itemQty) + "</span><small>Dinner</small></div>";
+                    }
+                    
                     content += "</div>";
                     content += "<div class='cart-item-summary'>";
                     content += "Total: " + planMeals + " meals • <span class='per-meal-price'>₱" + Math.round(perMealPrice) + " per meal</span>";

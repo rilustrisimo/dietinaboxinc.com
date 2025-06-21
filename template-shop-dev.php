@@ -18,7 +18,7 @@ get_header();
 			<!-- Page Header -->
 			<div class="page-header mb-5">
 				<h1 class="page-title"><?php the_title(); ?></h1>
-				<p class="page-subtitle">Each plan includes 15 meals total - 3 meals per day for 5 days</p>
+				<p class="page-subtitle">Choose your meal plan - delivered fresh daily for 5 consecutive days</p>
 			</div>
 			
 			<div class="row">
@@ -46,7 +46,29 @@ get_header();
 									<?php foreach($fields['variants'] as $index => $v): 
 										// Remove commas and convert to float for proper calculation
 										$cleanPrice = (float) str_replace(',', '', $v['variant_price']);
-										$perMealPrice = round($cleanPrice / 15, 2);
+										
+										// Dynamic meal calculation based on variant description
+										$description = strtolower($v['variant_description']);
+										
+										// Count occurrences of each meal type (case-insensitive)
+										$breakfastCount = (preg_match('/\bbreakfast\b/', $description)) ? 1 : 0;
+										$lunchCount = (preg_match('/\blunch\b/', $description)) ? 1 : 0;
+										$dinnerCount = (preg_match('/\bdinner\b/', $description)) ? 1 : 0;
+										
+										// Calculate meals per day and total meals
+										$mealsPerDay = $breakfastCount + $lunchCount + $dinnerCount;
+										$totalMeals = $mealsPerDay * 5; // 5 days
+										
+										// Default to 15 if no meals detected (fallback)
+										if ($totalMeals == 0) {
+											$totalMeals = 15;
+											$mealsPerDay = 3;
+											$breakfastCount = 1;
+											$lunchCount = 1;
+											$dinnerCount = 1;
+										}
+										
+										$perMealPrice = round($cleanPrice / $totalMeals, 2);
 									?>
 										<div class="products__variants__item meal-plan-card" data-plan-index="<?php echo $productIndex . '-' . ($index + 1); ?>">
 											<div class="selection-badge">
@@ -63,29 +85,37 @@ get_header();
 														<h3 class="meal-name"><?php echo $v['variant_name']; ?></h3>
 														<div class="meal-meta">
 															<span class="calories-badge"><?php echo $v['variant_calories']; ?> Calories</span>
-															<span class="meals-total-badge">15 MEALS TOTAL</span>
+															<span class="meals-total-badge"><?php echo $totalMeals; ?> MEALS TOTAL</span>
 														</div>
 														<p class="meal-description"><?php echo $v['variant_description']; ?></p>
-														<p class="meal-delivery-info">15 Meals Total for 5 days worth of Delivery - Monday to Friday</p>
+														<p class="meal-delivery-info"><?php echo $totalMeals; ?> Meals Total for 5 days worth of Delivery - Monday to Friday</p>
 													</div>
 													
 													<div class="meal-breakdown">
 														<div class="breakdown-grid">
+															<?php if ($breakfastCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number">5</div>
+																<div class="breakdown-number"><?php echo $breakfastCount * 5; ?></div>
 																<div class="breakdown-label">Breakfast</div>
 																<div class="breakdown-days">Mon-Fri</div>
 															</div>
+															<?php endif; ?>
+															
+															<?php if ($lunchCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number">5</div>
+																<div class="breakdown-number"><?php echo $lunchCount * 5; ?></div>
 																<div class="breakdown-label">Lunch</div>
 																<div class="breakdown-days">Mon-Fri</div>
 															</div>
+															<?php endif; ?>
+															
+															<?php if ($dinnerCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number">5</div>
+																<div class="breakdown-number"><?php echo $dinnerCount * 5; ?></div>
 																<div class="breakdown-label">Dinner</div>
 																<div class="breakdown-days">Mon-Fri</div>
 															</div>
+															<?php endif; ?>
 														</div>
 														<div class="per-meal-info">
 															<span class="per-meal-price">₱<?php echo number_format($perMealPrice, 0); ?> per meal</span> • Daily delivery
@@ -95,7 +125,7 @@ get_header();
 													<div class="meal-pricing-controls">
 														<div class="price-section">
 															<div class="total-price">₱<?php echo number_format($cleanPrice, 0); ?></div>
-															<div class="price-subtitle">for 15 meals</div>
+															<div class="price-subtitle">for <?php echo $totalMeals; ?> meals</div>
 														</div>
 														
 														<div class="quantity-controls">
@@ -107,7 +137,12 @@ get_header();
 																   data-var="<?php echo $v['variant_name']; ?>" 
 																   data-type="mealplan"
 																   data-calories="<?php echo $v['variant_calories']; ?>"
-																   data-price="<?php echo str_replace(',', '', $v['variant_price']); ?>">
+																   data-price="<?php echo str_replace(',', '', $v['variant_price']); ?>"
+																   data-total-meals="<?php echo $totalMeals; ?>"
+																   data-meals-per-day="<?php echo $mealsPerDay; ?>"
+																   data-breakfast-count="<?php echo $breakfastCount; ?>"
+																   data-lunch-count="<?php echo $lunchCount; ?>"
+																   data-dinner-count="<?php echo $dinnerCount; ?>">
 															<button class="qty-btn plus" type="button">
 																<i class="fas fa-plus"></i>
 															</button>
