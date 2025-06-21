@@ -89,11 +89,11 @@ get_header();
 												<div class="meal-details-section">
 													<div class="meal-header">
 														<h3 class="meal-name"><?php echo $v['variant_name']; ?></h3>
+														<p class="meal-description"><?php echo $v['variant_description']; ?></p>
 														<div class="meal-meta">
 															<span class="calories-badge"><?php echo $v['variant_calories']; ?> Calories</span>
 															<span class="meals-total-badge"><?php echo $totalMeals; ?> MEALS TOTAL</span>
 														</div>
-														<p class="meal-description"><?php echo $v['variant_description']; ?></p>
 														<p class="meal-delivery-info"><?php echo $totalMeals; ?> Meals Total for 5 days worth of Delivery - Monday to Friday</p>
 													</div>
 													
