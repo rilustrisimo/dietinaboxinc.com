@@ -17,8 +17,8 @@ get_header();
 		<div class="container shop-page meal-plans-modern" id="meal-plans-development">
 			<!-- Page Header -->
 			<div class="page-header mb-5">
-				<h1 class="page-title"><?php the_title(); ?></h1>
-				<p class="page-subtitle">Choose your meal plan - delivered fresh daily for 5 consecutive days</p>
+				<h1 class="page-title"><?php strtoupper(the_title()); ?></h1>
+				<p class="page-subtitle">Diet in a Box has 5 meal plans: Calorie Counted, Keto, Lean Machine, Vegan, and Pescatarian. We deliver fresh meals daily, Monday to Friday. Choose your plan below and let us handle the rest!</p>
 			</div>
 			
 			<div class="row">
