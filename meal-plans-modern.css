@@ -11,6 +11,14 @@ body.meal-plans-template #meal-plans-development *,
     box-sizing: border-box;
 }
 
+body.meal-plans-template #meal-plans-development .cart-item-breakdown{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
 body.meal-plans-template #meal-plans-development .container,
 #meal-plans-development .container {
     width: 100%;
@@ -1730,7 +1738,7 @@ body.meal-plans-template .btn-proceed:disabled,
         margin: 0;
         z-index: 1000;
         box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
-        transform: translateY(calc(100% - 100px)); /* Show header and totals */
+        transform: translateY(calc(100% - 160px)); /* Show header, totals, and button */
         transition: transform 0.3s ease, max-height 0.3s ease, border-radius 0.3s ease;
         display: flex;
         flex-direction: column;
@@ -1829,48 +1837,20 @@ body.meal-plans-template .btn-proceed:disabled,
         display: block;
     }
     
-    /* Mobile button section */
+    /* Mobile button section - Always visible on mobile */
     body.meal-plans-template .order-summary__button,
     #meal-plans-development .order-summary__button {
         padding: 1rem 1.5rem;
         border-top: 1px solid #e5e7eb;
         background: white;
         flex-shrink: 0;
-        display: none; /* Hidden by default */
+        display: block; /* Always visible on mobile */
     }
     
-    body.meal-plans-template .modern-order-summary.expanded .order-summary__button,
-    #meal-plans-development .modern-order-summary.expanded .order-summary__button {
-        display: block;
-    }
-    
-    /* Mobile footer button - always visible */
+    /* Mobile footer button - hidden since main button is always visible */
     body.meal-plans-template .order-summary-footer,
     #meal-plans-development .order-summary-footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 1rem 1.5rem;
-        border-top: 1px solid #e5e7eb;
-        z-index: 999;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    body.meal-plans-template .order-summary-footer .btn-proceed,
-    #meal-plans-development .order-summary-footer .btn-proceed {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    
-    /* Hide footer when order summary is expanded */
-    body.order-summary-fullscreen .order-summary-footer {
-        display: none;
+        display: none; /* Hide mobile footer since button is always visible in order summary */
     }
     
     /* Add bottom padding to content to avoid footer overlap */
