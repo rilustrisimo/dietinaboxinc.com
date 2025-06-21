@@ -101,7 +101,7 @@ get_header();
 														<div class="breakdown-grid">
 															<?php if ($breakfastCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number"><?php echo $breakfastCount * 5; ?> Meals of</div>
+																<div class="breakdown-number"><?php echo $breakfastCount * 5; ?> <span>Meals of</span></div>
 																<div class="breakdown-label">Breakfast</div>
 																<div class="breakdown-days">from Mon-Fri</div>
 															</div>
@@ -109,7 +109,7 @@ get_header();
 															
 															<?php if ($lunchCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number"><?php echo $lunchCount * 5; ?> Meals of</div>
+																<div class="breakdown-number"><?php echo $lunchCount * 5; ?> <span>Meals of</span></div>
 																<div class="breakdown-label">Lunch</div>
 																<div class="breakdown-days">from Mon-Fri</div>
 															</div>
@@ -117,7 +117,7 @@ get_header();
 															
 															<?php if ($dinnerCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number"><?php echo $dinnerCount * 5; ?> Meals of</div>
+																<div class="breakdown-number"><?php echo $dinnerCount * 5; ?> <span>Meals of</span></div>
 																<div class="breakdown-label">Dinner</div>
 																<div class="breakdown-days">from Mon-Fri</div>
 															</div>
