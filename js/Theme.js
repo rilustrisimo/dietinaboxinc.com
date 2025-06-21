@@ -1181,54 +1181,75 @@ var MealPlansManager = {
         var header = $('#meal-plans-development .order-summary-header');
         var body = $('body');
         
+        // Add debug console log
+        console.log('Initializing mobile order summary...');
+        console.log('Order summary element found:', orderSummary.length);
+        console.log('Header element found:', header.length);
+        
         // Toggle order summary on mobile/tablet
-        header.click(function() {
+        header.off('click.mobileSummary').on('click.mobileSummary', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Header clicked, window width:', $(window).width());
+            
             if ($(window).width() <= 991) {
-                orderSummary.toggleClass('expanded');
+                var isExpanded = orderSummary.hasClass('expanded');
+                console.log('Current expanded state:', isExpanded);
                 
-                // Prevent body scroll when full screen on mobile
-                if ($(window).width() <= 767) {
-                    if (orderSummary.hasClass('expanded')) {
-                        body.addClass('order-summary-fullscreen');
-                        // Increase z-index for full screen
-                        orderSummary.css('z-index', '9999');
-                    } else {
+                if (isExpanded) {
+                    // Collapse
+                    orderSummary.removeClass('expanded');
+                    if ($(window).width() <= 767) {
                         body.removeClass('order-summary-fullscreen');
-                        // Reset z-index
-                        orderSummary.css('z-index', '1000');
                     }
+                    console.log('Collapsed order summary');
+                } else {
+                    // Expand
+                    orderSummary.addClass('expanded');
+                    if ($(window).width() <= 767) {
+                        body.addClass('order-summary-fullscreen');
+                    }
+                    console.log('Expanded order summary');
                 }
             }
         });
         
         // Handle window resize
-        $(window).resize(function() {
+        $(window).off('resize.mobileSummary').on('resize.mobileSummary', function() {
             if ($(window).width() > 991) {
                 orderSummary.removeClass('expanded');
                 body.removeClass('order-summary-fullscreen');
-                orderSummary.css('z-index', '1000');
+                console.log('Window resized - collapsed order summary');
             }
         });
         
         // Add escape key functionality for mobile full screen
-        $(document).keyup(function(e) {
-            if (e.key === "Escape" && orderSummary.hasClass('expanded') && $(window).width() <= 767) {
+        $(document).off('keyup.mobileSummary').on('keyup.mobileSummary', function(e) {
+            if (e.key === "Escape" && orderSummary.hasClass('expanded') && $(window).width() <= 991) {
                 orderSummary.removeClass('expanded');
-                body.removeClass('order-summary-fullscreen');
-                orderSummary.css('z-index', '1000');
+                if ($(window).width() <= 767) {
+                    body.removeClass('order-summary-fullscreen');
+                }
+                console.log('Escape pressed - collapsed order summary');
             }
         });
         
-        // Optional: Close on backdrop click (outside content area)
-        orderSummary.click(function(e) {
+        // Close on backdrop click (outside content area) for mobile
+        orderSummary.off('click.backdrop').on('click.backdrop', function(e) {
             if ($(window).width() <= 767 && orderSummary.hasClass('expanded')) {
                 // Only close if clicking the backdrop (not content)
-                if (e.target === this) {
+                if (e.target === this || $(e.target).hasClass('order-summary-content')) {
                     orderSummary.removeClass('expanded');
                     body.removeClass('order-summary-fullscreen');
-                    orderSummary.css('z-index', '1000');
+                    console.log('Backdrop clicked - collapsed order summary');
                 }
             }
+        });
+        
+        // Prevent clicks on content from bubbling up
+        $('#meal-plans-development .order-summary-content, #meal-plans-development .order-summary__items, #meal-plans-development .delivery-info').off('click.preventBubble').on('click.preventBubble', function(e) {
+            e.stopPropagation();
         });
     }
 };
