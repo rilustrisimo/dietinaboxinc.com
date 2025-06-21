@@ -1073,8 +1073,8 @@ body.meal-plans-template .btn-proceed:disabled,
     
     body.meal-plans-template .meal-image,
     #meal-plans-development .meal-image {
-        width: 5rem;
-        height: 5rem;
+        width: 6rem;
+        height: 6rem;
     }
     
     body.meal-plans-template .breakdown-grid,
@@ -1480,8 +1480,8 @@ body.meal-plans-template .btn-proceed:disabled,
     
     body.meal-plans-template .meal-image,
     #meal-plans-development .meal-image {
-        width: 5rem;
-        height: 5rem;
+        width: 6rem;
+        height: 6rem;
     }
     
     body.meal-plans-template .meal-breakdown,
