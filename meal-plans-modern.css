@@ -1216,7 +1216,7 @@ body.meal-plans-template .btn-proceed:disabled,
     }
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
-    #meal-plans-development .modern-order-summary.expanded .order-summary-content {
+    #meal_plans-development .modern-order-summary.expanded .order-summary-content {
         max-height: calc(100vh - 200px); /* Full screen content area */
         overflow-y: auto;
     }
@@ -1529,7 +1529,7 @@ body.meal-plans-template .btn-proceed:disabled,
         }
         
         body.meal-plans-template .modern-order-summary.expanded,
-        #meal_plans-development .modern-order-summary.expanded {
+        #meal-plans-development .modern-order-summary.expanded {
             transform: translateY(0);
             top: 0;
             bottom: 0;
@@ -1611,7 +1611,7 @@ body.meal-plans-template .btn-proceed:disabled,
         }
         
         body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
-        #meal_plans-development .modern-order-summary.expanded .order-summary-content {
+        #meal-plans-development .modern-order-summary.expanded .order-summary-content {
             display: block;
         }
         
@@ -1708,5 +1708,13 @@ body.meal-plans-template .btn-proceed:disabled,
         body.meal-plans-template .order-summary__button,
         #meal-plans-development .order-summary__button {
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    }
+
+    /* Hide mobile footer on desktop and large screens */
+    @media (min-width: 992px) {
+        body.meal-plans-template .order-summary-footer,
+        #meal-plans-development .order-summary-footer {
+            display: none !important;
         }
     }

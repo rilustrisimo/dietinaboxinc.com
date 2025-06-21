@@ -1185,6 +1185,14 @@ var MealPlansManager = {
         console.log('Initializing mobile order summary...');
         console.log('Order summary element found:', orderSummary.length);
         console.log('Header element found:', header.length);
+        console.log('Current window width:', $(window).width());
+        
+        // Ensure the order summary has proper initial state on mobile
+        if ($(window).width() <= 767) {
+            orderSummary.removeClass('expanded');
+            body.removeClass('order-summary-fullscreen');
+            console.log('Mobile detected - setting initial collapsed state');
+        }
         
         // Toggle order summary on mobile/tablet
         header.off('click.mobileSummary').on('click.mobileSummary', function(e) {
@@ -1196,6 +1204,7 @@ var MealPlansManager = {
             if ($(window).width() <= 991) {
                 var isExpanded = orderSummary.hasClass('expanded');
                 console.log('Current expanded state:', isExpanded);
+                console.log('Order summary classes before toggle:', orderSummary.attr('class'));
                 
                 if (isExpanded) {
                     // Collapse
@@ -1212,11 +1221,15 @@ var MealPlansManager = {
                     }
                     console.log('Expanded order summary');
                 }
+                
+                console.log('Order summary classes after toggle:', orderSummary.attr('class'));
+                console.log('Body classes after toggle:', body.attr('class'));
             }
         });
         
         // Handle window resize
         $(window).off('resize.mobileSummary').on('resize.mobileSummary', function() {
+            console.log('Window resized to:', $(window).width());
             if ($(window).width() > 991) {
                 orderSummary.removeClass('expanded');
                 body.removeClass('order-summary-fullscreen');
@@ -1251,6 +1264,14 @@ var MealPlansManager = {
         $('#meal-plans-development .order-summary-content, #meal-plans-development .order-summary__items, #meal-plans-development .delivery-info').off('click.preventBubble').on('click.preventBubble', function(e) {
             e.stopPropagation();
         });
+        
+        // Force a style refresh to ensure CSS is applied correctly
+        setTimeout(function() {
+            if ($(window).width() <= 767) {
+                orderSummary.css('display', 'flex');
+                console.log('Applied mobile display styles');
+            }
+        }, 100);
     }
 };
 
