@@ -116,29 +116,54 @@ get_header();
 														<p class="meal-delivery-info"><?php echo $totalMeals; ?> Meals Total for 5 days worth of Delivery - Monday to Friday</p>
 													</div>
 													
-													<div class="meal-breakdown">
+													<div class="meal-breakdown hide-mobile">
 														<div class="breakdown-grid">
 															<?php if ($breakfastCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number"><i class="fa-regular fa-circle-check"></i> <?php echo $breakfastCount * 5; ?> <span>Meals of</span></div>
+																<div class="breakdown-number"><i class="fa-regular fa-circle-check"></i> <?php echo $breakfastCount * 5; ?></div>
 																<div class="breakdown-label">Breakfast</div>
-																<div class="breakdown-days">from Mon-Fri</div>
+																<div class="breakdown-days">Mon-Fri</div>
 															</div>
 															<?php endif; ?>
 															
 															<?php if ($lunchCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number"><i class="fa-regular fa-circle-check"></i> <?php echo $lunchCount * 5; ?> <span>Meals of</span></div>
+																<div class="breakdown-number"><i class="fa-regular fa-circle-check"></i> <?php echo $lunchCount * 5; ?></div>
 																<div class="breakdown-label">Lunch</div>
-																<div class="breakdown-days">from Mon-Fri</div>
+																<div class="breakdown-days">Mon-Fri</div>
 															</div>
 															<?php endif; ?>
 															
 															<?php if ($dinnerCount > 0): ?>
 															<div class="breakdown-item">
-																<div class="breakdown-number"><i class="fa-regular fa-circle-check"></i> <?php echo $dinnerCount * 5; ?> <span>Meals of</span></div>
+																<div class="breakdown-number"><i class="fa-regular fa-circle-check"></i> <?php echo $dinnerCount * 5; ?></div>
 																<div class="breakdown-label">Dinner</div>
-																<div class="breakdown-days">from Mon-Fri</div>
+																<div class="breakdown-days">Mon-Fri</div>
+															</div>
+															<?php endif; ?>
+														</div>
+														<div class="per-meal-info">
+															<span class="per-meal-price">₱<?php echo number_format($perMealPrice, 0); ?> per meal</span> • Daily delivery
+														</div>
+													</div>
+
+													<div class="meal-breakdown show-mobile">
+														<div class="breakdown-grid">
+															<?php if ($breakfastCount > 0): ?>
+															<div class="breakdown-item">
+																<div class="breakdown-label"><i class="fa-regular fa-circle-check"></i> <?php echo $breakfastCount * 5; ?> Meals of Breakfast from Mon-Fri</div>
+															</div>
+															<?php endif; ?>
+															
+															<?php if ($lunchCount > 0): ?>
+															<div class="breakdown-item">
+																<div class="breakdown-label"><i class="fa-regular fa-circle-check"></i> <?php echo $lunchCount * 5; ?> Meals of Lunch from Mon-Fri</div>
+															</div>
+															<?php endif; ?>
+															
+															<?php if ($dinnerCount > 0): ?>
+															<div class="breakdown-item">
+																<div class="breakdown-label"><i class="fa-regular fa-circle-check"></i> <?php echo $dinnerCount * 5; ?> Meals of Dinner from Mon-Fri</div>
 															</div>
 															<?php endif; ?>
 														</div>
