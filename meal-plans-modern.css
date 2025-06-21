@@ -1600,6 +1600,10 @@ body.meal-plans-template .btn-proceed:disabled,
         font-weight: 400;
     }
 
+    body.meal-plans-template .addon-pricing-controls, #meal-plans-development .addon-pricing-controls {
+        flex-wrap: wrap;
+    }
+
     body.meal-plans-template .breakdown-number span,
     #meal-plans-development .breakdown-number span{
         font-size: 0.75rem;
