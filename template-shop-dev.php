@@ -78,7 +78,7 @@ get_header();
 											<div class="meal-card-content">
 												<div class="meal-image-section">
 													<div class="meal-image" style="background-image: url(<?php echo $v['variant_image']['url']; ?>);"></div>
-													<div class="meal-pricing-controls show-mobile">
+													<div class="meal-pricing-controls show-mobile" style="margin: 0 0 0 10px;">
 														<div class="price-section">
 															<div class="total-price">₱<?php echo number_format($cleanPrice, 0); ?></div>
 															<div class="price-subtitle">for <?php echo $totalMeals; ?> meals</div>
