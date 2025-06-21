@@ -1179,11 +1179,25 @@ var MealPlansManager = {
     initMobileOrderSummary: function($) {
         var orderSummary = $('#meal-plans-development .modern-order-summary');
         var header = $('#meal-plans-development .order-summary-header');
+        var body = $('body');
         
         // Toggle order summary on mobile/tablet
         header.click(function() {
             if ($(window).width() <= 991) {
                 orderSummary.toggleClass('expanded');
+                
+                // Prevent body scroll when full screen on mobile
+                if ($(window).width() <= 767) {
+                    if (orderSummary.hasClass('expanded')) {
+                        body.addClass('order-summary-fullscreen');
+                        // Increase z-index for full screen
+                        orderSummary.css('z-index', '9999');
+                    } else {
+                        body.removeClass('order-summary-fullscreen');
+                        // Reset z-index
+                        orderSummary.css('z-index', '1000');
+                    }
+                }
             }
         });
         
@@ -1191,6 +1205,29 @@ var MealPlansManager = {
         $(window).resize(function() {
             if ($(window).width() > 991) {
                 orderSummary.removeClass('expanded');
+                body.removeClass('order-summary-fullscreen');
+                orderSummary.css('z-index', '1000');
+            }
+        });
+        
+        // Add escape key functionality for mobile full screen
+        $(document).keyup(function(e) {
+            if (e.key === "Escape" && orderSummary.hasClass('expanded') && $(window).width() <= 767) {
+                orderSummary.removeClass('expanded');
+                body.removeClass('order-summary-fullscreen');
+                orderSummary.css('z-index', '1000');
+            }
+        });
+        
+        // Optional: Close on backdrop click (outside content area)
+        orderSummary.click(function(e) {
+            if ($(window).width() <= 767 && orderSummary.hasClass('expanded')) {
+                // Only close if clicking the backdrop (not content)
+                if (e.target === this) {
+                    orderSummary.removeClass('expanded');
+                    body.removeClass('order-summary-fullscreen');
+                    orderSummary.css('z-index', '1000');
+                }
             }
         });
     }

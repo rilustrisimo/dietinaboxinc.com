@@ -560,6 +560,14 @@ body.meal-plans-template .modern-order-summary,
     margin-top: 0; /* Align with products naturally */
 }
 
+/* Prevent body scroll when mobile order summary is full screen */
+body.order-summary-fullscreen {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
 /* Force Bootstrap Grid Layout - TEMPLATE SPECIFIC */
 body.meal-plans-template #meal-plans-development .row,
 #meal-plans-development .row {
@@ -711,6 +719,34 @@ body.meal-plans-template .empty-cart-submessage,
     margin: 0;
 }
 
+/* Mobile empty state styling */
+body.meal-plans-template .empty-cart-state,
+#meal-plans-development .empty-cart-state {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+body.meal-plans-template .empty-cart-icon,
+#meal-plans-development .empty-cart-icon {
+    font-size: 2rem;
+    color: #d1d5db;
+    margin-bottom: 0.75rem;
+}
+
+body.meal-plans-template .empty-cart-message,
+#meal-plans-development .empty-cart-message {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.25rem;
+}
+
+body.meal-plans-template .empty-cart-submessage,
+#meal-plans-development .empty-cart-submessage {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
 /* Cart Items - TEMPLATE SPECIFIC */
 body.meal-plans-template .cart__item,
 #meal-plans-development .cart__item {
@@ -806,23 +842,6 @@ body.meal-plans-template .cart__item--addon,
     padding: 0.75rem;
     background-color: #f9fafb;
     border-radius: 0.5rem;
-}
-
-body.meal-plans-template .cart-addon-qty,
-#meal-plans-development .cart-addon-qty {
-    font-weight: 600;
-}
-
-body.meal-plans-template .cart-addon-name,
-#meal-plans-development .cart-addon-name {
-    flex: 1;
-    margin-left: 0.5rem;
-}
-
-body.meal-plans-template .cart-addon-price,
-#meal-plans-development .cart-addon-price {
-    font-weight: 600;
-    color: #14b8a6;
 }
 
 /* Order Totals - TEMPLATE SPECIFIC - Enhanced styling */
@@ -1073,9 +1092,20 @@ body.meal-plans-template .btn-proceed:disabled,
         z-index: 1000;
         box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
         transform: translateY(calc(100% - 140px)); /* Adjusted for no internal button */
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, max-height 0.3s ease, border-radius 0.3s ease;
         display: flex;
         flex-direction: column;
+    }
+    
+    /* Full screen mode for mobile order summary */
+    body.meal-plans-template .modern-order-summary.expanded,
+    #meal-plans-development .modern-order-summary.expanded {
+        transform: translateY(0);
+        top: 0;
+        bottom: 0;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
     }
     
     /* Tablet footer button */
@@ -1117,6 +1147,13 @@ body.meal-plans-template .btn-proceed:disabled,
         background: white;
         border-radius: 1rem 1rem 0 0;
         flex-shrink: 0;
+    }
+    
+    /* Full screen mode for tablet order summary header */
+    body.meal-plans-template .modern-order-summary.expanded .order-summary-header,
+    #meal-plans-development .modern-order-summary.expanded .order-summary-header {
+        border-radius: 0;
+        padding: 1.5rem 1.5rem 1rem 1.5rem;
     }
     
     /* Tablet totals section */
@@ -1180,7 +1217,7 @@ body.meal-plans-template .btn-proceed:disabled,
     
     body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
     #meal-plans-development .modern-order-summary.expanded .order-summary-content {
-        max-height: calc(50vh - 140px);
+        max-height: calc(100vh - 200px); /* Full screen content area */
         overflow-y: auto;
     }
     
@@ -1242,7 +1279,7 @@ body.meal-plans-template .btn-proceed:disabled,
     }
     
     body.meal-plans-template .meal-card-content,
-    #meal-plans-development .meal-card-content {
+    #meal_plans-development .meal-card-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -1354,394 +1391,126 @@ body.meal-plans-template .btn-proceed:disabled,
     }
     
     /* Mobile footer button */
-    body.meal-plans-template .order-summary-footer,
-    #meal-plans-development .order-summary-footer {
-        padding: 1rem;
-    }
-    
-    body.meal-plans-template .modern-order-summary.expanded,
-    #meal-plans-development .modern-order-summary.expanded {
-        transform: translateY(0);
-    }
-    
-    body.meal-plans-template .order-summary-header,
-    #meal-plans-development .order-summary-header {
-        cursor: pointer;
-        position: relative;
-        padding: 1rem 1rem 0.75rem 1rem;
-        margin: 0;
-        background: white;
-        border-radius: 1rem 1rem 0 0;
-        border-bottom: none;
-        flex-shrink: 0; /* Prevent header from shrinking */
-    }
-    
-    /* Enhanced collapse indicator - chevron style for mobile */
-    body.meal-plans-template .order-summary-header::after,
-    #meal-plans-development .order-summary-header::after {
-        content: '';
-        position: absolute;
-        right: 1rem;
-        top: 1.25rem;
-        width: 6px;
-        height: 6px;
-        border-top: 2px solid #6b7280;
-        border-right: 2px solid #6b7280;
-        transform: rotate(-45deg);
-        transition: transform 0.3s ease;
-    }
-    
-    /* Add visual hint for collapsible on mobile */
-    body.meal-plans-template .order-summary-header::before,
-    #meal-plans-development .order-summary-header::before {
-        content: 'Tap to view items';
-        position: absolute;
-        right: 2.5rem;
-        top: 1.25rem;
-        font-size: 0.7rem;
-        color: #9ca3af;
-        opacity: 1;
-        transition: opacity 0.3s ease;
-    }
-    
-    body.meal-plans-template .modern-order-summary.expanded .order-summary-header::after,
-    #meal-plans-development .modern-order-summary.expanded .order-summary-header::after {
-        transform: rotate(135deg);
-    }
-    
-    body.meal-plans-template .modern-order-summary.expanded .order-summary-header::before,
-    #meal-plans-development .modern-order-summary.expanded .order-summary-header::before {
-        content: 'Tap to hide';
-    }
-    
-    /* Totals section - always visible in mobile */
-    body.meal-plans-template .order-totals,
-    #meal-plans-development .order-totals {
-        padding: 0.75rem 1rem 1rem 1rem;
-        margin: 0;
-        border-top: none;
-        background: white;
-        flex-shrink: 0; /* Prevent totals from shrinking */
-        border-bottom: 1px solid #e5e7eb;
-    }
-    
-    /* Content area that collapses - only the items */
-    body.meal-plans-template .order-summary-content,
-    #meal-plans-development .order-summary-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        padding: 0 1rem;
-        margin: 0;
-        flex: 1; /* Allow content to grow/shrink */
-        min-height: 0; /* Ensure proper flexbox behavior */
-    }
-    
-    body.meal-plans-template .modern-order-summary.expanded .order-summary-content,
-    #meal-plans-development .modern-order-summary.expanded .order-summary-content {
-        max-height: calc(50vh - 120px);
-        overflow-y: auto;
-        padding: 1rem;
-    }
-    
-    /* Mobile footer button styling */
     body.meal-plans-template .order-summary-footer .btn-proceed,
     #meal-plans-development .order-summary-footer .btn-proceed {
         width: 100%;
         padding: 0.75rem 1rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
     
-    /* Mobile trust indicators in footer */
-    body.meal-plans-template .order-summary-footer .trust-indicators,
-    #meal-plans-development .order-summary-footer .trust-indicators {
-        padding: 0.5rem 0 0 0;
-        text-align: center;
-        font-size: 0.75rem;
-        color: #6b7280;
+    /* Mobile compact cart items */
+    body.meal-plans-template .cart__item,
+    #meal-plans-development .cart__item {
+        margin-bottom: 0.75rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f3f4f6;
     }
     
-    /* Mobile button styling */
-    body.meal-plans-template .btn-proceed,
-    #meal-plans-development .btn-proceed {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
+    body.meal-plans-template .cart-item-title,
+    #meal-plans-development .cart-item-title {
+        font-size: 0.85rem;
         font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-    
-    /* Hide delivery info in mobile to save space */
-    body.meal-plans-template .delivery-info,
-    #meal-plans-development .delivery-info {
-        display: none;
-    }
-    
-    body.meal-plans-template .modern-order-summary.expanded .delivery-info,
-    #meal-plans-development .modern-order-summary.expanded .delivery-info {
-        display: flex;
-        margin-bottom: 0.5rem;
-    }
-    
-    body.meal-plans-template .order-summary__title,
-    #meal-plans-development .order-summary__title {
-        font-size: 1.125rem;
         margin-bottom: 0.25rem;
     }
     
-    body.meal-plans-template .delivery-dates,
-    #meal-plans-development .delivery-dates {
-        font-size: 0.8rem;
+    body.meal-plans-template .cart-item-price,
+    #meal-plans-development .cart-item-price {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #059669;
+    }
+    
+    body.meal-plans-template .cart-item-calories,
+    #meal-plans-development .cart-item-calories {
+        font-size: 0.7rem;
+        color: #6b7280;
+        margin-bottom: 0.5rem;
     }
     
     body.meal-plans-template .cart-meal-breakdown,
     #meal-plans-development .cart-meal-breakdown {
-        grid-template-columns: 1fr;
-        gap: 0.25rem;
-    }
-    
-    body.meal-plans-template .cart-meal-breakdown .breakdown-item,
-    #meal-plans-development .cart-meal-breakdown .breakdown-item {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-        padding: 0.25rem 0;
-        border-bottom: 1px solid #f3f4f6;
-    }
-    
-    body.meal-plans-template .cart-meal-breakdown .breakdown-item:last-child,
-    #meal-plans-development .cart-meal-breakdown .breakdown-item:last-child {
-        border-bottom: none;
-    }
-    
-    body.meal-plans-template .modern-order-summary,
-    #meal-plans-development .modern-order-summary {
-        padding: 1rem;
-        border-radius: 0.75rem;
-        margin-top: 1rem;
-    }
-
-    body.meal-plans-template .order-summary-footer .order-summary__button,
-    #meal-plans-development .order-summary-footer .order-summary__button{
-        margin: 10px 0 0 !important;
-        padding: 0 !important;
-    }
-    
-    body.meal-plans-template .order-summary__title,
-    #meal-plans-development .order-summary__title {
-        font-size: 1.25rem;
-    }
-    
-    body.meal-plans-template .total-price,
-    #meal-plans-development .total-price {
-        font-size: 1.25rem;
-    }
-    
-    body.meal-plans-template .meal-pricing-controls,
-    #meal-plans-development .meal-pricing-controls {
         gap: 0.75rem;
-        flex-direction: column;
-        align-items: stretch;
+        margin-bottom: 0.5rem;
     }
     
-    body.meal-plans-template .price-section,
-    #meal-plans-development .price-section {
+    body.meal-plans-template .breakdown-item,
+    #meal-plans-development .breakdown-item {
         text-align: center;
-        order: 1;
     }
     
-    body.meal-plans-template .quantity-controls,
-    #meal-plans-development .quantity-controls {
-        justify-content: center;
-        order: 2;
-    }
-    
-    /* Addon responsive adjustments - TEMPLATE SPECIFIC */
-    body.meal-plans-template .addon-card,
-    #meal-plans-development .addon-card {
-        padding: 1rem;
-    }
-    
-    body.meal-plans-template .addon-card-content,
-    #meal-plans-development .addon-card-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-    
-    body.meal-plans-template .addon-image-section,
-    #meal-plans-development .addon-image-section {
-        align-self: center;
-    }
-    
-    body.meal-plans-template .addon-image,
-    #meal-plans-development .addon-image {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-    
-    body.meal-plans-template .addon-pricing-controls,
-    #meal-plans-development .addon-pricing-controls {
-        width: 100%;
-        flex-direction: column;
-        gap: 0.75rem;
-        align-items: center;
-    }
-    
-    body.meal-plans-template .addon-name,
-    #meal-plans-development .addon-name {
-        font-size: 1rem;
-    }
-    
-    body.meal-plans-template .page-header,
-    #meal-plans-development .page-header {
-        margin-bottom: 1.5rem;
-    }
-    
-    body.meal-plans-template .meal-plans-modern .page-title,
-    #meal-plans-development .page-title {
-        font-size: 1.75rem;
-    }
-}
-
-/* Desktop order summary - works normally */
-body.meal-plans-template .order-summary-footer,
-#meal-plans-development .order-summary-footer {
-    display: none; /* Hidden on desktop */
-}
-
-/* Mobile/Tablet only modifications */
-@media (max-width: 991px) {
-    /* Show separate footer on mobile/tablet only */
-    body.meal-plans-template .order-summary-footer,
-    #meal-plans-development .order-summary-footer {
+    body.meal-plans-template .breakdown-item span,
+    #meal-plans-development .breakdown-item span {
         display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1001;
-        background: white;
-        border-top: 1px solid #e5e7eb;
-        box-shadow: 0 -5px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Hide button inside order summary on mobile/tablet only */
-    body.meal-plans-template .modern-order-summary .order-summary__button,
-    #meal-plans-development .modern-order-summary .order-summary__button {
-        display: none;
-    }
-}
-
-/* Desktop/Mobile Footer Management - TEMPLATE SPECIFIC */
-/* Desktop - Hide mobile footer, show button inside order summary */
-body.meal-plans-template .order-summary-footer,
-#meal-plans-development .order-summary-footer {
-    display: none;
-}
-
-/* Mobile footer button styling for mobile/tablet */
-@media (max-width: 991px) {
-    /* Show separate footer on mobile/tablet only */
-    body.meal-plans-template .order-summary-footer,
-    #meal-plans-development .order-summary-footer {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 1001;
-        background: white;
-        border-top: 1px solid #e5e7eb;
-        box-shadow: 0 -5px 15px -3px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-    }
-    
-    /* Mobile footer button styling */
-    body.meal-plans-template .order-summary-footer .btn-proceed,
-    #meal-plans-development .order-summary-footer .btn-proceed {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 600;
+        color: #374151;
+    }
+    
+    body.meal-plans-template .breakdown-item small,
+    #meal-plans-development .breakdown-item small {
+        font-size: 0.65rem;
+        color: #6b7280;
         text-transform: uppercase;
         letter-spacing: 0.05em;
     }
     
-    /* Mobile trust indicators in footer */
-    body.meal-plans-template .order-summary-footer .trust-indicators,
-    #meal-plans-development .order-summary-footer .trust-indicators {
-        padding: 0.5rem 0 0 0;
-        text-align: center;
-        font-size: 0.75rem;
+    body.meal-plans-template .cart-item-summary,
+    #meal-plans-development .cart-item-summary {
+        font-size: 0.7rem;
         color: #6b7280;
     }
-}
-
-/* Animation for selection - TEMPLATE SPECIFIC */
-@keyframes selectPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-body.meal-plans-template .meal-plan-card.selected,
-#meal-plans-development .meal-plan-card.selected {
-    animation: selectPulse 0.3s ease-out;
-}
-
-/* Hover effects - TEMPLATE SPECIFIC */
-body.meal-plans-template .qty-btn:hover,
-#meal-plans-development .qty-btn:hover {
-    transform: translateY(-1px);
-}
-
-body.meal-plans-template .btn-proceed:hover,
-#meal-plans-development .btn-proceed:hover {
-    transform: translateY(-1px);
-}
-
-/* Focus styles for accessibility - TEMPLATE SPECIFIC */
-body.meal-plans-template .qty-btn:focus,
-body.meal-plans-template .btn-proceed:focus,
-#meal-plans-development .qty-btn:focus,
-#meal-plans-development .btn-proceed:focus {
-    outline: 2px solid #14b8a6;
-    outline-offset: 2px;
-}
-
-/* Print styles - TEMPLATE SPECIFIC */
-@media print {
-    body.meal-plans-template .meal-plans-modern,
-    #meal-plans-development {
-        background: white !important;
+    
+    body.meal-plans-template .per-meal-price,
+    #meal-plans-development .per-meal-price {
+        color: #059669;
+        font-weight: 600;
     }
     
-    body.meal-plans-template .meal-plan-card,
-    body.meal-plans-template .addon-card,
-    body.meal-plans-template .modern-order-summary,
-    #meal-plans-development .meal-plan-card,
-    #meal-plans-development .addon-card,
-    #meal-plans-development .modern-order-summary {
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-    }
-}
-
-/* High contrast mode support - TEMPLATE SPECIFIC */
-@media (prefers-contrast: high) {
-    body.meal-plans-template .meal-plan-card,
-    #meal-plans-development .meal-plan-card {
-        border-width: 3px;
+    /* Mobile addon items */
+    body.meal-plans-template .cart__item--addon,
+    #meal-plans-development .cart__item--addon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        font-size: 0.8rem;
     }
     
-    body.meal-plans-template .meal-plan-card.selected,
-    #meal-plans-development .meal-plan-card.selected {
-        border-width: 4px;
+    body.meal-plans-template .cart-addon-qty,
+    #meal-plans-development .cart-addon-qty {
+        font-weight: 600;
+        color: #374151;
     }
-}
+    
+    body.meal-plans-template .cart-addon-name,
+    #meal-plans-development .cart-addon-name {
+        flex: 1;
+        margin: 0 0.5rem;
+        color: #374151;
+    }
+    
+    body.meal-plans-template .cart-addon-price,
+    #meal-plans-development .cart-addon-price {
+        font-weight: 600;
+        color: #059669;
+    }
+    
+    /* Prevent body scroll when mobile order summary is full screen */
+    body.order-summary-fullscreen {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Mobile full screen order summary styles */
+    @media (max-width: 767px) {
+        body.meal-plans-template .modern-order-summary.expanded,
+        #meal-plans-development .modern-order-summary.expanded {
+            z-index: 9999 !important;
+        }
+    }
