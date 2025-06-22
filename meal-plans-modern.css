@@ -2077,12 +2077,13 @@ body.meal-plans-template .addon-right-section,
     body.meal-plans-template .addon-header,
     #meal-plans-development .addon-header {
         margin-bottom: 0.125rem;
+        margin-top: .8rem;
     }
     
     body.meal-plans-template .addon-name,
     #meal-plans-development .addon-name {
         font-size: 0.9rem;
-        text-align: left;
+        text-align: center;
         margin-bottom: 0.125rem;
         line-height: 1.2;
         font-weight: 700;
@@ -2090,7 +2091,7 @@ body.meal-plans-template .addon-right-section,
     
     body.meal-plans-template .addon-description,
     #meal-plans-development .addon-description {
-        text-align: left;
+        text-align: center;
         margin: 0;
         font-size: 0.7rem;
         line-height: 1.3;
