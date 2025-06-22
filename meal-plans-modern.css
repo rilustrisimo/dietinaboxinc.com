@@ -1846,6 +1846,25 @@ body.meal-plans-template .btn-proceed:disabled,
     }
 }
 
+/* Addon Layout Wrapper Sections - TEMPLATE SPECIFIC */
+body.meal-plans-template .addon-left-section,
+#meal-plans-development .addon-left-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 0;
+}
+
+body.meal-plans-template .addon-right-section,
+#meal-plans-development .addon-right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
 /* Responsive Utility Classes - TEMPLATE SPECIFIC */
 /* These classes control visibility based on device type */
 
@@ -1925,16 +1944,24 @@ body.meal-plans-template .btn-proceed:disabled,
     
     body.meal-plans-template .addon-card-content,
     #meal-plans-development .addon-card-content {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        text-align: center;
+        justify-content: space-between;
         gap: 1rem;
+    }
+    
+    body.meal-plans-template .addon-left-section,
+    #meal-plans-development .addon-left-section {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex: 1;
+        min-width: 0;
     }
     
     body.meal-plans-template .addon-image-section,
     #meal-plans-development .addon-image-section {
-        order: 1;
-        align-self: center;
+        flex-shrink: 0;
     }
     
     body.meal-plans-template .addon-image,
@@ -1945,52 +1972,63 @@ body.meal-plans-template .btn-proceed:disabled,
     
     body.meal-plans-template .addon-details-section,
     #meal-plans-development .addon-details-section {
-        order: 2;
-        width: 100%;
-        text-align: center;
+        flex: 1;
+        min-width: 0;
+        text-align: left;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        justify-content: center;
     }
     
     body.meal-plans-template .addon-header,
     #meal-plans-development .addon-header {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
     }
     
     body.meal-plans-template .addon-name,
     #meal-plans-development .addon-name {
         font-size: 1rem;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.125rem;
+        text-align: left;
+        line-height: 1.2;
     }
     
     body.meal-plans-template .addon-description,
     #meal-plans-development .addon-description {
         font-size: 0.8rem;
-        margin: 0 auto 0.75rem auto;
+        margin: 0;
         line-height: 1.3;
+        text-align: left;
+    }
+    
+    body.meal-plans-template .addon-right-section,
+    #meal-plans-development .addon-right-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
     }
     
     body.meal-plans-template .addon-pricing-controls,
     #meal-plans-development .addon-pricing-controls {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 1rem;
-        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
         align-items: center;
-        margin-top: 0.5rem;
+        margin-top: 0;
     }
     
     body.meal-plans-template .addon-price,
     #meal-plans-development .addon-price {
-        order: 1;
+        order: 2;
         margin-bottom: 0;
         font-size: 1.125rem;
+        text-align: center;
     }
     
     body.meal-plans-template .quantity-controls,
     #meal-plans-development .quantity-controls {
-        order: 2;
+        order: 1;
         justify-content: center;
     }
 }
@@ -1999,91 +2037,103 @@ body.meal-plans-template .btn-proceed:disabled,
     body.meal-plans-template .addon-card,
     #meal-plans-development .addon-card {
         padding: 0.875rem;
-        text-align: center;
         margin-bottom: 0.625rem;
     }
     
     body.meal-plans-template .addon-card-content,
     #meal-plans-development .addon-card-content {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: 0.875rem;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+    
+    body.meal-plans-template .addon-left-section,
+    #meal-plans-development .addon-left-section {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        flex: 1;
+        min-width: 0;
     }
     
     body.meal-plans-template .addon-image,
     #meal-plans-development .addon-image {
         width: 3rem;
         height: 3rem;
-        margin: 0 auto;
+        flex-shrink: 0;
     }
     
     body.meal-plans-template .addon-details-section,
     #meal-plans-development .addon-details-section {
-        width: 100%;
-        text-align: center;
+        flex: 1;
+        min-width: 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     body.meal-plans-template .addon-header,
     #meal-plans-development .addon-header {
-        margin-bottom: 0.375rem;
+        margin-bottom: 0.125rem;
     }
     
     body.meal-plans-template .addon-name,
     #meal-plans-development .addon-name {
-        font-size: 0.95rem;
-        text-align: center;
-        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+        text-align: left;
+        margin-bottom: 0.125rem;
         line-height: 1.2;
+        font-weight: 700;
     }
     
     body.meal-plans-template .addon-description,
     #meal-plans-development .addon-description {
-        text-align: center;
-        margin: 0 auto 0.625rem auto;
-        font-size: 0.75rem;
+        text-align: left;
+        margin: 0;
+        font-size: 0.7rem;
         line-height: 1.3;
+        color: #6b7280;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    body.meal-plans-template .addon-right-section,
+    #meal-plans-development .addon-right-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.375rem;
+        flex-shrink: 0;
+        min-width: 4rem;
     }
     
     body.meal-plans-template .addon-pricing-controls,
     #meal-plans-development .addon-pricing-controls {
-        flex-direction: row;
-        justify-content: space-between;
-        gap: 0.75rem;
-        width: 100%;
-        margin-top: 0.375rem;
+        flex-direction: column;
+        gap: 0.375rem;
         align-items: center;
+        margin-top: 0;
+        width: 100%;
     }
     
     body.meal-plans-template .addon-price,
     #meal-plans-development .addon-price {
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 800;
-        text-align: left;
+        text-align: center;
         margin-bottom: 0;
-        flex-shrink: 0;
+        order: 2;
+        color: #14b8a6;
     }
     
     body.meal-plans-template .quantity-controls,
     #meal-plans-development .quantity-controls {
         justify-content: center;
-        gap: 0.5rem;
-        flex-shrink: 0;
-    }
-    
-    body.meal-plans-template .qty-btn,
-    #meal-plans-development .qty-btn {
-        width: 2rem;
-        height: 2rem;
-        min-width: 2rem;
-        font-size: 0.875rem;
-    }
-    
-    body.meal-plans-template .qty-field,
-    #meal-plans-development .qty-field {
-        width: 2.5rem;
-        height: 2rem;
-        font-size: 0.875rem;
-        text-align: center;
+        gap: 0.375rem;
+        order: 1;
     }
 }
 
