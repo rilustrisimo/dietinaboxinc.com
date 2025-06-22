@@ -240,7 +240,7 @@ get_header();
 													</div>
 													
 													<div class="addon-details-section">
-														<div class="addon-header">
+														<div class="addon-header hide-mobile">
 															<h4 class="addon-name"><?php echo $v['variant_name']; ?></h4>
 															<p class="addon-description"><?php echo $v['variant_description']; ?></p>
 														</div>
@@ -263,6 +263,11 @@ get_header();
 																	<i class="fas fa-plus"></i>
 																</button>
 															</div>
+														</div>
+
+														<div class="addon-header show-mobile">
+															<h4 class="addon-name"><?php echo $v['variant_name']; ?></h4>
+															<p class="addon-description"><?php echo $v['variant_description']; ?></p>
 														</div>
 													</div>
 												</div>

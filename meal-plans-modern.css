@@ -2059,8 +2059,8 @@ body.meal-plans-template .addon-right-section,
     
     body.meal-plans-template .addon-image,
     #meal-plans-development .addon-image {
-        width: 3rem;
-        height: 3rem;
+        width: 5rem;
+        height: 5rem;
         flex-shrink: 0;
     }
     
