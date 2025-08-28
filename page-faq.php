@@ -82,7 +82,7 @@ get_header();
                         <div id="faq-4" class="collapse" data-parent="#accordionList">
                             <div class="card-body">
                                 <hr />
-                                <p>Yes, we deliver. Depending on the address, the earliest time is 6:30 AM and the latest is 12:00 NN. We deliver on-the-day NOT a day before. Delivery is only good for 5 days - Monday to Friday.</p>
+                                <p>Yes, we deliver. Depending on the address, the earliest time is 6:30 AM and the latest is 10:00 AM. We deliver on-the-day NOT a day before. Delivery is only good for 5 days - Monday to Friday.</p>
                                 <p>Delivery Time Frame:<p>
                                 <p>Option1: Anytime from 6:30AM to 8:00AM
                                 <br />
