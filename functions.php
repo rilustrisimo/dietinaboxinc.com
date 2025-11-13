@@ -415,3 +415,51 @@ function my_og_og_description_meta($description)
     }
     return $description;
 }
+
+
+/**
+ * Initiate Checkout Meta
+ * **/
+
+add_action('wp_ajax_send_initiate_checkout_event', 'send_initiate_checkout_event');
+add_action('wp_ajax_nopriv_send_initiate_checkout_event', 'send_initiate_checkout_event');
+
+function send_initiate_checkout_event() {
+    $value = isset($_POST['value']) ? floatval($_POST['value']) : 0;
+    $currency = isset($_POST['currency']) ? sanitize_text_field($_POST['currency']) : 'PHP';
+    $content_name = isset($_POST['content_name']) ? sanitize_text_field($_POST['content_name']) : 'Checkout Triggered';
+
+    // Replace with your own Meta Pixel details
+    $pixel_id = '964606506950735';
+    $access_token = 'EAAEGGElmhmYBPZCfmZB4uHJmogQnxlJOzeOZASs4myrkfhZAKvMnRYcaB1Au98Yc1giQ4JKZC40ZCYmG6n4RialptDZCLwZC5LZBIAcYZBu8rp1aiyPgn7euqZCy0szeMH3JWQ0gZCkIlfuoUUlmAW8G9fQZCWZBVLhZA5mC0s5Cr007a4vNO2iomny6NE1Gi829GzBnthsqQZDZD';
+
+    $event = [
+        'data' => [[
+            'event_name' => 'InitiateCheckout',
+            'event_time' => time(),
+            'action_source' => 'website',
+            'event_source_url' => $_SERVER['HTTP_REFERER'] ?? home_url(),
+            'user_data' => [
+                'client_ip_address' => $_SERVER['REMOTE_ADDR'],
+                'client_user_agent' => $_SERVER['HTTP_USER_AGENT']
+            ],
+            'custom_data' => [
+                'currency' => $currency,
+                'value' => $value,
+                'content_name' => $content_name
+            ]
+        ]]
+    ];
+
+    $response = wp_remote_post("https://graph.facebook.com/v19.0/{$pixel_id}/events?access_token={$access_token}", [
+        'headers' => ['Content-Type' => 'application/json'],
+        'body' => json_encode($event)
+    ]);
+
+    wp_send_json([
+        'status' => 'ok',
+        'response' => $response
+    ]);
+}
+
+

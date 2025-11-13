@@ -41,5 +41,39 @@
 <input type="hidden" id="base-url" value="<?php echo home_url(); ?>">
 <input type="hidden" id="ajax-url" value="<?php echo admin_url('admin-ajax.php'); ?>">
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('a.btn.proceed-btn');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      // Optional browser-side event (Meta Pixel)
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout', {
+          value: 0,
+          currency: 'PHP',
+          content_name: 'Checkout Triggered'
+        });
+      }
+
+      // Send to backend for server-side CAPI tracking
+      fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({
+          action: 'send_initiate_checkout_event',
+          value: 0,
+          currency: 'PHP',
+          content_name: 'Checkout Triggered'
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log('CAPI Response:', data))
+      .catch(err => console.error('CAPI Error:', err));
+    });
+  });
+});
+</script>
+
 </body>
 </html>
