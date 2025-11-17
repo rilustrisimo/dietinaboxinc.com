@@ -463,3 +463,80 @@ function send_initiate_checkout_event() {
 }
 
 
+
+/**
+ * Fire Meta CAPI Purchase Event on Thank You Page Load
+ */
+
+add_action('template_redirect', 'send_capi_purchase_on_thankyou_page');
+
+function send_capi_purchase_on_thankyou_page() {
+
+    // Replace 22716 with your Thank You page ID
+    if (!is_page(22716)) {
+        return;
+    }
+
+    // Prevent double-firing by checking if already fired in this session
+    if (isset($_SESSION['capi_purchase_fired']) && $_SESSION['capi_purchase_fired'] === true) {
+        return;
+    }
+
+    // Start PHP session if not started
+    if (!session_id()) {
+        session_start();
+    }
+
+    // -----------------------------
+    //  PURCHASE DATA (customize these as needed)
+    // -----------------------------
+
+    $purchase_value = 0; // Replace with real value if available
+    $currency = 'PHP';
+    $content_name = 'Purchase Completed';
+
+    // FB Pixel details
+    $pixel_id = '964606506950735';
+    $access_token = 'EAAEGGElmhmYBPZCfmZB4uHJmogQnxlJOzeOZASs4myrkfhZAKvMnRYcaB1Au98Yc1giQ4JKZC40ZCYmG6n4RialptDZCLwZC5LZBIAcYZBu8rp1aiyPgn7euqZCy0szeMH3JWQ0gZCkIlfuoUUlmAW8G9fQZCWZBVLhZA5mC0s5Cr007a4vNO2iomny6NE1Gi829GzBnthsqQZDZD';
+
+    // -----------------------------
+    // BUILD EVENT PAYLOAD
+    // -----------------------------
+    $event = [
+        'data' => [[
+            'event_name'     => 'Purchase',
+            'event_time'     => time(),
+            'action_source'  => 'website',
+            'event_source_url' => home_url($_SERVER['REQUEST_URI']),
+            'user_data' => [
+                'client_ip_address' => $_SERVER['REMOTE_ADDR'],
+                'client_user_agent' => $_SERVER['HTTP_USER_AGENT'],
+            ],
+            'custom_data' => [
+                'currency' => $currency,
+                'value'    => $purchase_value,
+                'content_name' => $content_name
+            ]
+        ]]
+    ];
+
+    // -----------------------------
+    // SEND TO META CAPI
+    // -----------------------------
+    $response = wp_remote_post(
+        "https://graph.facebook.com/v19.0/{$pixel_id}/events?access_token={$access_token}",
+        [
+            'headers' => ['Content-Type' => 'application/json'],
+            'body'    => wp_json_encode($event),
+            'timeout' => 20
+        ]
+    );
+
+    // Mark as fired
+    $_SESSION['capi_purchase_fired'] = true;
+
+    // (Optional) Debugging — view response in HTML source
+    // add_action('wp_footer', function() use ($response) {
+    //     echo "<pre>CAPI Response: " . print_r($response, true) . "</pre>";
+    // });
+}
