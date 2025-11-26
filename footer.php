@@ -45,18 +45,18 @@
 document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('a.btn.proceed-btn');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', function(e) {
-      // Optional browser-side event (Meta Pixel)
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'InitiateCheckout', {
-          value: 0,
-          currency: 'PHP',
-          content_name: 'Checkout Triggered'
-        });
-      }
+  function getCookie(name) {
+    let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
 
-      // Send to backend for server-side CAPI tracking
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+
+      const email = document.querySelector('input[name="customer-email"]')?.value || "";
+      const phone = document.querySelector('input[name="contact-number"]')?.value || "";
+      const fbp   = getCookie('_fbp') || "";
+
       fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -64,16 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
           action: 'send_initiate_checkout_event',
           value: 0,
           currency: 'PHP',
-          content_name: 'Checkout Triggered'
+          content_name: 'Checkout Triggered',
+          email: email,
+          phone: phone,
+          fbp: fbp
         })
       })
       .then(res => res.json())
-      .then(data => console.log('CAPI Response:', data))
       .catch(err => console.error('CAPI Error:', err));
     });
   });
 });
 </script>
+
+
 
 </body>
 </html>

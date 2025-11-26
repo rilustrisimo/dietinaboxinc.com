@@ -418,18 +418,34 @@ function my_og_og_description_meta($description)
 
 
 /**
- * Initiate Checkout Meta
- * **/
-
+ * Initiate Checkout Meta (CAPI + SESSION STORE)
+ */
 add_action('wp_ajax_send_initiate_checkout_event', 'send_initiate_checkout_event');
 add_action('wp_ajax_nopriv_send_initiate_checkout_event', 'send_initiate_checkout_event');
 
 function send_initiate_checkout_event() {
-    $value = isset($_POST['value']) ? floatval($_POST['value']) : 0;
-    $currency = isset($_POST['currency']) ? sanitize_text_field($_POST['currency']) : 'PHP';
-    $content_name = isset($_POST['content_name']) ? sanitize_text_field($_POST['content_name']) : 'Checkout Triggered';
 
-    // Replace with your own Meta Pixel details
+    if (!session_id()) {
+        session_start();
+    }
+
+    // Get data from JS
+    $email = sanitize_text_field($_POST['email'] ?? '');
+    $phone = sanitize_text_field($_POST['phone'] ?? '');
+    $fbp   = sanitize_text_field($_POST['fbp'] ?? '');
+
+    // Store into SESSION for later Purchase event
+    $_SESSION['checkout_userdata'] = [
+        'email' => $email,
+        'phone' => $phone,
+        'fbp'   => $fbp
+    ];
+
+    // Hash email + phone
+    $hashed_email = $email ? hash('sha256', strtolower(trim($email))) : '';
+    $hashed_phone = $phone ? hash('sha256', preg_replace('/\D+/', '', $phone)) : '';
+
+    // FB Pixel details
     $pixel_id = '964606506950735';
     $access_token = 'EAAEGGElmhmYBPZCfmZB4uHJmogQnxlJOzeOZASs4myrkfhZAKvMnRYcaB1Au98Yc1giQ4JKZC40ZCYmG6n4RialptDZCLwZC5LZBIAcYZBu8rp1aiyPgn7euqZCy0szeMH3JWQ0gZCkIlfuoUUlmAW8G9fQZCWZBVLhZA5mC0s5Cr007a4vNO2iomny6NE1Gi829GzBnthsqQZDZD';
 
@@ -440,103 +456,90 @@ function send_initiate_checkout_event() {
             'action_source' => 'website',
             'event_source_url' => $_SERVER['HTTP_REFERER'] ?? home_url(),
             'user_data' => [
+                'em'  => $hashed_email,
+                'ph'  => $hashed_phone,
+                'fbp' => $fbp,
                 'client_ip_address' => $_SERVER['REMOTE_ADDR'],
-                'client_user_agent' => $_SERVER['HTTP_USER_AGENT']
+                'client_user_agent' => $_SERVER['HTTP_USER_AGENT'],
             ],
             'custom_data' => [
-                'currency' => $currency,
-                'value' => $value,
-                'content_name' => $content_name
+                'currency' => 'PHP',
+                'value' => floatval($_POST['value'] ?? 0),
+                'content_name' => sanitize_text_field($_POST['content_name'] ?? 'Checkout Triggered'),
             ]
         ]]
     ];
 
-    $response = wp_remote_post("https://graph.facebook.com/v19.0/{$pixel_id}/events?access_token={$access_token}", [
-        'headers' => ['Content-Type' => 'application/json'],
-        'body' => json_encode($event)
-    ]);
+    $response = wp_remote_post(
+        "https://graph.facebook.com/v19.0/{$pixel_id}/events?access_token={$access_token}",
+        [
+            'headers' => ['Content-Type' => 'application/json'],
+            'body' => wp_json_encode($event)
+        ]
+    );
 
-    wp_send_json([
-        'status' => 'ok',
-        'response' => $response
-    ]);
+    wp_send_json(['status' => 'ok']);
 }
+
 
 
 
 /**
  * Fire Meta CAPI Purchase Event on Thank You Page Load
  */
-
 add_action('template_redirect', 'send_capi_purchase_on_thankyou_page');
 
 function send_capi_purchase_on_thankyou_page() {
 
-    // Replace 22716 with your Thank You page ID
-    if (!is_page(22716)) {
-        return;
-    }
+    if (!is_page(22716)) return;
 
-    // Prevent double-firing by checking if already fired in this session
-    if (isset($_SESSION['capi_purchase_fired']) && $_SESSION['capi_purchase_fired'] === true) {
-        return;
-    }
+    if (!session_id()) session_start();
 
-    // Start PHP session if not started
-    if (!session_id()) {
-        session_start();
-    }
+    if (!empty($_SESSION['capi_purchase_fired'])) return;
 
-    // -----------------------------
-    //  PURCHASE DATA (customize these as needed)
-    // -----------------------------
+    // Get saved checkout data
+    $email = $_SESSION['checkout_userdata']['email'] ?? '';
+    $phone = $_SESSION['checkout_userdata']['phone'] ?? '';
+    $fbp   = $_SESSION['checkout_userdata']['fbp'] ?? '';
 
-    $purchase_value = 0; // Replace with real value if available
-    $currency = 'PHP';
-    $content_name = 'Purchase Completed';
+    // Hashing
+    $hashed_email = $email ? hash('sha256', strtolower(trim($email))) : '';
+    $hashed_phone = $phone ? hash('sha256', preg_replace('/\D+/', '', $phone)) : '';
 
     // FB Pixel details
     $pixel_id = '964606506950735';
     $access_token = 'EAAEGGElmhmYBPZCfmZB4uHJmogQnxlJOzeOZASs4myrkfhZAKvMnRYcaB1Au98Yc1giQ4JKZC40ZCYmG6n4RialptDZCLwZC5LZBIAcYZBu8rp1aiyPgn7euqZCy0szeMH3JWQ0gZCkIlfuoUUlmAW8G9fQZCWZBVLhZA5mC0s5Cr007a4vNO2iomny6NE1Gi829GzBnthsqQZDZD';
 
-    // -----------------------------
-    // BUILD EVENT PAYLOAD
-    // -----------------------------
     $event = [
         'data' => [[
-            'event_name'     => 'Purchase',
-            'event_time'     => time(),
-            'action_source'  => 'website',
+            'event_name' => 'Purchase',
+            'event_time' => time(),
+            'action_source' => 'website',
             'event_source_url' => home_url($_SERVER['REQUEST_URI']),
             'user_data' => [
+                'em'  => $hashed_email,
+                'ph'  => $hashed_phone,
+                'fbp' => $fbp,
                 'client_ip_address' => $_SERVER['REMOTE_ADDR'],
-                'client_user_agent' => $_SERVER['HTTP_USER_AGENT'],
+                'client_user_agent' => $_SERVER['HTTP_USER_AGENT']
             ],
             'custom_data' => [
-                'currency' => $currency,
-                'value'    => $purchase_value,
-                'content_name' => $content_name
+                'currency' => 'PHP',
+                'value' => 0,
+                'content_name' => 'Purchase Completed'
             ]
         ]]
     ];
 
-    // -----------------------------
-    // SEND TO META CAPI
-    // -----------------------------
-    $response = wp_remote_post(
+    wp_remote_post(
         "https://graph.facebook.com/v19.0/{$pixel_id}/events?access_token={$access_token}",
         [
             'headers' => ['Content-Type' => 'application/json'],
-            'body'    => wp_json_encode($event),
+            'body' => wp_json_encode($event),
             'timeout' => 20
         ]
     );
 
-    // Mark as fired
+    // Prevent firing again
     $_SESSION['capi_purchase_fired'] = true;
-
-    // (Optional) Debugging — view response in HTML source
-    // add_action('wp_footer', function() use ($response) {
-    //     echo "<pre>CAPI Response: " . print_r($response, true) . "</pre>";
-    // });
 }
