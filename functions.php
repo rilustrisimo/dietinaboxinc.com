@@ -433,6 +433,8 @@ function send_initiate_checkout_event() {
     $email = sanitize_text_field($_POST['email'] ?? '');
     $phone = sanitize_text_field($_POST['phone'] ?? '');
     $fbp   = sanitize_text_field($_POST['fbp'] ?? '');
+	$event_id = sanitize_text_field($_POST['event_id'] ?? '');
+
 
     // Store into SESSION for later Purchase event
     $_SESSION['checkout_userdata'] = [
@@ -455,6 +457,7 @@ function send_initiate_checkout_event() {
             'event_time' => time(),
             'action_source' => 'website',
             'event_source_url' => $_SERVER['HTTP_REFERER'] ?? home_url(),
+			'event_id' => $event_id,
             'user_data' => [
                 'em'  => $hashed_email,
                 'ph'  => $hashed_phone,
@@ -543,3 +546,40 @@ function send_capi_purchase_on_thankyou_page() {
     // Prevent firing again
     $_SESSION['capi_purchase_fired'] = true;
 }
+
+
+add_action('wp_footer', function() {
+
+    if (!is_page(22716)) return;
+
+    $email = $_SESSION['checkout_userdata']['email'] ?? '';
+    $phone = $_SESSION['checkout_userdata']['phone'] ?? '';
+
+    // Create event_id to dedupe browser + CAPI
+    $event_id = 'evt_' . time() . '_' . wp_generate_uuid4();
+
+    ?>
+    <script>
+    window.addEventListener("load", function() {
+
+        function firePurchase() {
+            if (typeof fbq !== "undefined") {
+                fbq('track', 'Purchase', {
+                    email: "<?php echo esc_js($email); ?>",
+                    phone: "<?php echo esc_js($phone); ?>",
+                    value: 0,
+                    currency: "PHP",
+                    content_name: "Purchase Completed"
+                }, {
+                    eventID: "<?php echo esc_js($event_id); ?>"
+                });
+                return;
+            }
+            setTimeout(firePurchase, 200);
+        }
+
+        firePurchase();
+    });
+    </script>
+    <?php
+});

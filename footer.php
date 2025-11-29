@@ -57,6 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
       const phone = document.querySelector('input[name="contact-number"]')?.value || "";
       const fbp   = getCookie('_fbp') || "";
 
+      // Generate a shared event_id
+      const event_id = 'evt_' + Date.now() + '_' + Math.random().toString(36).substring(2,12);
+
+      // 🔵 FIRE BROWSER EVENT
+      if (typeof fbq !== "undefined") {
+        fbq('track', 'InitiateCheckout', {
+          email: email,
+          phone: phone,
+          value: 0,
+          currency: "PHP",
+          content_name: "Checkout Triggered"
+        }, { eventID: event_id });
+      }
+
+      // 🔵 FIRE SERVER-SIDE CAPI EVENT
       fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -67,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
           content_name: 'Checkout Triggered',
           email: email,
           phone: phone,
-          fbp: fbp
+          fbp: fbp,
+          event_id: event_id
         })
       })
       .then(res => res.json())
@@ -76,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
 
 
 
