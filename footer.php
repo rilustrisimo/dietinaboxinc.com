@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
           currency: "PHP",
           content_name: "Checkout Triggered"
         }, { eventID: event_id });
+        console.log('FB Pixel InitiateCheckout fired');
       }
 
       // 🔵 FIRE SERVER-SIDE CAPI EVENT
